@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Presentation</string>
+    <string name="content_description_cd_image">CD image</string>
 </resources>
