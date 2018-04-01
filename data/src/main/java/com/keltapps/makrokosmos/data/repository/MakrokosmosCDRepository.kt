@@ -2,14 +2,22 @@ package com.keltapps.makrokosmos.data.repository
 
 import com.keltapps.makrokosmos.data.R
 import com.keltapps.makrokosmos.data.resourceProvider.ResourceProvider
-import com.keltapps.makrokosmos.domain.model.BlockSong
-import com.keltapps.makrokosmos.domain.model.CD
-import com.keltapps.makrokosmos.domain.model.Song
+import com.keltapps.makrokosmos.domain.entity.BlockSong
+import com.keltapps.makrokosmos.domain.entity.CD
+import com.keltapps.makrokosmos.domain.model.RepositoryModel
+import com.keltapps.makrokosmos.domain.entity.Song
 import com.keltapps.makrokosmos.domain.repository.CDRepository
+import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
 
 class MakrokosmosCDRepository(private val resourceProvider: ResourceProvider) : CDRepository {
 
-    override fun getCD(): CD {
+    override fun getCD(): Observable<RepositoryModel<CD>> {
+        val repositoryModel = RepositoryModel(createCD())
+        return Observable.just(repositoryModel).subscribeOn(Schedulers.computation())
+    }
+
+    private fun createCD(): CD {
         val blockSongList = ArrayList<BlockSong>()
         blockSongList += getVolumeIPart1()
         blockSongList += getVolumeIPart2()

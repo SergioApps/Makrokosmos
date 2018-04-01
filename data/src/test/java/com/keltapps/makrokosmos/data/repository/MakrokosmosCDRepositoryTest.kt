@@ -2,17 +2,24 @@ package com.keltapps.makrokosmos.data.repository
 
 import com.google.common.truth.Truth.assertThat
 import com.keltapps.makrokosmos.data.R
+import com.keltapps.makrokosmos.data.repository.util.RxSchedulersOverrideRule
 import com.keltapps.makrokosmos.data.resourceProvider.ResourceProvider
-import com.keltapps.makrokosmos.domain.model.BlockSong
+import com.keltapps.makrokosmos.domain.entity.BlockSong
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
+import org.junit.Rule
+
+
 
 class MakrokosmosCDRepositoryTest {
 
     private lateinit var repository: MakrokosmosCDRepository
+
+    @get:Rule
+    val overrideSchedulersRule = RxSchedulersOverrideRule()
 
     @Mock
     private lateinit var resourceProvider: ResourceProvider
@@ -89,8 +96,11 @@ class MakrokosmosCDRepositoryTest {
     fun getCD_should_returnMakrokosmosCD() {
         mockStrings()
 
-        val cd = repository.getCD()
+        val testObserver = repository.getCD().test()
 
+        val repositoryModel = testObserver.values()[0]
+        assertThat(repositoryModel.isSuccessful()).isTrue()
+        val cd = repositoryModel.data ?: throw(NullPointerException())
         assertThat(cd.title).isEqualTo(cdTitle)
         assertThat(cd.blockSongList.size).isEqualTo(6)
         assertVolumeIPart1(cd.blockSongList[0])
