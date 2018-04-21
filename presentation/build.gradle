@@ -29,6 +29,7 @@ android {
 
 }
 ext.supportLibrariesVersion = '27.1.1'
+ext.archVersion = '1.1.1'
 
 dependencies {
     implementation project(path: ':domain')
@@ -43,6 +44,13 @@ dependencies {
     kapt "com.android.databinding:compiler:3.1.1"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "android.arch.lifecycle:extensions:$archVersion"
+    testCompile("android.arch.core:core-testing:$archVersion", {
+        exclude group: 'com.android.support', module: 'support-compat'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-core-utils'
+    })
 }
 repositories {
     mavenCentral()

@@ -13,6 +13,8 @@ open class MakrokosmosBaseViewModel(private val compositeDisposable: CompositeDi
         compositeDisposable.add(disposable)
     }
 
+    override fun initialize() {}
+
     override fun cleanUp() {
         compositeDisposable.clear()
     }
