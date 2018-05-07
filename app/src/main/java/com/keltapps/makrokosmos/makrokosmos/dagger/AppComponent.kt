@@ -2,6 +2,7 @@ package com.keltapps.makrokosmos.makrokosmos.dagger
 
 import android.app.Application
 import com.keltapps.makrokosmos.makrokosmos.CosmosApplication
+import com.keltapps.makrokosmos.makrokosmos.dagger.module.data.RepositoryModule
 import com.keltapps.makrokosmos.makrokosmos.dagger.module.AppModule
 import dagger.BindsInstance
 import dagger.Component
@@ -12,7 +13,8 @@ import javax.inject.Singleton
 @Component(modules = [
     AndroidInjectionModule::class,
     ActivityBuilder::class,
-    AppModule::class])
+    AppModule::class,
+    RepositoryModule::class])
 interface AppComponent {
 
     @Component.Builder

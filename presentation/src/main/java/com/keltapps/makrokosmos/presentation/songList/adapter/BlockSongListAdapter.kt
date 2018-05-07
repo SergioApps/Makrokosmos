@@ -1,14 +1,11 @@
 package com.keltapps.makrokosmos.presentation.songList.adapter
 
-import android.databinding.Observable
-import android.databinding.ObservableField
-import android.support.v7.widget.RecyclerView
+import android.arch.lifecycle.LifecycleOwner
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.Observer
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.keltapps.makrokosmos.domain.entity.Song
 import com.keltapps.makrokosmos.presentation.R
-
-import com.keltapps.makrokosmos.presentation.base.adapter.BaseAdapter
 import com.keltapps.makrokosmos.presentation.songList.model.CDListItem
 import com.keltapps.makrokosmos.presentation.songList.model.SongListItem
 import com.keltapps.makrokosmos.presentation.songList.model.TitleListItem
@@ -16,42 +13,43 @@ import com.keltapps.makrokosmos.presentation.songList.viewModel.MakrokosmosBlock
 import com.keltapps.makrokosmos.presentation.songList.viewModel.MakrokosmosSongItemViewModel
 import javax.inject.Inject
 
-class BlockSongListAdapter @Inject constructor()
-    : BaseAdapter<RecyclerView.ViewHolder, ObservableField<List<CDListItem>>>() {
+class BlockSongListAdapter @Inject constructor(private val lifecycleOwner: LifecycleOwner)
+    : BaseBlockSongListAdapter<BlockSongListVH>() {
+
+    companion object {
+        private const val typeTitle = 0
+        private const val typeSong = 1
+    }
 
     private val items = ArrayList<CDListItem>()
 
-    private var itemsObservable: ObservableField<List<CDListItem>>? = null
+    private lateinit var itemsObservable: LiveData<List<CDListItem>>
 
-    private val callback = object : Observable.OnPropertyChangedCallback() {
-        override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
-            items.clear()
-            items.addAll(itemsObservable?.get() ?: ArrayList())
-            notifyDataSetChanged()
-        }
+    private val callback = Observer<List<CDListItem>> {
+        items.clear()
+        items.addAll(itemsObservable.value ?: ArrayList())
+        notifyDataSetChanged()
     }
 
-    override fun setSource(observableItems: ObservableField<List<CDListItem>>) {
-        cleanup()
+    override fun setSource(observableItems: LiveData<List<CDListItem>>) {
         itemsObservable = observableItems
-        itemsObservable?.addOnPropertyChangedCallback(callback)
-    }
-
-    override fun cleanup() {
-        itemsObservable?.removeOnPropertyChangedCallback(callback)
+        itemsObservable.observe(lifecycleOwner, callback)
     }
 
     override fun getItemCount(): Int = items.size
 
     override fun getItemViewType(position: Int): Int {
-        return items[position].type
+        return when (items[position]) {
+            is TitleListItem -> typeTitle
+            is SongListItem -> typeSong
+        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BlockSongListVH {
         return when (viewType) {
-            CDListItem.TYPE_TITLE -> BlockTitleVH(LayoutInflater.from(parent.context)
+            typeTitle -> BlockTitleVH(LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_block_title, parent, false), MakrokosmosBlockTitleItemViewModel())
-            CDListItem.TYPE_SONG -> SongVH(LayoutInflater.from(parent.context)
+            typeSong -> SongVH(LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_song, parent, false), MakrokosmosSongItemViewModel())
             else -> {
                 throw NotImplementedError("type not support it")
@@ -59,10 +57,10 @@ class BlockSongListAdapter @Inject constructor()
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (holder.itemViewType) {
-            CDListItem.TYPE_TITLE -> (holder as BlockTitleVH).setItem((items[position] as TitleListItem).title)
-            CDListItem.TYPE_SONG -> (holder as SongVH).setItem((items[position] as SongListItem).song)
+    override fun onBindViewHolder(holder: BlockSongListVH, position: Int) {
+        when (holder) {
+            is BlockTitleVH -> holder.setItem((items[position] as TitleListItem).title)
+            is SongVH -> holder.setItem((items[position] as SongListItem).song)
         }
     }
 }

@@ -9,8 +9,9 @@ import com.keltapps.makrokosmos.domain.entity.Song
 import com.keltapps.makrokosmos.domain.repository.CDRepository
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class MakrokosmosCDRepository(private val resourceProvider: ResourceProvider) : CDRepository {
+class MakrokosmosCDRepository @Inject constructor(private val resourceProvider: ResourceProvider) : CDRepository {
 
     override fun getCD(): Observable<RepositoryModel<CD>> {
         val repositoryModel = RepositoryModel(createCD())

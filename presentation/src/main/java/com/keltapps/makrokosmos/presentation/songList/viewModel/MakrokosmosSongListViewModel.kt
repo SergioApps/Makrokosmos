@@ -8,6 +8,7 @@ import com.keltapps.makrokosmos.presentation.base.viewModel.MakrokosmosBaseViewM
 import com.keltapps.makrokosmos.presentation.songList.model.CDListItem
 import com.keltapps.makrokosmos.presentation.songList.model.SongListItem
 import com.keltapps.makrokosmos.presentation.songList.model.TitleListItem
+import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
 class MakrokosmosSongListViewModel @Inject constructor(private val cdUseCase: GetCDUseCase)
@@ -17,8 +18,7 @@ class MakrokosmosSongListViewModel @Inject constructor(private val cdUseCase: Ge
     override val title = MutableLiveData<String>()
 
     override fun initialize() {
-        super.initialize()
-        val disposable = cdUseCase.execute().subscribe {
+        val disposable = cdUseCase.execute().observeOn(AndroidSchedulers.mainThread()).subscribe {
             val songListItemList = ArrayList<CDListItem>()
             for (blockSong in it.data.blockSongList) {
                 songListItemList += TitleListItem(blockSong.title)

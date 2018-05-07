@@ -1,9 +1,9 @@
 package com.keltapps.makrokosmos.presentation.songList.model
 
-abstract class CDListItem(val type: Int) {
+import com.keltapps.makrokosmos.domain.entity.Song
 
-    companion object {
-        const val TYPE_TITLE = 0
-        const val TYPE_SONG = 1
-    }
-}
+sealed class CDListItem
+
+class SongListItem(val song: Song) : CDListItem()
+
+class TitleListItem(val title: String) : CDListItem()

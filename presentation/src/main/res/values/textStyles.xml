@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme.TextAppearance.TitleBlock" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="AppTheme.TextAppearance.TitleSong" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="AppTheme.TextAppearance.SubTitleSong" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+</resources>

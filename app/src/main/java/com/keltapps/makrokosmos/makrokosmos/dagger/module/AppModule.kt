@@ -1,5 +1,7 @@
 package com.keltapps.makrokosmos.makrokosmos.dagger.module
 
+import android.app.Application
+import android.content.Context
 import com.keltapps.makrokosmos.data.resourceProvider.MakrokosmosResourceProvider
 import com.keltapps.makrokosmos.data.resourceProvider.ResourceProvider
 import dagger.Binds
@@ -7,9 +9,13 @@ import dagger.Module
 import javax.inject.Singleton
 
 @Module
-abstract class AppModule {
+interface AppModule {
 
     @Binds
     @Singleton
-    abstract fun provideResourceProvider(resourceProvider: MakrokosmosResourceProvider): ResourceProvider
+    fun provideResourceProvider(resourceProvider: MakrokosmosResourceProvider): ResourceProvider
+
+    @Binds
+    @Singleton
+    fun provideApplicationContext(application: Application): Context
 }

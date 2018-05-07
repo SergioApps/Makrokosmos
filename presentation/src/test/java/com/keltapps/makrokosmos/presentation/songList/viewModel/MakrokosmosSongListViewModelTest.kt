@@ -7,9 +7,8 @@ import com.keltapps.makrokosmos.domain.entity.CD
 import com.keltapps.makrokosmos.domain.entity.Song
 import com.keltapps.makrokosmos.domain.iteractor.GetCDUseCase
 import com.keltapps.makrokosmos.domain.model.UseCaseModel
-import com.keltapps.makrokosmos.presentation.songList.model.CDListItem.Companion.TYPE_SONG
-import com.keltapps.makrokosmos.presentation.songList.model.CDListItem.Companion.TYPE_TITLE
 import com.keltapps.makrokosmos.presentation.songList.model.SongListItem
+import com.keltapps.makrokosmos.presentation.songList.model.TitleListItem
 import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Rule
@@ -46,15 +45,15 @@ class MakrokosmosSongListViewModelTest {
         val songListItems = viewModel.cdListItems.value
 
         assertThat(songListItems!!.size).isEqualTo(6)
-        assertThat(songListItems[0].type).isEqualTo(TYPE_TITLE)
-        assertThat(songListItems[1].type).isEqualTo(TYPE_SONG)
+        assertThat(songListItems[0] is TitleListItem).isTrue()
+        assertThat(songListItems[1] is SongListItem).isTrue()
         assertThat((songListItems[1] as SongListItem).song).isEqualTo(cd.blockSongList[0].songList[0])
-        assertThat(songListItems[2].type).isEqualTo(TYPE_SONG)
+        assertThat(songListItems[2] is SongListItem).isTrue()
         assertThat((songListItems[2] as SongListItem).song).isEqualTo(cd.blockSongList[0].songList[1])
-        assertThat(songListItems[3].type).isEqualTo(TYPE_TITLE)
-        assertThat(songListItems[4].type).isEqualTo(TYPE_SONG)
+        assertThat(songListItems[3] is TitleListItem).isTrue()
+        assertThat(songListItems[4] is SongListItem).isTrue()
         assertThat((songListItems[4] as SongListItem).song).isEqualTo(cd.blockSongList[1].songList[0])
-        assertThat(songListItems[5].type).isEqualTo(TYPE_SONG)
+        assertThat(songListItems[5] is SongListItem).isTrue()
         assertThat((songListItems[5] as SongListItem).song).isEqualTo(cd.blockSongList[1].songList[1])
     }
 
