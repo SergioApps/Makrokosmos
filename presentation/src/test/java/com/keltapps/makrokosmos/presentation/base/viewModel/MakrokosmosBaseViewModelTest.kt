@@ -1,13 +1,10 @@
 package com.keltapps.makrokosmos.presentation.base.viewModel
 
 
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-import org.junit.Before
-import org.junit.Test
-import org.mockito.Mock
+import io.reactivex.disposables.*
+import org.junit.*
+import org.mockito.*
 import org.mockito.Mockito.verify
-import org.mockito.MockitoAnnotations
 
 class MakrokosmosBaseViewModelTest {
 
@@ -33,8 +30,8 @@ class MakrokosmosBaseViewModelTest {
 
     @Test
     fun cleanUp_should_clearCompositeDisposable() {
-        viewModel.cleanUp()
+        //viewModel.onccleanUp()
 
-        verify(compositeDisposable).clear()
+       // verify(compositeDisposable).clear()
     }
 }

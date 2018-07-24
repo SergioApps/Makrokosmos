@@ -2,33 +2,29 @@ package com.keltapps.makrokosmos.presentation.songList.viewModel
 
 
 import android.arch.lifecycle.MutableLiveData
-import android.databinding.ObservableField
+import com.keltapps.makrokosmos.domain.entity.*
 import com.keltapps.makrokosmos.domain.iteractor.GetCDUseCase
 import com.keltapps.makrokosmos.presentation.base.viewModel.MakrokosmosBaseViewModel
-import com.keltapps.makrokosmos.presentation.songList.model.CDListItem
-import com.keltapps.makrokosmos.presentation.songList.model.SongListItem
-import com.keltapps.makrokosmos.presentation.songList.model.TitleListItem
+import com.keltapps.makrokosmos.presentation.extension.addDisposable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
-class MakrokosmosSongListViewModel @Inject constructor(private val cdUseCase: GetCDUseCase)
-    : MakrokosmosBaseViewModel(), SongListViewModel {
+class MakrokosmosSongListViewModel @Inject constructor(
+        private val cdUseCase: GetCDUseCase
+) : MakrokosmosBaseViewModel(), SongListViewModel {
 
-    override val cdListItems = MutableLiveData<List<CDListItem>>()
+    override val cdListItems = MutableLiveData<List<Song>>()
     override val title = MutableLiveData<String>()
 
-    override fun initialize() {
-        val disposable = cdUseCase.execute().observeOn(AndroidSchedulers.mainThread()).subscribe {
-            val songListItemList = ArrayList<CDListItem>()
-            for (blockSong in it.data.blockSongList) {
-                songListItemList += TitleListItem(blockSong.title)
-                for (song in blockSong.songList) {
-                    songListItemList += SongListItem(song)
-                }
-            }
-            cdListItems.value = songListItemList
-            title.value = it.data.title
-        }
-        addDisposable(disposable)
+    override fun initialize(volumeIndex: Int) {
+        cdUseCase.execute()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { handleSubscription(it, volumeIndex) }
+                .addDisposable(this)
+    }
+
+    private fun handleSubscription(cd: CD, volumeIndex: Int) {
+        cdListItems.value = cd.volumeList[volumeIndex].songList
+        title.value = cd.volumeList[volumeIndex].title
     }
 }

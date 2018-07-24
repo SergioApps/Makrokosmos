@@ -3,7 +3,7 @@
     <string name="title_cd_title">Makrokosmos</string>
 
     <!-- Song List-->
-    <string name="volumeIPart1Title">Volume I Part 1</string>
+    <string name="volumeITitle">Volume I</string>
     <string name="volumeIFirstSongTitle">Primeval Sounds</string>
     <string name="volumeIFirstSongSubTitle">Genesis II Cancer</string>
     <string name="volumeISecondSongTitle">Proteus</string>
@@ -13,7 +13,6 @@
     <string name="volumeIFourthSongTitle">Crucifixus</string>
     <string name="volumeIFourthSongSubTitle">Capricorn</string>
 
-    <string name="volumeIPart2Title">Volume I Part 2</string>
     <string name="volumeIFifthSongTitle">The Phantom Gondolier</string>
     <string name="volumeIFifthSongSubTitle">Scorpio</string>
     <string name="volumeISixthSongTitle">Night-Spell I</string>
@@ -23,7 +22,6 @@
     <string name="volumeIEighthSongTitle">The Magic Circle of Infinity</string>
     <string name="volumeIEighthSongSubTitle">Moto Perpetuo Leo</string>
 
-    <string name="volumeIPart3Title">Volume I Part 3</string>
     <string name="volumeINinthSongTitle">The Abyss of Time</string>
     <string name="volumeINinthSongSubTitle">Virgo</string>
     <string name="volumeITenthSongTitle">Spring-Fire</string>
@@ -33,7 +31,7 @@
     <string name="volumeITwelfthSongTitle">Spiral Galaxy</string>
     <string name="volumeITwelfthSongSubTitle">Aquarius</string>
 
-    <string name="volumeIIPart1Title">Volume II Part 1</string>
+    <string name="volumeII">Volume II</string>
     <string name="volumeIIFirstSongTitle">Morning Music</string>
     <string name="volumeIIFirstSongSubTitle">Genesis II Cancer</string>
     <string name="volumeIISecondSongTitle">The Mystic Chord</string>
@@ -43,7 +41,6 @@
     <string name="volumeIIFourthSongTitle">Twin Suns</string>
     <string name="volumeIIFourthSongSubTitle">Gemini</string>
 
-    <string name="volumeIIPart2Title">Volume II Part 2</string>
     <string name="volumeIIFifthSongTitle">Ghost-Nocturne: for the Druids of Stonehenge</string>
     <string name="volumeIIFifthSongSubTitle">Night-Spell II Virgo</string>
     <string name="volumeIISixthSongTitle">Gargoyles</string>
@@ -53,7 +50,6 @@
     <string name="volumeIIEighthSongTitle">A Prophecy of Nostradamus</string>
     <string name="volumeIIEighthSongSubTitle">Aries</string>
 
-    <string name="volumeIIPart3Title">Volume II Part 3</string>
     <string name="volumeIINinthSongTitle">Cosmic wind</string>
     <string name="volumeIINinthSongSubTitle">Libra</string>
     <string name="volumeIITenthSongTitle">Voices from "Corona Borealis"</string>

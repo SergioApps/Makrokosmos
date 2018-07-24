@@ -1,11 +1,11 @@
 package com.keltapps.makrokosmos.presentation.base.viewModel
 
 import android.arch.lifecycle.ViewModel
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import io.reactivex.disposables.*
 
-open class MakrokosmosBaseViewModel(private val compositeDisposable: CompositeDisposable)
-    : ViewModel(), BaseViewModel {
+open class MakrokosmosBaseViewModel(
+        private val compositeDisposable: CompositeDisposable
+) : ViewModel(), BaseViewModel {
 
     constructor() : this(CompositeDisposable())
 
