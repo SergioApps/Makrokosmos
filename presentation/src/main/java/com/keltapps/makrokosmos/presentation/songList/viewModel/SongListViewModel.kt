@@ -7,6 +7,6 @@ import com.keltapps.makrokosmos.presentation.base.viewModel.BaseViewModel
 
 interface SongListViewModel: BaseViewModel {
     fun initialize(volumeIndex: Int)
+    fun getTitleRes(volumeIndex: Int): Int
     val cdListItems: LiveData<List<Song>>
-    val title: LiveData<String>
 }

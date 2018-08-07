@@ -4,6 +4,8 @@ import android.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import com.keltapps.makrokosmos.domain.entity.*
 import com.keltapps.makrokosmos.domain.iteractor.GetCDUseCase
+import com.keltapps.makrokosmos.presentation.R
+
 import com.keltapps.makrokosmos.presentation.RxSchedulersOverrideRule
 import io.reactivex.Observable
 import org.junit.*
@@ -18,7 +20,7 @@ class MakrokosmosSongListViewModelTest {
     @get:Rule
     val overrideSchedulersRule = RxSchedulersOverrideRule()
 
-    private lateinit var viewModel: MakrokosmosSongListViewModel
+    private lateinit var sut: MakrokosmosSongListViewModel
 
     @Mock
     private lateinit var getCDUseCase: GetCDUseCase
@@ -26,39 +28,33 @@ class MakrokosmosSongListViewModelTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        viewModel = MakrokosmosSongListViewModel(getCDUseCase)
+        sut = MakrokosmosSongListViewModel(getCDUseCase)
     }
 
     @Test
     fun songListItems_should_returnBlockSongListFromUseCase() {
         val cd = getCD()
         `when`(getCDUseCase.execute()).thenReturn(Observable.just(cd))
-        viewModel.initialize(0)
+        val volumeIndex = 0
+        sut.initialize(volumeIndex)
 
-        val songListItems = viewModel.cdListItems.value
+        val songListItems = sut.cdListItems.value
 
-        assertThat(songListItems!!.size).isEqualTo(6)
-        /*   assertThat(songListItems[0] is TitleListItem).isTrue()
-           assertThat(songListItems[1] is SongListItem).isTrue()
-           assertThat((songListItems[1] as SongListItem).song).isEqualTo(cd.volumeList[0].songList[0])
-           assertThat(songListItems[2] is SongListItem).isTrue()
-           assertThat((songListItems[2] as SongListItem).song).isEqualTo(cd.volumeList[0].songList[1])
-           assertThat(songListItems[3] is TitleListItem).isTrue()
-           assertThat(songListItems[4] is SongListItem).isTrue()
-           assertThat((songListItems[4] as SongListItem).song).isEqualTo(cd.volumeList[1].songList[0])
-           assertThat(songListItems[5] is SongListItem).isTrue()
-           assertThat((songListItems[5] as SongListItem).song).isEqualTo(cd.volumeList[1].songList[1])*/
+        assertThat(songListItems).isEqualTo(cd.volumeList[volumeIndex].songList)
     }
 
     @Test
-    fun title_should_returnTitleFromUseCase() {
-        val cd = getCD()
-        `when`(getCDUseCase.execute()).thenReturn(Observable.just(cd))
-        viewModel.initialize(0)
+    fun getTitleRes_should_returnVolumeI_when_volumeIndexIs1(){
+        val result = sut.getTitleRes(0)
 
-        val result = viewModel.title.value
+        assertThat(result).isEqualTo(R.string.tab_name_volume_1)
+    }
 
-        assertThat(result).isEqualTo(cd.title)
+    @Test
+    fun getTitleRes_should_returnVolumeII_when_volumeIndexIs2(){
+        val result = sut.getTitleRes(1)
+
+        assertThat(result).isEqualTo(R.string.tab_name_volume_2)
     }
 
     private fun getCD(): CD {

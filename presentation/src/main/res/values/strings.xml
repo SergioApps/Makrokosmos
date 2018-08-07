@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Presentation</string>
     <string name="content_description_cd_image">CD image</string>
+
+    <!-- Song List -->
+    <string name="tab_name_volume_1">Volume I</string>
+    <string name="tab_name_volume_2">Volume II</string>
 </resources>

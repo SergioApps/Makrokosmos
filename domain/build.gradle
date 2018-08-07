@@ -3,20 +3,11 @@ apply plugin: 'kotlin'
 apply from: '../unitTest.gradle'
 apply from: '../rxJava.gradle'
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-}
-
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
 buildscript {
-    ext.kotlin_version = '1.2.31'
     repositories {
         mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 repositories {
@@ -35,4 +26,8 @@ compileTestKotlin {
 
 dependencies {
     implementation "javax.inject:javax.inject:1"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    kapt "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 }
