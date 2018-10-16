@@ -1,0 +1,20 @@
+package com.keltapps.makrokosmos.base.viewmodel
+
+import android.arch.lifecycle.ViewModel
+import io.reactivex.disposables.*
+
+open class MakrokosmosBaseViewModel(
+        private val compositeDisposable: CompositeDisposable
+) : ViewModel(), BaseViewModel {
+
+    constructor() : this(CompositeDisposable())
+
+    override fun addDisposable(disposable: Disposable) {
+        compositeDisposable.add(disposable)
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.clear()
+    }
+}

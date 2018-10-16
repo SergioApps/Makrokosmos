@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/blueGray800</color>
+    <color name="colorPrimaryDark">@color/blueGray900</color>
+    <color name="colorAccent">#FFFF8C</color>
+
+    <color name="blueGray800">#37474F</color>
+    <color name="blueGray900">#263238</color>
+
+    <color name="main_makrokosmos">#194D82</color>
+    <color name="main_about">#1C6D80</color>
+    <color name="main_author">#8D621C</color>
+    <color name="main_interpreter">#B23D23</color>
+</resources>
