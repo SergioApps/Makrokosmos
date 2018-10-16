@@ -1,9 +1,10 @@
-package com.keltapps.makrokosmos.song.data.resourceprovider
+package com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
-import com.keltapps.makrokosmos.data.R
-import junit.framework.Assert
+import com.keltapps.makrokosmos.R
+import com.keltapps.makrokosmos.song.data.resourceprovider.MakrokosmosResourceProvider
+import junit.framework.TestCase.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -18,6 +19,6 @@ class MakrokosmosResourceProviderTest {
 
         val result = resourceProvider.getString(R.string.title_cd_title)
 
-        Assert.assertEquals(result, cdTitle)
+        assertEquals(result, cdTitle)
     }
 }
