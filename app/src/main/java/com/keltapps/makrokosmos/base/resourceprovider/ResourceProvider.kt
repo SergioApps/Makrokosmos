@@ -1,4 +1,4 @@
-package com.keltapps.makrokosmos.song.data.resourceprovider
+package com.keltapps.makrokosmos.base.resourceprovider
 
 import android.support.annotation.StringRes
 

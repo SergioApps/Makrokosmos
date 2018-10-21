@@ -4,7 +4,7 @@ import com.google.common.truth.Truth.assertThat
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.song.data.repository.MakrokosmosCDRepository
 import com.keltapps.makrokosmos.song.data.repository.RxSchedulersOverrideRule
-import com.keltapps.makrokosmos.song.data.resourceprovider.ResourceProvider
+import com.keltapps.makrokosmos.base.resourceprovider.ResourceProvider
 import com.keltapps.makrokosmos.song.domain.entity.*
 import org.junit.*
 import org.mockito.*

@@ -34,9 +34,11 @@ class SongListParentFragment : DaggerFragment() {
     }
 
     private fun setupActionBar() {
-        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
-        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.title_songListActivity)
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        with(activity as AppCompatActivity) {
+            setSupportActionBar(binding.toolbar)
+            supportActionBar?.title = getString(R.string.title_songListActivity)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
         binding.toolbar.setNavigationOnClickListener { binding.root.findNavController().navigateUp() }
     }
 }

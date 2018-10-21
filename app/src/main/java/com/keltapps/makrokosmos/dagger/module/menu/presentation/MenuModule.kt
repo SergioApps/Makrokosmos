@@ -1,6 +1,7 @@
 package com.keltapps.makrokosmos.dagger.module.menu.presentation
 
 import android.arch.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.keltapps.makrokosmos.base.view.createFactory
 import com.keltapps.makrokosmos.dagger.scope.ActivityScope
 import com.keltapps.makrokosmos.dagger.scope.FragmentScope
@@ -19,9 +20,8 @@ class MenuModule {
     @FragmentScope
     fun provideMainViewModel(
             fragment: MenuFragment,
-            navigator: Navigator
+            viewModel: MakrokosmosMenuViewModel
     ): MenuViewModel {
-        val viewModel = MakrokosmosMenuViewModel(navigator)
         val viewModelFactory = viewModel.createFactory()
         return ViewModelProviders.of(fragment, viewModelFactory).get(viewModel.javaClass)
     }
@@ -29,6 +29,6 @@ class MenuModule {
     @Provides
     @FragmentScope
     fun provideNavigator(fragment: MenuFragment): Navigator {
-        return MakrokosmosNavigator(fragment)
+        return MakrokosmosNavigator(fragment.findNavController())
     }
 }

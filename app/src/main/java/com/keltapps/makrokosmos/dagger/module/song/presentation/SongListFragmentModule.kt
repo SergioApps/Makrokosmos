@@ -20,8 +20,10 @@ class SongListFragmentModule {
 
     @Provides
     @SubFragmentScope
-    fun provideSongListViewModel(fragment: SongListFragment, getCDUseCase: GetCDUseCase): SongListViewModel {
-        val viewModel = MakrokosmosSongListViewModel(getCDUseCase)
+    fun provideSongListViewModel(
+            fragment: SongListFragment,
+            viewModel: MakrokosmosSongListViewModel
+    ): SongListViewModel {
         val viewModelFactory = viewModel.createFactory()
         return ViewModelProviders.of(fragment, viewModelFactory).get(viewModel.javaClass)
     }

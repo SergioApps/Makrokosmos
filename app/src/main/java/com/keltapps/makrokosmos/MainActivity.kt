@@ -1,4 +1,4 @@
-package com.keltapps.makrokosmos.main.presentation.view
+package com.keltapps.makrokosmos
 
 import android.os.Bundle
 import com.keltapps.makrokosmos.R

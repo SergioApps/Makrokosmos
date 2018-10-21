@@ -2,9 +2,6 @@ package com.keltapps.makrokosmos.menu.presentation.viewmodel
 
 import com.keltapps.makrokosmos.base.viewmodel.MakrokosmosBaseViewModel
 import com.keltapps.makrokosmos.navigation.Navigator
-import com.keltapps.makrokosmos.navigation.Navigator.Companion.ID_ABOUT
-import com.keltapps.makrokosmos.navigation.Navigator.Companion.ID_AUTHOR
-import com.keltapps.makrokosmos.navigation.Navigator.Companion.ID_INTERPRETER
 import javax.inject.Inject
 
 class MakrokosmosMenuViewModel @Inject constructor(
@@ -16,14 +13,14 @@ class MakrokosmosMenuViewModel @Inject constructor(
     }
 
     override fun openAbout() {
-        navigator.openInfo(ID_ABOUT)
+        navigator.openAboutInfo()
     }
 
     override fun openAuthor() {
-        navigator.openInfo(ID_AUTHOR)
+        navigator.openAuthorInfo()
     }
 
     override fun openInterpreter() {
-        navigator.openInfo(ID_INTERPRETER)
+        navigator.openInterpreterInfo()
     }
 }

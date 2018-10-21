@@ -1,9 +1,11 @@
 package com.keltapps.makrokosmos.dagger
 
+import com.keltapps.makrokosmos.dagger.module.info.presentation.InfoModule
 import com.keltapps.makrokosmos.dagger.module.menu.presentation.MenuModule
 import com.keltapps.makrokosmos.dagger.module.song.presentation.SongListFragmentBuilder
 import com.keltapps.makrokosmos.dagger.module.song.presentation.SongListParentModule
 import com.keltapps.makrokosmos.dagger.scope.FragmentScope
+import com.keltapps.makrokosmos.info.presentation.view.InfoFragment
 import com.keltapps.makrokosmos.menu.presentation.view.MenuFragment
 import com.keltapps.makrokosmos.song.presentation.view.SongListParentFragment
 import dagger.Module
@@ -20,4 +22,8 @@ interface FragmentBuilder {
     @FragmentScope
     @ContributesAndroidInjector(modules = [SongListParentModule::class, SongListFragmentBuilder::class])
     fun bindSongListParentFragment(): SongListParentFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [InfoModule::class])
+    fun bindInfoFragment(): InfoFragment
 }

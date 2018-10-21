@@ -1,7 +1,7 @@
 package com.keltapps.makrokosmos.song.data.repository
 
 import com.keltapps.makrokosmos.R
-import com.keltapps.makrokosmos.song.data.resourceprovider.ResourceProvider
+import com.keltapps.makrokosmos.base.resourceprovider.ResourceProvider
 import com.keltapps.makrokosmos.song.domain.entity.*
 import com.keltapps.makrokosmos.song.domain.repository.CDRepository
 import io.reactivex.Observable
@@ -13,7 +13,7 @@ class MakrokosmosCDRepository @Inject constructor(
 ) : CDRepository {
 
     override fun getCD(): Observable<CD> {
-        return Observable.just(createCD())
+        return Observable.fromCallable { createCD() }
                 .subscribeOn(Schedulers.computation())
     }
 

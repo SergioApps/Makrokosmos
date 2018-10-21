@@ -20,48 +20,48 @@
     <!-- CD songs -->
     <string name="title_cd_title">Makrokosmos</string>
     <string name="volumeITitle">Volume one</string>
-    <string name="volumeIFirstSongTitle">Primeval Sounds</string>
+    <string name="volumeIFirstSongTitle">1.- Primeval Sounds</string>
     <string name="volumeIFirstSongSubTitle">Genesis I</string>
-    <string name="volumeISecondSongTitle">Proteus</string>
-    <string name="volumeIThirdSongTitle">Pastorale</string>
+    <string name="volumeISecondSongTitle">2.- Proteus</string>
+    <string name="volumeIThirdSongTitle">3.- Pastorale</string>
     <string name="volumeIThirdSongSubTitle">From the Kingdom of Atlantis, ca. 10,000 B.C.</string>
-    <string name="volumeIFourthSongTitle">Crucifixus</string>
+    <string name="volumeIFourthSongTitle">4.- Crucifixus</string>
     <string name="volumeIFourthSongSubTitle">[SYMBOL]</string>
 
-    <string name="volumeIFifthSongTitle">The Phantom Gondolier</string>
-    <string name="volumeISixthSongTitle">Night-Spell I</string>
-    <string name="volumeISeventhSongTitle">Music of Shadows</string>
+    <string name="volumeIFifthSongTitle">5.- The Phantom Gondolier</string>
+    <string name="volumeISixthSongTitle">6.- Night-Spell I</string>
+    <string name="volumeISeventhSongTitle">7.- Music of Shadows</string>
     <string name="volumeISeventhSongSubTitle">For Aeolian Harp</string>
-    <string name="volumeIEighthSongTitle">The Magic Circle of Infinity</string>
+    <string name="volumeIEighthSongTitle">8.- The Magic Circle of Infinity</string>
     <string name="volumeIEighthSongSubTitle">Moto Perpetuo [SYMBOL]</string>
 
-    <string name="volumeINinthSongTitle">The Abyss of Time</string>
-    <string name="volumeITenthSongTitle">Spring-Fire</string>
-    <string name="volumeIEleventhSongTitle">Dream Images</string>
+    <string name="volumeINinthSongTitle">9.- The Abyss of Time</string>
+    <string name="volumeITenthSongTitle">10.- Spring-Fire</string>
+    <string name="volumeIEleventhSongTitle">11.- Dream Images</string>
     <string name="volumeIEleventhSongSubTitle">Love-Death Music</string>
-    <string name="volumeITwelfthSongTitle">Spiral Galaxy</string>
+    <string name="volumeITwelfthSongTitle">12.- Spiral Galaxy</string>
     <string name="volumeITwelfthSongSubTitle">[SYMBOL]</string>
 
     <string name="volumeII">Volume two</string>
-    <string name="volumeIIFirstSongTitle">Morning Music</string>
+    <string name="volumeIIFirstSongTitle">1.- Morning Music</string>
     <string name="volumeIIFirstSongSubTitle">Genesis II</string>
-    <string name="volumeIISecondSongTitle">The Mystic Chord</string>
-    <string name="volumeIIThirdSongTitle">Rain-Death Variations</string>
-    <string name="volumeIIFourthSongTitle">Twin Suns</string>
+    <string name="volumeIISecondSongTitle">2.- The Mystic Chord</string>
+    <string name="volumeIIThirdSongTitle">3.- Rain-Death Variations</string>
+    <string name="volumeIIFourthSongTitle">4.- Twin Suns</string>
     <string name="volumeIIFourthSongSubTitle">DoppelgÑnger aus der Ewigkeit [SYMBOL]</string>
 
-    <string name="volumeIIFifthSongTitle">Ghost-Nocturne: for the Druids of Stonehenge</string>
+    <string name="volumeIIFifthSongTitle">5.- Ghost-Nocturne: for the Druids of Stonehenge</string>
     <string name="volumeIIFifthSongSubTitle">Night-Spell II</string>
-    <string name="volumeIISixthSongTitle">Gargoyles</string>
-    <string name="volumeIISeventhSongTitle">Tora! Tora! Tora!</string>
+    <string name="volumeIISixthSongTitle">6.- Gargoyles</string>
+    <string name="volumeIISeventhSongTitle">7.- Tora! Tora! Tora!</string>
     <string name="volumeIISeventhSongSubTitle">Cadenza Apocalittica</string>
-    <string name="volumeIIEighthSongTitle">A Prophecy of Nostradamus</string>
+    <string name="volumeIIEighthSongTitle">8.- A Prophecy of Nostradamus</string>
     <string name="volumeIIEighthSongSubTitle">[SYMBOL]</string>
 
-    <string name="volumeIINinthSongTitle">Cosmic wind</string>
-    <string name="volumeIITenthSongTitle">Voices from "Corona Borealis"</string>
-    <string name="volumeIIEleventhSongTitle">Litany of the Galactic Bells</string>
-    <string name="volumeIITwelfthSongTitle">Agnus Dei</string>
+    <string name="volumeIINinthSongTitle">9.- Cosmic wind</string>
+    <string name="volumeIITenthSongTitle">10.- Voices from "Corona Borealis"</string>
+    <string name="volumeIIEleventhSongTitle">11.- Litany of the Galactic Bells</string>
+    <string name="volumeIITwelfthSongTitle">12.- Agnus Dei</string>
     <string name="volumeIITwelfthSongSubTitle">[SYMBOL]</string>
 
     <!-- zodiac signs -->
@@ -78,4 +78,36 @@
     <string name="zodiacSign_aquarius">Aquarius</string>
     <string name="zodiacSign_pisces">Pisces</string>
     <string name="contentDescription_zodiacSign">Zodiac symbol</string>
+
+    <!-- Info -->
+    <string name="infoAbout_title">About</string>
+    <string name="infoAbout_body">“Music is a system of proportions in the service of a spiritual impulse”\nGeorge Crumb\n\n
+        Makrokosmos I &amp; II (1972/73) is one of the most complete and influential cycles of the new technical resources of the piano from the latter twentieth century.\n\n
+        The first volume is composed in memory of Béla Bartok (1881 - 1945) and dedicated to the pianist David Burge (1930 - 2013) and the second in memory of Gustav Mahler (1860 - 1911) and dedicated to the pianist Robert Miller (1930) - 1981).\n\n
+        Each piece is assigned a zodiac sign reflecting his preoccupation with time and space.\nEach volume is divided into three parts, themselves sectioned into four parts that are to be played without interruption.  Crumb designed the fourth piece of each part in the form of a symbol in relation to the composition. In the first volume: Crucifixus as a cross, The Magic Circle of Infinity as circle and Spiral Galaxy as a spiral (picture on the back cover).\n\n
+        Both volumes subtitled: Twelve pieces of fantasy after the zodiac for amplified piano. Twenty-four pieces that constitute a massive and detailed exploration of the sonorous possibilities of the piano, creating a virtuous synthesis between the conventional pianism (keyboard) and the unconventional (inside the piano), including the pianist through whispers, whistles, chants or shouts.\n\n
+        Crumb exploits all the pianistic color tones imaginable on the keyboard and inside the piano by traversing the entire pitch range of the instrument, using the three pedals, exploiting an (extraordinarily wide dynamic range through amplification), using the pianist\'s hands to strike, pluck and scrape the strings and through the use of objects: chains, glass tumblers, metal plectrums, metal thimbles, sheets of paper or a wire brush.\n
+        Fabio Álvarez\n\n
+        George Crumb, Makrokosmos Volume I Notes*:\n
+        “The title and format of my Makrokosmos reflect my admiration for two great 20th century composers of piano music – Béla Bartók and Claude Debussy. I was thinking, of course, of Bartók\'s Mikrokosmos and Debussy\'s 24 Preludes. However, these are purely external associations, and I suspect that the “spiritual impulse” of my music is more akin to the darker side of Chopin, and even to the child-like fantasy of Schumann.\n\n
+        And then there is always the question of the “larger world” of concepts and ideas which influence the evolution of a composer\'s language. While composing Makrokosmos, I was aware of certain recurrent haunting images. At times quite vivid, at times vague and almost subliminal, these images seemed to coalesce around the following several ideas (given in no logical sequence, since there is none): the “magical properties” of music; the problem of the origin of evil; the “timelessness” if of time; a sense of the profound ironies of life (so beautifully expressed in the music of Mozart and Mahler); the haunting words of Pascal: “Le silence éternel des espaces infinis m\'effraie” (“The eternal silence of infinite space terrifies me”); and these few lines of Rilke: “Und in den Nächten fállt die schwere Erde aus allen Sternen in die Einsamkeit. Wir alle fallen. Und doch ist Einer, welcher dieses Fallen unendlich sanft in seinen Händen halt” (And in the nights the heavy earth is falling from all the stars down into loneliness. We are falling. And yet there is One who holds this falling endlessly gently in his hands”).\n\n
+        Each of the twelve “fantasy-pieces” is associated with a different sign of the zodiac and with the initials of a person born under that sign. I had whimsically wanted to pose an “enigma” with these subscript initials; however, my perspicacious friends quickly identified the Aries of Spring-Fire as David Burge, and the Scorpio of The Phantom Gondolier as myself.\n\n
+        Makrokosmos, Volume I was premiered at Colorado College (in Colorado Springs) on February 8, 1973.\n
+        Makrokosmos, Volume II was premiered by Robert Miller in New York City (Alice Tully Hall) on November 12, 1974.\n\n
+        *Excerpted from notes written for the Nonesuch recording of Makrokosmos Volume I (recorded performance by David Burge, Nonesuch H-71293).
+    </string>
+
+    <string name="infoAuthor_title">George Crumb</string>
+    <string name="infoAuthor_body">George Crumb (b. 1929) is one of the most frequently performed composers in today\'s musical world. Crumb is the winner of Grammy and Pulitzer Prizes, and continues to compose new scores that enrich the lives of all who come in contact with his profoundly humanistic art. Crumb\'s music often juxtaposes contrasting musical styles, ranging from music of the western art-music tradition, to hymns and folk music, to non-Western musics. Many of Crumb\'s works include programmatic, symbolic, mystical and theatrical elements, which are often reflected in his beautiful and meticulously notated scores.\n\n
+        A shy, yet warmly eloquent personality, Crumb retired from his teaching position at the University of Pennsylvania after more than 30 years of service. Honored by numerous institutions with honorary Doctorates, and the recipient of dozens of awards and prizes, Crumb makes his home in Pennsylvania, in the same house where he and his wife of more than 60 years raised their three children. George Crumb\'s music is published by C.F. Peters and an ongoing series of "Complete Crumb" recordings, supervised by the composer, is being issued on Bridge Records.\n
+    </string>
+
+    <string name="infoInterpreter_title">Fabio Álvarez</string>
+    <string name="infoInterpreter_body">Spanish pianist Fabio Álvarez combines musicality, great temperament and a talent for communication in his performances. He expresses his passion for music through his concerts with interpretive commentary and his commitment to art\'s social role in his participation in benefit concerts.\n\n
+           Sponsored by three foundations (Cum Laude, Gondra Barandiarán and FIDAH) and more than 60 private patrons Mr. Álvarez got his Master\'s student under the tutelage of the renowned concert pianist and pedagoge Phillip Kawin at Manhattan School of Music.\n\n
+           Since studying with the French pianist Emmanuel Ferrer-Lalöe in Musikene (Basque Country, Spain) recent solo engagements have taken him to France, Portugal, Spain and the U.S.A performing at various venues as a recitalist and soloist with orchestra including:  Carnegie Hall (New York, USA), Greenfield Hall (New York, USA), Theatre Elysium Camps (Bilbao, Spain), Orfeón Donostiarra (Donostia, Spain) or Le Prieuré du Mesnil Saint Martin (Aquitaine, France).\n\n
+           Fabio has specialized in many other fields as contemporary piano with Anthony de Mare and Ricardo Descalzo, vocal accompaniment with Raymond Beegle and Maciej Pikulski, chamber music with Irini Gaitani and Gabriel Loidi and organ with Dr. Katherine Meloan. promoting and premiering pieces for solo piano and chamber music by contemporary composers.\n\n
+           He has been selected to participate in several international music festivals such as the 55th International University Seminar "Música en Compostela" (Santiago de Compostela, Spain), entirely dedicated to Spanish Music; the 3rd Vigo Cultural Circle Seminar or the International Piano Festival "Jesús González Alonso".\n\n
+           Fabio has participated in many masterclasses with distinguished pianists and pedagoges, including: Ivo Pogorelich, Eldar Nebolsin, Imre Rohman, Julian Martin, Robert McDonald, Josep Colom, Marta Zabaleta, Ricardo Requejo, Jose Ramón Mendez, James Giles, Nino Kereselidze, Gustavo Díaz Jerez, Mariana Gurkova, Jean-Philippe Guillo, Aurélie Forre, María Jesús Crespo, Maria Teresa Perez and Alexander Kandelaki.
+    </string>
 </resources>

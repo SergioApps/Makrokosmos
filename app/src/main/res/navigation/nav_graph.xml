@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/menuFragment">
 
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.keltapps.makrokosmos.menu.presentation.view.MenuFragment"
-        android:label="MenuFragment" >
+        android:label="MenuFragment">
         <action
             android:id="@+id/action_menuFragment_to_songListParentFragment"
             app:destination="@id/songListParentFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
     </fragment>
     <fragment
         android:id="@+id/songListParentFragment"
         android:name="com.keltapps.makrokosmos.song.presentation.view.SongListParentFragment"
         android:label="SongListParentFragment" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.keltapps.makrokosmos.info.presentation.view.InfoFragment"
+        android:label="InfoFragment">
+        <argument
+            android:name="infoScreen"
+            app:argType="com.keltapps.makrokosmos.info.presentation.model.InfoScreen" />
+    </fragment>
 </navigation>

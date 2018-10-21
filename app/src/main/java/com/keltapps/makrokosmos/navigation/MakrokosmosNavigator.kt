@@ -1,15 +1,40 @@
 package com.keltapps.makrokosmos.navigation
 
-import android.support.v4.app.Fragment
+import androidx.navigation.NavController
+import com.keltapps.makrokosmos.R
+import com.keltapps.makrokosmos.info.presentation.model.InfoScreen
+import com.keltapps.makrokosmos.menu.presentation.view.MenuFragmentDirections
 import javax.inject.Inject
 
-class MakrokosmosNavigator @Inject constructor(fragment: Fragment) : Navigator {
+class MakrokosmosNavigator @Inject constructor(
+        private val navController: NavController
+) : Navigator {
 
     override fun openMakrokosmos() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        navController.navigate(R.id.action_menuFragment_to_songListParentFragment)
     }
 
-    override fun openInfo(id: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun openAboutInfo() {
+        navController.navigate(
+                MenuFragmentDirections.actionMenuFragmentToInfoFragment(
+                        InfoScreen.AboutScreen
+                )
+        )
+    }
+
+    override fun openAuthorInfo() {
+        navController.navigate(
+                MenuFragmentDirections.actionMenuFragmentToInfoFragment(
+                        InfoScreen.AuthorScreen
+                )
+        )
+    }
+
+    override fun openInterpreterInfo() {
+        navController.navigate(
+                MenuFragmentDirections.actionMenuFragmentToInfoFragment(
+                        InfoScreen.InterpreterScreen
+                )
+        )
     }
 }

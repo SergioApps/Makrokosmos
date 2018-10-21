@@ -58,6 +58,6 @@ class SongListFragment : DaggerFragment() {
     private fun setUpRecyclerView(binding: FragmentSongListBinding) {
         binding.recyclerView.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerView.adapter = adapter
-        viewModel.cdListItems.observe(this, Observer { list -> adapter.submitList(list) })
+        viewModel.cdListItems.observe(this, Observer { adapter.submitList(it) })
     }
 }

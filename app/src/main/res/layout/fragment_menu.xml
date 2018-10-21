@@ -20,7 +20,11 @@
 
             <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="250dp">
+                android:layout_height="250dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{()->viewModel.openMakrokosmos()}">
 
                 <ImageView
                     android:id="@+id/imageViewMakrokosmos"
@@ -49,7 +53,11 @@
 
             <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="250dp">
+                android:layout_height="250dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{()->viewModel.openAbout()}">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -77,7 +85,11 @@
 
             <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="250dp">
+                android:layout_height="250dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{()->viewModel.openAuthor()}">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -105,7 +117,11 @@
 
             <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="250dp">
+                android:layout_height="250dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{()->viewModel.openInterpreter()}">
 
                 <ImageView
                     android:layout_width="match_parent"

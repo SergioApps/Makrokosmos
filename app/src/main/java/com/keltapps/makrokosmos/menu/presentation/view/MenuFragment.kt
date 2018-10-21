@@ -17,7 +17,11 @@ class MenuFragment : DaggerFragment() {
     @Inject
     internal lateinit var viewModel: MenuViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
         val binding: FragmentMenuBinding = DataBindingUtil.inflate(
                 inflater,
                 R.layout.fragment_menu,
@@ -25,9 +29,6 @@ class MenuFragment : DaggerFragment() {
                 false
         )
         binding.viewModel = viewModel
-        binding.imageViewMakrokosmos.setOnClickListener {//TODO move this
-            it.findNavController().navigate(R.id.action_menuFragment_to_songListParentFragment)
-        }
         return binding.root
     }
 }

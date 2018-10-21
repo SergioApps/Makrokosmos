@@ -1,9 +1,6 @@
 package com.keltapps.makrokosmos.menu.presentation.viewmodel
 
 import com.keltapps.makrokosmos.navigation.Navigator
-import com.keltapps.makrokosmos.navigation.Navigator.Companion.ID_ABOUT
-import com.keltapps.makrokosmos.navigation.Navigator.Companion.ID_AUTHOR
-import com.keltapps.makrokosmos.navigation.Navigator.Companion.ID_INTERPRETER
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -30,17 +27,17 @@ class MakrokosmosMenuViewModelTest {
     }
 
     @Test
-    fun openAbout_should_callOpenInfoWithIdAbout() {
-        navigator.openInfo(ID_ABOUT)
+    fun openAbout_should_callOpenAboutInfo() {
+        navigator.openAboutInfo()
     }
 
     @Test
-    fun openAuthor_should_callOpenInfoWithIdAuthor() {
-        navigator.openInfo(ID_AUTHOR)
+    fun openAuthor_should_callOpenInfo() {
+        navigator.openAuthorInfo()
     }
 
     @Test
-    fun openInterpreter_should_callOpenInfoWithIdInterpreter() {
-        navigator.openInfo(ID_INTERPRETER)
+    fun openInterpreter_should_callOpenInterpreterInfo() {
+        navigator.openInterpreterInfo()
     }
 }
