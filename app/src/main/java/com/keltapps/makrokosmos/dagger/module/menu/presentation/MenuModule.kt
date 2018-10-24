@@ -2,8 +2,7 @@ package com.keltapps.makrokosmos.dagger.module.menu.presentation
 
 import android.arch.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import com.keltapps.makrokosmos.base.view.createFactory
-import com.keltapps.makrokosmos.dagger.scope.ActivityScope
+import com.keltapps.makrokosmos.base.presentation.view.createFactory
 import com.keltapps.makrokosmos.dagger.scope.FragmentScope
 import com.keltapps.makrokosmos.menu.presentation.view.MenuFragment
 import com.keltapps.makrokosmos.menu.presentation.viewmodel.MenuViewModel
@@ -28,7 +27,7 @@ class MenuModule {
 
     @Provides
     @FragmentScope
-    fun provideNavigator(fragment: MenuFragment): Navigator {
-        return MakrokosmosNavigator(fragment.findNavController())
+    fun provideNavigator(navigator: MakrokosmosNavigator): Navigator {
+        return navigator
     }
 }

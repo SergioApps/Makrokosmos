@@ -1,9 +1,13 @@
 package com.keltapps.makrokosmos.dagger.module.song.presentation
 
 import android.support.v4.app.FragmentPagerAdapter
+import androidx.navigation.fragment.findNavController
 import com.keltapps.makrokosmos.dagger.scope.FragmentScope
-import com.keltapps.makrokosmos.song.presentation.view.PageAdapter
-import com.keltapps.makrokosmos.song.presentation.view.SongListParentFragment
+import com.keltapps.makrokosmos.menu.presentation.view.MenuFragment
+import com.keltapps.makrokosmos.navigation.MakrokosmosNavigator
+import com.keltapps.makrokosmos.navigation.Navigator
+import com.keltapps.makrokosmos.song.presentation.list.view.PageAdapter
+import com.keltapps.makrokosmos.song.presentation.list.view.SongListParentFragment
 import dagger.Module
 import dagger.Provides
 
@@ -16,5 +20,11 @@ class SongListParentModule {
             parentFragment: SongListParentFragment
     ): FragmentPagerAdapter {
         return PageAdapter(parentFragment)
+    }
+
+    @Provides
+    @FragmentScope
+    fun provideNavigator(navigator: MakrokosmosNavigator): Navigator {
+        return navigator
     }
 }

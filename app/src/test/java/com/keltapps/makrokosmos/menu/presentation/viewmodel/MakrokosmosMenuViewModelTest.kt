@@ -1,43 +1,52 @@
 package com.keltapps.makrokosmos.menu.presentation.viewmodel
 
-import com.keltapps.makrokosmos.navigation.Navigator
+import android.arch.core.executor.testing.InstantTaskExecutorRule
+import com.google.common.truth.Truth.assertThat
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mock
+import org.junit.rules.TestRule
 import org.mockito.MockitoAnnotations
 
 class MakrokosmosMenuViewModelTest {
 
     private lateinit var sut: MakrokosmosMenuViewModel
 
-    @Mock
-    private lateinit var navigator: Navigator
+    @get:Rule
+    var rule: TestRule = InstantTaskExecutorRule()
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        sut = MakrokosmosMenuViewModel(
-                navigator
-        )
+        sut = MakrokosmosMenuViewModel()
     }
 
     @Test
     fun openMakrokosmos_should_callOpenMakrokosmos() {
-        navigator.openMakrokosmos()
+        sut.openMakrokosmos()
+
+        assertThat(sut.openMakrokosmos.value).isEqualTo(Unit)
+
     }
 
     @Test
     fun openAbout_should_callOpenAboutInfo() {
-        navigator.openAboutInfo()
+        sut.openAbout()
+
+        assertThat(sut.openAbout.value).isEqualTo(Unit)
     }
 
     @Test
     fun openAuthor_should_callOpenInfo() {
-        navigator.openAuthorInfo()
+        sut.openAuthor()
+
+        assertThat(sut.openAuthor.value).isEqualTo(Unit)
     }
 
     @Test
     fun openInterpreter_should_callOpenInterpreterInfo() {
-        navigator.openInterpreterInfo()
+        sut.openInterpreter()
+
+        assertThat(sut.openInterpreter.value).isEqualTo(Unit)
     }
 }

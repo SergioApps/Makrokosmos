@@ -1,7 +1,7 @@
 package com.keltapps.makrokosmos.dagger.module.song.presentation
 
 import com.keltapps.makrokosmos.dagger.scope.SubFragmentScope
-import com.keltapps.makrokosmos.song.presentation.view.SongListFragment
+import com.keltapps.makrokosmos.song.presentation.list.view.SongListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

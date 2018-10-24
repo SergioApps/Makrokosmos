@@ -1,8 +1,11 @@
 package com.keltapps.makrokosmos.navigation
 
+import androidx.navigation.NavController
+
 interface Navigator {
-    fun openMakrokosmos()
-    fun openAboutInfo()
-    fun openAuthorInfo()
-    fun openInterpreterInfo()
+    fun openMakrokosmos(navController: NavController)
+    fun openAboutInfo(navController: NavController)
+    fun openAuthorInfo(navController: NavController)
+    fun openInterpreterInfo(navController: NavController)
+    fun openSongDetail(navController: NavController, songId: String)
 }

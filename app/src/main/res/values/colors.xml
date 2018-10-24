@@ -11,4 +11,13 @@
     <color name="main_about">#1C6D80</color>
     <color name="main_author">#8D621C</color>
     <color name="main_interpreter">#B23D23</color>
+
+    <color name="air_light">#48A8E2</color>
+    <color name="air_dark">#194D82</color>
+    <color name="earth_light">#FDC160</color>
+    <color name="earth_dark">#8D621C</color>
+    <color name="fire_light">#D78565</color>
+    <color name="fire_dark">#B23D23</color>
+    <color name="water_light">#2FC4E9</color>
+    <color name="water_dark">#1C6D80</color>
 </resources>

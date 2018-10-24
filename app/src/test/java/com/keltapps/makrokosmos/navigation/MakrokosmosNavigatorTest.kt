@@ -2,7 +2,9 @@ package com.keltapps.makrokosmos.navigation
 
 import androidx.navigation.NavController
 import com.keltapps.makrokosmos.R
+import com.keltapps.makrokosmos.info.presentation.model.InfoScreen
 import com.keltapps.makrokosmos.menu.presentation.view.MenuFragmentDirections
+import com.keltapps.makrokosmos.song.presentation.list.view.SongListParentFragmentDirections
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -12,7 +14,7 @@ import org.mockito.MockitoAnnotations
 class MakrokosmosNavigatorTest {
 
     private companion object {
-        const val SCREEN_TYPE_ID = 1
+        const val SONG_ID = "songId"
     }
 
     private lateinit var sut: MakrokosmosNavigator
@@ -23,26 +25,57 @@ class MakrokosmosNavigatorTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        sut = MakrokosmosNavigator(
-                navController
-        )
+        sut = MakrokosmosNavigator()
     }
 
     @Test
     fun openMakrokosmos_should_navigateToSongListParentFragment() {
-        sut.openMakrokosmos()
+        sut.openMakrokosmos(navController)
 
         verify(navController).navigate(R.id.action_menuFragment_to_songListParentFragment)
     }
-/*
+
     @Test
-    fun openInfo_should_navigateToInfoFragment() {
-        sut.openInfo(SCREEN_TYPE_ID)
+    fun openAboutInfo_should_navigateToAboutInfoFragment() {
+        sut.openAboutInfo(navController)
 
         verify(navController).navigate(
                 MenuFragmentDirections.actionMenuFragmentToInfoFragment(
-                        SCREEN_TYPE_ID
+                        InfoScreen.AboutScreen
                 )
         )
-    }*/
+    }
+
+    @Test
+    fun openAuthorInfo_should_navigateToAuthorInfoFragment() {
+        sut.openAuthorInfo(navController)
+
+        verify(navController).navigate(
+                MenuFragmentDirections.actionMenuFragmentToInfoFragment(
+                        InfoScreen.AuthorScreen
+                )
+        )
+    }
+
+    @Test
+    fun openInterpreterInfo_should_navigateToInterpreterInfoFragment() {
+        sut.openInterpreterInfo(navController)
+
+        verify(navController).navigate(
+                MenuFragmentDirections.actionMenuFragmentToInfoFragment(
+                        InfoScreen.InterpreterScreen
+                )
+        )
+    }
+
+    @Test
+    fun openSongDetails_should_navigateToSongDetailsFragment() {
+        sut.openSongDetail(navController, SONG_ID)
+
+        verify(navController).navigate(
+                SongListParentFragmentDirections.actionSongListParentFragmentToSongDetailFragment(
+                        SONG_ID
+                )
+        )
+    }
 }

@@ -1,26 +1,30 @@
 package com.keltapps.makrokosmos.menu.presentation.viewmodel
 
-import com.keltapps.makrokosmos.base.viewmodel.MakrokosmosBaseViewModel
+import com.keltapps.makrokosmos.base.presentation.SingleLiveEvent
+import com.keltapps.makrokosmos.base.presentation.viewmodel.MakrokosmosBaseViewModel
 import com.keltapps.makrokosmos.navigation.Navigator
 import javax.inject.Inject
 
-class MakrokosmosMenuViewModel @Inject constructor(
-        private val navigator: Navigator
-) : MakrokosmosBaseViewModel(), MenuViewModel {
+class MakrokosmosMenuViewModel @Inject constructor() : MakrokosmosBaseViewModel(), MenuViewModel {
+
+    override val openMakrokosmos = SingleLiveEvent<Unit>()
+    override val openAbout = SingleLiveEvent<Unit>()
+    override val openAuthor = SingleLiveEvent<Unit>()
+    override val openInterpreter = SingleLiveEvent<Unit>()
 
     override fun openMakrokosmos() {
-        navigator.openMakrokosmos()
+        openMakrokosmos.value = Unit
     }
 
     override fun openAbout() {
-        navigator.openAboutInfo()
+        openAbout.value = Unit
     }
 
     override fun openAuthor() {
-        navigator.openAuthorInfo()
+        openAuthor.value = Unit
     }
 
     override fun openInterpreter() {
-        navigator.openInterpreterInfo()
+        openInterpreter.value = Unit
     }
 }

@@ -17,8 +17,12 @@
     </fragment>
     <fragment
         android:id="@+id/songListParentFragment"
-        android:name="com.keltapps.makrokosmos.song.presentation.view.SongListParentFragment"
-        android:label="SongListParentFragment" />
+        android:name="com.keltapps.makrokosmos.song.presentation.list.view.SongListParentFragment"
+        android:label="SongListParentFragment">
+        <action
+            android:id="@+id/action_songListParentFragment_to_songDetailFragment"
+            app:destination="@id/songDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/infoFragment"
         android:name="com.keltapps.makrokosmos.info.presentation.view.InfoFragment"
@@ -26,5 +30,13 @@
         <argument
             android:name="infoScreen"
             app:argType="com.keltapps.makrokosmos.info.presentation.model.InfoScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/songDetailFragment"
+        android:name="com.keltapps.makrokosmos.song.presentation.detail.view.SongDetailFragment"
+        android:label="SongDetailFragment">
+        <argument
+            android:name="songId"
+            app:argType="string" />
     </fragment>
 </navigation>
