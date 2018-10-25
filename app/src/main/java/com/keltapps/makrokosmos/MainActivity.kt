@@ -2,14 +2,11 @@ package com.keltapps.makrokosmos
 
 import android.content.Context
 import android.os.Bundle
-import dagger.android.support.DaggerAppCompatActivity
-import android.support.v4.media.MediaBrowserCompat
-import android.support.v4.media.session.MediaControllerCompat
-import com.keltapps.makrokosmos.audio.service.MusicService
+import android.support.v4.media.*
+import android.support.v4.media.session.*
 import com.keltapps.makrokosmos.audio.client.MediaBrowserHelper
-import android.support.v4.media.session.MediaSessionCompat
-import android.support.v4.media.MediaMetadataCompat
-import android.support.v4.media.session.PlaybackStateCompat
+import com.keltapps.makrokosmos.audio.service.MusicService
+import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity() {
 
@@ -27,7 +24,6 @@ class MainActivity : DaggerAppCompatActivity() {
     override fun onStart() {
         super.onStart()
         mediaBrowserHelper.onStart()
-
     }
 
     override fun onResume() {
@@ -52,16 +48,16 @@ private class MediaBrowserConnection constructor(context: Context) : MediaBrowse
     ) {
         super.onChildrenLoaded(parentId, children)
 
-        val mediaController = mediaController
+        val mediaController = mMediaController
 
         // Queue up all media items for this simple sample.
         for (mediaItem in children) {
-            mediaController.addQueueItem(mediaItem.description)
+            mediaController?.addQueueItem(mediaItem.description)
         }
 
         // Call prepare now so pressing play just works.
-        mediaController.transportControls.prepare()
-        mediaController.transportControls.play()
+        mediaController?.transportControls?.prepare()
+        mediaController?.transportControls?.play()
     }
 }
 

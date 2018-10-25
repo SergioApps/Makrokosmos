@@ -1,21 +1,20 @@
 package com.keltapps.makrokosmos
 
-import android.app.Activity
-import android.app.Application
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import android.app.*
+import com.keltapps.makrokosmos.dagger.*
+import dagger.android.*
 import javax.inject.Inject
-import com.keltapps.makrokosmos.dagger.AppComponent
-import com.keltapps.makrokosmos.dagger.DaggerAppComponent
 
 
-class CosmosApplication : Application(), HasActivityInjector {
+class MakrokosmosApplication : Application(), HasActivityInjector, HasServiceInjector {
 
     @Inject
     lateinit var activityDispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+    @Inject
+    lateinit var serviceDispatchingAndroidInjector: DispatchingAndroidInjector<Service>
 
     override fun activityInjector(): AndroidInjector<Activity> = activityDispatchingAndroidInjector
+    override fun serviceInjector(): AndroidInjector<Service> = serviceDispatchingAndroidInjector
 
     override fun onCreate() {
         super.onCreate()
