@@ -3,13 +3,13 @@ package com.keltapps.makrokosmos.audio.service
 import android.support.v4.media.MediaDescriptionCompat
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
-import com.keltapps.makrokosmos.audio.service.content.MusicLibrary
+import com.keltapps.makrokosmos.audio.service.content.MakrokosmosMusicLibrary
 import java.util.ArrayList
 import javax.inject.Inject
 
 class MakrokosmosMediaSessionCallbackPresenter @Inject constructor(
         private val mediaSessionCompatHelper: MediaSessionCompatHelper,
-        private val musicLibrary: MusicLibrary
+        private val makrokosmosMusicLibrary: MakrokosmosMusicLibrary
 ) : MediaSessionCallbackPresenter {
 
     private lateinit var mediaSessionCallback: MediaSessionCallback
@@ -34,16 +34,16 @@ class MakrokosmosMediaSessionCallbackPresenter @Inject constructor(
     }
 
     override fun onPrepare() {
-        if (queueIndex < 0 && playlist.isEmpty()) {
-            // Nothing to play.
-            return
-        }
-        playlist[queueIndex].description.mediaId?.let {
-            preparedMedia = musicLibrary.getMetadata(it).apply {
-                mediaSessionCallback.prepareMedia(this)
+        if (isSomethingToPlay()) {
+            playlist[queueIndex].description.mediaId?.let {
+                preparedMedia = makrokosmosMusicLibrary.getMetadata(it).apply {
+                    mediaSessionCallback.prepareMedia(this)
+                }
             }
         }
     }
+
+    private fun isSomethingToPlay() = queueIndex >= 0 || !playlist.isEmpty()
 
     override fun onPlay() {
         if (!isReadyToPlay()) {
