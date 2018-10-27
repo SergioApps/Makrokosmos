@@ -1,14 +1,14 @@
-package com.keltapps.makrokosmos.audio.service.content
+package com.keltapps.makrokosmos.audio.data
 
 import android.support.v4.media.*
+import com.keltapps.makrokosmos.audio.domain.repository.MusicLibraryRepository
 import com.keltapps.makrokosmos.song.domain.entity.CD
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class MusicLibrary @Inject constructor() {
+
+class MakrokosmosMusicLibraryRepository @Inject constructor() : MusicLibraryRepository {
     private companion object {
         const val root: String = "root"
     }
@@ -16,15 +16,15 @@ class MusicLibrary @Inject constructor() {
     private val music = LinkedHashMap<String, MediaMetadataCompat>()
     private val musicFileName = HashMap<String, String>()
 
-    fun getRoot() = root
+    override fun getRoot() = root
 
-    fun getMusicFilename(mediaId: String): String = musicFileName[mediaId] ?: ""
+    override fun getMusicFilename(mediaId: String): String = musicFileName[mediaId] ?: ""
 
-    fun getMetadata(mediaId: String): MediaMetadataCompat {
+    override fun getMetadata(mediaId: String): MediaMetadataCompat {
         return music[mediaId] ?: MediaMetadataCompat.Builder().build()
     }
 
-    fun getMediaItems(cd: CD): List<MediaBrowserCompat.MediaItem> {
+    override fun getMediaItems(cd: CD): List<MediaBrowserCompat.MediaItem> {
         cd.volumeList
                 .flatMap { it.songList }
                 .map {

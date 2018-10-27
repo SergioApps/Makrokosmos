@@ -6,14 +6,14 @@ import android.media.MediaPlayer
 import android.os.SystemClock
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.PlaybackStateCompat
-import com.keltapps.makrokosmos.audio.service.content.MusicLibrary
+import com.keltapps.makrokosmos.audio.domain.repository.MusicLibraryRepository
 import javax.inject.Inject
 
 
 class MediaPlayerAdapter @Inject constructor(
         context: Context,
         private val mPlaybackInfoListener: PlaybackInfoListener,
-        private val musicLibrary: MusicLibrary
+        private val musicLibraryRepository: MusicLibraryRepository
 ) : PlayerAdapter(context) {
 
     private val mContext: Context = context.applicationContext
@@ -78,7 +78,7 @@ class MediaPlayerAdapter @Inject constructor(
     override fun playFromMedia(metadata: MediaMetadataCompat) {
         currentMedia = metadata
         val mediaId = metadata.description.mediaId
-        playFile(musicLibrary.getMusicFilename(mediaId ?: ""))
+        playFile(musicLibraryRepository.getMusicFilename(mediaId ?: ""))
     }
 
     private fun playFile(filename: String?) {

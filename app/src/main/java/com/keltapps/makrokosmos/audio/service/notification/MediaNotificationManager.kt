@@ -7,6 +7,11 @@ import android.support.v4.media.session.MediaSessionCompat
 import android.support.v4.media.session.PlaybackStateCompat
 
 interface MediaNotificationManager {
+
+    companion object {
+        const val NOTIFICATION_ID = 412
+    }
+
     val notificationManager: NotificationManager
     fun getNotification(
             metadata: MediaMetadataCompat,

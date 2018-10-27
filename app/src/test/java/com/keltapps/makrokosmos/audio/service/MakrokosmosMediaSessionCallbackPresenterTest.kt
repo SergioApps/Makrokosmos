@@ -4,10 +4,9 @@ import android.support.v4.media.MediaDescriptionCompat
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
 import com.google.common.truth.Truth.assertThat
-import com.keltapps.makrokosmos.audio.service.content.MakrokosmosMusicLibrary
+import com.keltapps.makrokosmos.audio.domain.repository.MusicLibraryRepository
 import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentMatchers
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
@@ -23,7 +22,7 @@ class MakrokosmosMediaSessionCallbackPresenterTest {
     @Mock
     private lateinit var mediaSessionCompatHelper: MediaSessionCompatHelper
     @Mock
-    private lateinit var makrokosmosMusicLibrary: MakrokosmosMusicLibrary
+    private lateinit var musicLibraryRepository: MusicLibraryRepository
 
     @Mock
     private lateinit var mediaSessionCallback: MediaSessionCallback
@@ -45,7 +44,7 @@ class MakrokosmosMediaSessionCallbackPresenterTest {
         MockitoAnnotations.initMocks(this)
         sut = spy(MakrokosmosMediaSessionCallbackPresenter(
                 mediaSessionCompatHelper,
-                makrokosmosMusicLibrary
+                musicLibraryRepository
         ))
         sut.attach(mediaSessionCallback)
         `when`(mediaSessionCompatHelper.getQueueItem(mockDescription)).thenReturn(mockQueueItem)
@@ -131,7 +130,7 @@ class MakrokosmosMediaSessionCallbackPresenterTest {
     private fun mockOnPrepare() {
         `when`(mockQueueItem.description).thenReturn(mockMediaDescriptionCompat)
         `when`(mockMediaDescriptionCompat.mediaId).thenReturn(MEDIA_ID)
-        `when`(makrokosmosMusicLibrary.getMetadata(MEDIA_ID)).thenReturn(mockMediaMetadataCompat)
+        `when`(musicLibraryRepository.getMetadata(MEDIA_ID)).thenReturn(mockMediaMetadataCompat)
     }
 
     @Test
@@ -168,7 +167,7 @@ class MakrokosmosMediaSessionCallbackPresenterTest {
     fun onSkipToNext_should_playNextSong() {
         mockOnPrepare()
         sut.onAddQueueItem(mockDescription)
-        `when`(makrokosmosMusicLibrary.getMetadata(MEDIA_ID)).thenReturn(mockMediaMetadataCompat2)
+        `when`(musicLibraryRepository.getMetadata(MEDIA_ID)).thenReturn(mockMediaMetadataCompat2)
         sut.onAddQueueItem(mockDescription)
         sut.onPrepare()
 
@@ -183,7 +182,7 @@ class MakrokosmosMediaSessionCallbackPresenterTest {
         mockOnPrepare()
         sut.onAddQueueItem(mockDescription)
         sut.onAddQueueItem(mockDescription)
-        `when`(makrokosmosMusicLibrary.getMetadata(MEDIA_ID)).thenReturn(mockMediaMetadataCompat2)
+        `when`(musicLibraryRepository.getMetadata(MEDIA_ID)).thenReturn(mockMediaMetadataCompat2)
         sut.onAddQueueItem(mockDescription)
         sut.onPrepare()
 

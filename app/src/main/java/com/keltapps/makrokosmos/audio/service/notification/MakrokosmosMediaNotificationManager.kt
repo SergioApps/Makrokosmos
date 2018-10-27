@@ -22,7 +22,6 @@ class MakrokosmosMediaNotificationManager @Inject constructor(
 ) : MediaNotificationManager {
 
     companion object {
-        const val NOTIFICATION_ID = 412
         private const val CHANNEL_ID = "com.keltapps.makrokosmos.channel"
         private const val REQUEST_CODE = 501
     }

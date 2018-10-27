@@ -6,16 +6,17 @@ import android.support.v4.media.session.PlaybackStateCompat.STATE_PLAYING
 import android.support.v4.media.session.PlaybackStateCompat.STATE_PAUSED
 import android.support.v4.media.session.PlaybackStateCompat.STATE_STOPPED
 import com.keltapps.makrokosmos.audio.service.manager.MakrokosmosServiceManager
+import com.keltapps.makrokosmos.audio.service.manager.ServiceManager
 import javax.inject.Inject
 
 class MediaPlayerListener @Inject constructor(
         private val session: MediaSessionCompat,
-        private val makrokosmosServiceManager: MakrokosmosServiceManager
+        private val serviceManager: ServiceManager
 ) : PlaybackInfoListener {
 
     override fun onPlaybackStateChange(state: PlaybackStateCompat, currentMedia: MediaMetadataCompat) {
         session.setPlaybackState(state)
-        with(makrokosmosServiceManager) {
+        with(serviceManager) {
             when (state.state) {
                 STATE_PLAYING -> moveServiceToStartedState(state, currentMedia)
                 STATE_PAUSED -> updateNotificationForPause(state, currentMedia)
@@ -24,6 +25,5 @@ class MediaPlayerListener @Inject constructor(
         }
     }
 
-    override fun onPlaybackCompleted() {
-    }
+    override fun onPlaybackCompleted() {}
 }

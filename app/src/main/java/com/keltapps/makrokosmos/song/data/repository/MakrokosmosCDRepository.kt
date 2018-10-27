@@ -15,10 +15,10 @@ class MakrokosmosCDRepository @Inject constructor(
 
     override fun getCD(): Observable<CD> {
         return Observable.fromCallable { createCD() }
-               // .subscribeOn(Schedulers.computation())
+
     }
 
-     fun createCD(): CD {
+    private fun createCD(): CD {
         val blockSongList = ArrayList<Volume>()
         blockSongList += getVolumeI()
         blockSongList += getVolumeII()

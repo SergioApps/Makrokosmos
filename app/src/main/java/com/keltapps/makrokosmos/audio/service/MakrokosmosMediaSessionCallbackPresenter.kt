@@ -3,13 +3,13 @@ package com.keltapps.makrokosmos.audio.service
 import android.support.v4.media.MediaDescriptionCompat
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
-import com.keltapps.makrokosmos.audio.service.content.MakrokosmosMusicLibrary
+import com.keltapps.makrokosmos.audio.domain.repository.MusicLibraryRepository
 import java.util.ArrayList
 import javax.inject.Inject
 
 class MakrokosmosMediaSessionCallbackPresenter @Inject constructor(
         private val mediaSessionCompatHelper: MediaSessionCompatHelper,
-        private val makrokosmosMusicLibrary: MakrokosmosMusicLibrary
+        private val musicLibraryRepository: MusicLibraryRepository
 ) : MediaSessionCallbackPresenter {
 
     private lateinit var mediaSessionCallback: MediaSessionCallback
@@ -36,7 +36,7 @@ class MakrokosmosMediaSessionCallbackPresenter @Inject constructor(
     override fun onPrepare() {
         if (isSomethingToPlay()) {
             playlist[queueIndex].description.mediaId?.let {
-                preparedMedia = makrokosmosMusicLibrary.getMetadata(it).apply {
+                preparedMedia = musicLibraryRepository.getMetadata(it).apply {
                     mediaSessionCallback.prepareMedia(this)
                 }
             }

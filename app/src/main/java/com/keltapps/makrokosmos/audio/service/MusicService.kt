@@ -3,10 +3,12 @@ package com.keltapps.makrokosmos.audio.service
 import android.os.Bundle
 import android.support.v4.media.*
 import android.support.v4.media.session.MediaSessionCompat
-import com.keltapps.makrokosmos.audio.service.content.MusicLibrary
+import com.keltapps.makrokosmos.audio.domain.iteractor.GetMediaItemsUseCase
+import com.keltapps.makrokosmos.audio.domain.repository.MusicLibraryRepository
 import com.keltapps.makrokosmos.audio.service.player.PlayerAdapter
-import com.keltapps.makrokosmos.song.data.repository.MakrokosmosCDRepository
+import com.keltapps.makrokosmos.song.domain.repository.CDRepository
 import dagger.android.AndroidInjection
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class MusicService : MediaBrowserServiceCompat() {
@@ -20,9 +22,11 @@ class MusicService : MediaBrowserServiceCompat() {
     @Inject
     internal lateinit var token: MediaSessionCompat.Token
     @Inject
-    internal lateinit var musicLibrary: MusicLibrary
+    internal lateinit var getMediaItemsUseCase: GetMediaItemsUseCase
     @Inject
-    internal lateinit var cdRepository: MakrokosmosCDRepository
+    internal lateinit var musicLibraryRepository: MusicLibraryRepository
+
+    private val compositeDisposable = CompositeDisposable()
 
     override fun onCreate() {
         AndroidInjection.inject(this)
@@ -45,20 +49,22 @@ class MusicService : MediaBrowserServiceCompat() {
             clientUid: Int,
             rootHints: Bundle?
     ): MediaBrowserServiceCompat.BrowserRoot? {
-        return MediaBrowserServiceCompat.BrowserRoot(musicLibrary.getRoot(), null)
+        return MediaBrowserServiceCompat.BrowserRoot(musicLibraryRepository.getRoot(), null)
     }
 
     override fun onLoadChildren(
             parentMediaId: String,
             result: MediaBrowserServiceCompat.Result<List<MediaBrowserCompat.MediaItem>>
     ) {
-        result.sendResult(musicLibrary.getMediaItems(cdRepository.createCD()))
-
+        compositeDisposable.add(
+                getMediaItemsUseCase.execute().subscribe(result::sendResult)
+        )
     }
 
     override fun onDestroy() {
         playback.stop()
         session.release()
+        compositeDisposable.dispose()
         super.onDestroy()
     }
 }

@@ -76,7 +76,7 @@ private class MediaBrowserListener : MediaControllerCompat.Callback() {
                   mediaMetadata.getString(MediaMetadataCompat.METADATA_KEY_TITLE))
           mArtistTextView.setText(
                   mediaMetadata.getString(MediaMetadataCompat.METADATA_KEY_ARTIST))
-          mAlbumArt.setImageBitmap(MusicLibrary.getAlbumBitmap(
+          mAlbumArt.setImageBitmap(MusicLibraryRepository.getAlbumBitmap(
                   this@MainActivity,
                   mediaMetadata.getString(MediaMetadataCompat.METADATA_KEY_MEDIA_ID)))*/
     }

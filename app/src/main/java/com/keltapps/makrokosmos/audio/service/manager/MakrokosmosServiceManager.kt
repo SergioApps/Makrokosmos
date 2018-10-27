@@ -10,7 +10,7 @@ import com.keltapps.makrokosmos.audio.service.notification.MediaNotificationMana
 import javax.inject.Inject
 
 class MakrokosmosServiceManager @Inject constructor(
-        private val makrokosmosMediaNotificationManager: MediaNotificationManager,
+        private val mediaNotificationManager: MediaNotificationManager,
         private val sessionToken: MediaSessionCompat.Token,
         private val musicService: MusicService
 ) : ServiceManager {
@@ -18,25 +18,33 @@ class MakrokosmosServiceManager @Inject constructor(
     private var serviceInStartedState: Boolean = false
 
     override fun moveServiceToStartedState(state: PlaybackStateCompat, currentMedia: MediaMetadataCompat) {
-        val notification = makrokosmosMediaNotificationManager.getNotification(
-                currentMedia, state, sessionToken)
-
         if (!serviceInStartedState) {
             ContextCompat.startForegroundService(
                     musicService,
                     Intent(musicService, MusicService::class.java))
             serviceInStartedState = true
         }
-
-        musicService.startForeground(MakrokosmosMediaNotificationManager.NOTIFICATION_ID, notification)
+        musicService.startForeground(
+                MediaNotificationManager.NOTIFICATION_ID,
+                mediaNotificationManager.getNotification(
+                        currentMedia,
+                        state,
+                        sessionToken
+                )
+        )
     }
 
     override fun updateNotificationForPause(state: PlaybackStateCompat, currentMedia: MediaMetadataCompat) {
         musicService.stopForeground(false)
-        val notification = makrokosmosMediaNotificationManager.getNotification(
-                currentMedia, state, sessionToken)
-        makrokosmosMediaNotificationManager.notificationManager
-                .notify(MakrokosmosMediaNotificationManager.NOTIFICATION_ID, notification)
+        mediaNotificationManager.notificationManager
+                .notify(
+                        MediaNotificationManager.NOTIFICATION_ID,
+                        mediaNotificationManager.getNotification(
+                                currentMedia,
+                                state,
+                                sessionToken
+                        )
+                )
     }
 
     override fun moveServiceOutOfStartedState() {

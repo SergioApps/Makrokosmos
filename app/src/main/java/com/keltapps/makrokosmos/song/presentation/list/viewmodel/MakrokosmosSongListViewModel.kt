@@ -6,6 +6,7 @@ import com.keltapps.makrokosmos.song.domain.entity.*
 import com.keltapps.makrokosmos.song.domain.iteractor.GetCDUseCase
 import com.keltapps.makrokosmos.base.presentation.viewmodel.MakrokosmosBaseViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class MakrokosmosSongListViewModel @Inject constructor(
@@ -16,6 +17,7 @@ class MakrokosmosSongListViewModel @Inject constructor(
 
     override fun initialize(volumeIndex: Int) {
         cdUseCase.execute()
+                .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { handleSubscription(it, volumeIndex) }
                 .addDisposable()
