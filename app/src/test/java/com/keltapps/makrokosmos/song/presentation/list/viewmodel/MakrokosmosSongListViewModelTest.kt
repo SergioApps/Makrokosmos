@@ -51,8 +51,8 @@ class MakrokosmosSongListViewModelTest {
 
     private fun getBlockSong(): Volume {
         val songList = ArrayList<Song>()
-        songList += Song("", "title1", "subTitle1", ZodiacSign.Scorpio(""))
-        songList += Song("", "title2", "subTitle2", ZodiacSign.Scorpio(""))
+        songList += Song("id", "title1", "subTitle1", ZodiacSign.Scorpio(""), 60)
+        songList += Song("id", "title2", "subTitle2", ZodiacSign.Scorpio(""), 60)
         return Volume("block title", songList)
     }
 }

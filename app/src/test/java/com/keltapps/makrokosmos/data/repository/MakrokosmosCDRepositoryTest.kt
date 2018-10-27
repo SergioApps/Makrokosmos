@@ -22,8 +22,6 @@ class MakrokosmosCDRepositoryTest {
     private lateinit var resourceProvider: ResourceProvider
 
     private companion object {
-        const val TITLE = "title"
-        const val SUBTITLE = "subtitle"
         const val ARIES = "Aries"
         const val TAURUS = "Taurus"
         const val GEMINI = "Gemini"
@@ -36,53 +34,53 @@ class MakrokosmosCDRepositoryTest {
         const val CAPRICORN = "Capricorn"
         const val AQUARIUS = "Aquarius"
         const val PISCES = "Pisces"
+
+        const val cdTitle = "Makrokosmos"
+
+        const val volumeITitle = "Volume I"
+        const val volumeIFirstSongTitle = "Primeval Sounds"
+        const val volumeIFirstSongSubTitle = "Genesis I"
+        const val volumeISecondSongTitle = "Proteus"
+        const val volumeIThirdSongTitle = "Pastorale"
+        const val volumeIThirdSongSubTitle = "From the Kingdom of Atlantis, ca. 10,000 B.C."
+        const val volumeIFourthSongTitle = "Crucifixus"
+
+        const val volumeIFifthSongTitle = "The Phantom Gondolier"
+        const val volumeISixthSongTitle = "Night-Spell I"
+        const val volumeISeventhSongTitle = "Music of Shadows"
+        const val volumeISeventhSongSubTitle = "For Aeolian Harp"
+        const val volumeIEighthSongTitle = "The Magic Circle of Infinity"
+        const val volumeIEighthSongSubTitle = "Moto Perpetuo [SYMBOL]"
+
+        const val volumeINinthSongTitle = "The Abyss of Time"
+        const val volumeITenthSongTitle = "Spring-Fire"
+        const val volumeIEleventhSongTitle = "Dream Images"
+        const val volumeIEleventhSongSubTitle = "Love-Death Music"
+        const val volumeITwelfthSongTitle = "Spiral Galaxy"
+        const val volumeITwelfthSongSubTitle = "[SYMBOL]"
+
+        const val volumeIITitle = "Volume II"
+        const val volumeIIFirstSongTitle = "Morning Music"
+        const val volumeIIFirstSongSubTitle = "Genesis II"
+        const val volumeIISecondSongTitle = "The Mystic Chord"
+        const val volumeIIThirdSongTitle = "Rain-Death Variations"
+        const val volumeIIFourthSongTitle = "Twin Suns"
+        const val volumeIIFourthSongSubTitle = "DoppelgÑnger aus der Ewigkeit [SYMBOL]"
+
+        const val volumeIIFifthSongTitle = "Ghost-Nocturne: for the Druids of Stonehenge"
+        const val volumeIIFifthSongSubTitle = "Night-Spell II"
+        const val volumeIISixthSongTitle = "Gargoyles"
+        const val volumeIISeventhSongTitle = "Tora! Tora! Tora!"
+        const val volumeIISeventhSongSubTitle = "Cadenza Apocalittica"
+        const val volumeIIEighthSongTitle = "A Prophecy of Nostradamus"
+        const val volumeIIEighthSongSubTitle = "[SYMBOL]"
+
+        const val volumeIINinthSongTitle = "Cosmic wind"
+        const val volumeIITenthSongTitle = "Voices from \"Corona Borealis\""
+        const val volumeIIEleventhSongTitle = "Litany of the Galactic Bells"
+        const val volumeIITwelfthSongTitle = "Agnus Dei"
+        const val volumeIITwelfthSongSubTitle = "[SYMBOL]"
     }
-
-    private val cdTitle = "Makrokosmos"
-
-    private val volumeITitle = "Volume I"
-    private val volumeIFirstSongTitle = "Primeval Sounds"
-    private val volumeIFirstSongSubTitle = "Genesis I"
-    private val volumeISecondSongTitle = "Proteus"
-    private val volumeIThirdSongTitle = "Pastorale"
-    private val volumeIThirdSongSubTitle = "From the Kingdom of Atlantis, ca. 10,000 B.C."
-    private val volumeIFourthSongTitle = "Crucifixus"
-
-    private val volumeIFifthSongTitle = "The Phantom Gondolier"
-    private val volumeISixthSongTitle = "Night-Spell I"
-    private val volumeISeventhSongTitle = "Music of Shadows"
-    private val volumeISeventhSongSubTitle = "For Aeolian Harp"
-    private val volumeIEighthSongTitle = "The Magic Circle of Infinity"
-    private val volumeIEighthSongSubTitle = "Moto Perpetuo [SYMBOL]"
-
-    private val volumeINinthSongTitle = "The Abyss of Time"
-    private val volumeITenthSongTitle = "Spring-Fire"
-    private val volumeIEleventhSongTitle = "Dream Images"
-    private val volumeIEleventhSongSubTitle = "Love-Death Music"
-    private val volumeITwelfthSongTitle = "Spiral Galaxy"
-    private val volumeITwelfthSongSubTitle = "[SYMBOL]"
-
-    private val volumeIITitle = "Volume II"
-    private val volumeIIFirstSongTitle = "Morning Music"
-    private val volumeIIFirstSongSubTitle = "Genesis II"
-    private val volumeIISecondSongTitle = "The Mystic Chord"
-    private val volumeIIThirdSongTitle = "Rain-Death Variations"
-    private val volumeIIFourthSongTitle = "Twin Suns"
-    private val volumeIIFourthSongSubTitle = "DoppelgÑnger aus der Ewigkeit [SYMBOL]"
-
-    private val volumeIIFifthSongTitle = "Ghost-Nocturne: for the Druids of Stonehenge"
-    private val volumeIIFifthSongSubTitle = "Night-Spell II"
-    private val volumeIISixthSongTitle = "Gargoyles"
-    private val volumeIISeventhSongTitle = "Tora! Tora! Tora!"
-    private val volumeIISeventhSongSubTitle = "Cadenza Apocalittica"
-    private val volumeIIEighthSongTitle = "A Prophecy of Nostradamus"
-    private val volumeIIEighthSongSubTitle = "[SYMBOL]"
-
-    private val volumeIINinthSongTitle = "Cosmic wind"
-    private val volumeIITenthSongTitle = "Voices from \"Corona Borealis\""
-    private val volumeIIEleventhSongTitle = "Litany of the Galactic Bells"
-    private val volumeIITwelfthSongTitle = "Agnus Dei"
-    private val volumeIITwelfthSongSubTitle = "[SYMBOL]"
 
     @Before
     fun setUp() {

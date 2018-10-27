@@ -3,7 +3,6 @@ package com.keltapps.makrokosmos.audio.service
 import android.support.v4.media.*
 import android.support.v4.media.session.MediaSessionCompat
 import com.keltapps.makrokosmos.audio.service.player.PlayerAdapter
-import java.util.*
 import javax.inject.Inject
 
 class MakrokosmosMediaSessionCallback @Inject constructor(

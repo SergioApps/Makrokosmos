@@ -6,7 +6,6 @@ import android.support.v4.media.session.MediaSessionCompat
 import com.keltapps.makrokosmos.audio.service.content.MusicLibrary
 import com.keltapps.makrokosmos.audio.service.player.PlayerAdapter
 import com.keltapps.makrokosmos.song.data.repository.MakrokosmosCDRepository
-import com.keltapps.makrokosmos.song.domain.repository.CDRepository
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -53,7 +52,6 @@ class MusicService : MediaBrowserServiceCompat() {
             parentMediaId: String,
             result: MediaBrowserServiceCompat.Result<List<MediaBrowserCompat.MediaItem>>
     ) {
-        //TODO fix it
         result.sendResult(musicLibrary.getMediaItems(cdRepository.createCD()))
 
     }

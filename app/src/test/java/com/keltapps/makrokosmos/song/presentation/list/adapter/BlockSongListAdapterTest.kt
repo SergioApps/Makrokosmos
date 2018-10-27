@@ -63,19 +63,21 @@ class BlockSongListAdapterTest {
 
     private fun getPostWithUser(): Song {
         return Song(
-                "",
+                "id",
                 "title",
                 "subTitle",
-                ZodiacSign.Scorpio("")
+                ZodiacSign.Scorpio(""),
+                60
         )
     }
 
     private fun getOtherPostWithUser(): Song {
         return Song(
-                "",
+                "id",
                 "title",
                 "subTitle",
-                ZodiacSign.Aries("")
+                ZodiacSign.Aries(""),
+                60
         )
     }
 }
