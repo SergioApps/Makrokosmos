@@ -18,7 +18,7 @@ class MakrokosmosCDRepository @Inject constructor(
                 .subscribeOn(Schedulers.computation())
     }
 
-    private fun createCD(): CD {
+     fun createCD(): CD {
         val blockSongList = ArrayList<Volume>()
         blockSongList += getVolumeI()
         blockSongList += getVolumeII()
@@ -28,77 +28,89 @@ class MakrokosmosCDRepository @Inject constructor(
     private fun getVolumeI(): Volume {
         val listSong = ArrayList<Song>()
         listSong += Song(
-                id = "",
+                id = "1. Primeval Sounds (Genesis I) Cancer.mp3",
                 title = resourceProvider.getString(R.string.volumeIFirstSongTitle),
                 subTitle = resourceProvider.getString(R.string.volumeIFirstSongSubTitle),
-                zodiacSign = ZodiacSign.Cancer(resourceProvider.getString(R.string.zodiacSign_cancer))
+                zodiacSign = ZodiacSign.Cancer(resourceProvider.getString(R.string.zodiacSign_cancer)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "2. Proteus (Pisces).mp3",
                 title = resourceProvider.getString(R.string.volumeISecondSongTitle),
                 subTitle = null,
-                zodiacSign = ZodiacSign.Pisces(resourceProvider.getString(R.string.zodiacSign_pisces))
+                zodiacSign = ZodiacSign.Pisces(resourceProvider.getString(R.string.zodiacSign_pisces)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "3. Pastorale (from the Kingdom of Atlantis, ca. 10,000 B.C.) (Taurus).mp3",
                 title = resourceProvider.getString(R.string.volumeIThirdSongTitle),
                 subTitle = resourceProvider.getString(R.string.volumeIThirdSongSubTitle),
-                zodiacSign = ZodiacSign.Taurus(resourceProvider.getString(R.string.zodiacSign_taurus))
+                zodiacSign = ZodiacSign.Taurus(resourceProvider.getString(R.string.zodiacSign_taurus)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "4. Crucifixus [SYMBOL] (Capricorn).mp3",
                 title = resourceProvider.getString(R.string.volumeIFourthSongTitle),
                 subTitle = resourceProvider.getString(R.string.volumeIFourthSongSubTitle),
-                zodiacSign = ZodiacSign.Capricorn(resourceProvider.getString(R.string.zodiacSign_capricorn))
+                zodiacSign = ZodiacSign.Capricorn(resourceProvider.getString(R.string.zodiacSign_capricorn)),
+                durationInSeconds = 1
         )
 
         listSong += Song(
-                id = "",
+                id = "5. The Phantom Gondolier (Scorpio).mp3",
                 title = resourceProvider.getString(R.string.volumeIFifthSongTitle),
                 subTitle = null,
-                zodiacSign = ZodiacSign.Scorpio(resourceProvider.getString(R.string.zodiacSign_scorpio))
+                zodiacSign = ZodiacSign.Scorpio(resourceProvider.getString(R.string.zodiacSign_scorpio)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "6. Night-Spell I (Sagittarius).mp3",
                 title = resourceProvider.getString(R.string.volumeISixthSongTitle),
                 subTitle = null,
-                zodiacSign = ZodiacSign.Sagittarius(resourceProvider.getString(R.string.zodiacSign_sagittarius))
+                zodiacSign = ZodiacSign.Sagittarius(resourceProvider.getString(R.string.zodiacSign_sagittarius)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "7. Music of Shadows (for Aeolian Harp) (Libra).mp3",
                 title = resourceProvider.getString(R.string.volumeISeventhSongTitle),
                 subTitle = resourceProvider.getString(R.string.volumeISeventhSongSubTitle),
-                zodiacSign = ZodiacSign.Libra(resourceProvider.getString(R.string.zodiacSign_libra))
+                zodiacSign = ZodiacSign.Libra(resourceProvider.getString(R.string.zodiacSign_libra)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "8. The Magic Circle of Infinity (Moto Perpetuo) [SYMBOL] (Leo).mp3",
                 title = resourceProvider.getString(R.string.volumeIEighthSongTitle),
                 subTitle = resourceProvider.getString(R.string.volumeIEighthSongSubTitle),
-                zodiacSign = ZodiacSign.Leo(resourceProvider.getString(R.string.zodiacSign_leo))
+                zodiacSign = ZodiacSign.Leo(resourceProvider.getString(R.string.zodiacSign_leo)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "9. The Abyss of Time (Virgo).mp3",
                 title = resourceProvider.getString(R.string.volumeINinthSongTitle),
                 subTitle = null,
-                zodiacSign = ZodiacSign.Virgo(resourceProvider.getString(R.string.zodiacSign_virgo))
+                zodiacSign = ZodiacSign.Virgo(resourceProvider.getString(R.string.zodiacSign_virgo)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "10. Spring-Fire (Aries).mp3",
                 title = resourceProvider.getString(R.string.volumeITenthSongTitle),
                 subTitle = null,
-                zodiacSign = ZodiacSign.Aries(resourceProvider.getString(R.string.zodiacSign_aries))
+                zodiacSign = ZodiacSign.Aries(resourceProvider.getString(R.string.zodiacSign_aries)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "11. Dream Images (Love-Death Music) (Gemini).mp3",
                 title = resourceProvider.getString(R.string.volumeIEleventhSongTitle),
                 subTitle = resourceProvider.getString(R.string.volumeIEleventhSongSubTitle),
-                zodiacSign = ZodiacSign.Gemini(resourceProvider.getString(R.string.zodiacSign_gemini))
+                zodiacSign = ZodiacSign.Gemini(resourceProvider.getString(R.string.zodiacSign_gemini)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "12. Spiral Galaxy [SYMBOL] (Aquarius).mp3",
                 title = resourceProvider.getString(R.string.volumeITwelfthSongTitle),
                 subTitle = resourceProvider.getString(R.string.volumeITwelfthSongSubTitle),
-                zodiacSign = ZodiacSign.Aquarius(resourceProvider.getString(R.string.zodiacSign_aquarius))
+                zodiacSign = ZodiacSign.Aquarius(resourceProvider.getString(R.string.zodiacSign_aquarius)),
+                durationInSeconds = 1
         )
         return Volume(
                 title = resourceProvider.getString(R.string.volumeITitle),
@@ -109,77 +121,89 @@ class MakrokosmosCDRepository @Inject constructor(
     private fun getVolumeII(): Volume {
         val listSong = ArrayList<Song>()
         listSong += Song(
-                id = "",
+                id = "13. Morning Music (Genesis II) (Cancer).mp3",
                 title = resourceProvider.getString(R.string.volumeIIFirstSongTitle),
                 subTitle = resourceProvider.getString(R.string.volumeIIFirstSongSubTitle),
-                zodiacSign = ZodiacSign.Cancer(resourceProvider.getString(R.string.zodiacSign_cancer))
+                zodiacSign = ZodiacSign.Cancer(resourceProvider.getString(R.string.zodiacSign_cancer)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "14. The Mystic Chord (Sagittarius).mp3",
                 title = resourceProvider.getString(R.string.volumeIISecondSongTitle),
                 subTitle = null,
-                zodiacSign = ZodiacSign.Sagittarius(resourceProvider.getString(R.string.zodiacSign_sagittarius))
+                zodiacSign = ZodiacSign.Sagittarius(resourceProvider.getString(R.string.zodiacSign_sagittarius)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "15. Rain-Death Variations (Pisces).mp3",
                 title = resourceProvider.getString(R.string.volumeIIThirdSongTitle),
                 subTitle = null,
-                zodiacSign = ZodiacSign.Pisces(resourceProvider.getString(R.string.zodiacSign_pisces))
+                zodiacSign = ZodiacSign.Pisces(resourceProvider.getString(R.string.zodiacSign_pisces)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "16. Twin Suns (DoppelgÑnger aus der Ewigkeit) [SYMBOL] (Gemini).mp3",
                 title = resourceProvider.getString(R.string.volumeIIFourthSongTitle),
                 subTitle = resourceProvider.getString(R.string.volumeIIFourthSongSubTitle),
-                zodiacSign = ZodiacSign.Gemini(resourceProvider.getString(R.string.zodiacSign_gemini))
+                zodiacSign = ZodiacSign.Gemini(resourceProvider.getString(R.string.zodiacSign_gemini)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "17. Ghost-Nocturne for the Druids of Stonehenge (Night-Spell II) (Virgo).mp3",
                 title = resourceProvider.getString(R.string.volumeIIFifthSongTitle),
                 subTitle = resourceProvider.getString(R.string.volumeIIFifthSongSubTitle),
-                zodiacSign = ZodiacSign.Virgo(resourceProvider.getString(R.string.zodiacSign_virgo))
+                zodiacSign = ZodiacSign.Virgo(resourceProvider.getString(R.string.zodiacSign_virgo)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "18. Gargoyles (Taurus).mp3",
                 title = resourceProvider.getString(R.string.volumeIISixthSongTitle),
                 subTitle = null,
-                zodiacSign = ZodiacSign.Taurus(resourceProvider.getString(R.string.zodiacSign_taurus))
+                zodiacSign = ZodiacSign.Taurus(resourceProvider.getString(R.string.zodiacSign_taurus)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "19. Tora! Tora! Tora! (Cadenza Apocalittica) (Scorpio).mp3",
                 title = resourceProvider.getString(R.string.volumeIISeventhSongTitle),
                 subTitle = resourceProvider.getString(R.string.volumeIISeventhSongSubTitle),
-                zodiacSign = ZodiacSign.Scorpio(resourceProvider.getString(R.string.zodiacSign_scorpio))
+                zodiacSign = ZodiacSign.Scorpio(resourceProvider.getString(R.string.zodiacSign_scorpio)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "20. A Prophecy of Nostradamus [SYMBOL] (Aries).mp3",
                 title = resourceProvider.getString(R.string.volumeIIEighthSongTitle),
                 subTitle = resourceProvider.getString(R.string.volumeIIEighthSongSubTitle),
-                zodiacSign = ZodiacSign.Aries(resourceProvider.getString(R.string.zodiacSign_aries))
+                zodiacSign = ZodiacSign.Aries(resourceProvider.getString(R.string.zodiacSign_aries)),
+                durationInSeconds = 1
         )
 
         listSong += Song(
-                id = "",
+                id = "21. Cosmic wind (Libra).mp3",
                 title = resourceProvider.getString(R.string.volumeIINinthSongTitle),
                 subTitle = null,
-                zodiacSign = ZodiacSign.Libra(resourceProvider.getString(R.string.zodiacSign_libra))
+                zodiacSign = ZodiacSign.Libra(resourceProvider.getString(R.string.zodiacSign_libra)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "22. Voices from Corona Borealis (Aquarius).mp3",
                 title = resourceProvider.getString(R.string.volumeIITenthSongTitle),
                 subTitle = null,
-                zodiacSign = ZodiacSign.Aquarius(resourceProvider.getString(R.string.zodiacSign_aquarius))
+                zodiacSign = ZodiacSign.Aquarius(resourceProvider.getString(R.string.zodiacSign_aquarius)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "23. Litany of the Galactic Bells (Leo).mp3",
                 title = resourceProvider.getString(R.string.volumeIIEleventhSongTitle),
                 subTitle = null,
-                zodiacSign = ZodiacSign.Leo(resourceProvider.getString(R.string.zodiacSign_leo))
+                zodiacSign = ZodiacSign.Leo(resourceProvider.getString(R.string.zodiacSign_leo)),
+                durationInSeconds = 1
         )
         listSong += Song(
-                id = "",
+                id = "24. Agnus Dei [SYMBOL] (Capricorn).mp3",
                 title = resourceProvider.getString(R.string.volumeIITwelfthSongTitle),
                 subTitle = resourceProvider.getString(R.string.volumeIITwelfthSongSubTitle),
-                zodiacSign = ZodiacSign.Capricorn(resourceProvider.getString(R.string.zodiacSign_capricorn))
+                zodiacSign = ZodiacSign.Capricorn(resourceProvider.getString(R.string.zodiacSign_capricorn)),
+                durationInSeconds = 1
         )
         return Volume(
                 title = resourceProvider.getString(R.string.volumeII),

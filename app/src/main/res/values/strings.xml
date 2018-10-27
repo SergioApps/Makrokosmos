@@ -110,4 +110,8 @@
            He has been selected to participate in several international music festivals such as the 55th International University Seminar "Música en Compostela" (Santiago de Compostela, Spain), entirely dedicated to Spanish Music; the 3rd Vigo Cultural Circle Seminar or the International Piano Festival "Jesús González Alonso".\n\n
            Fabio has participated in many masterclasses with distinguished pianists and pedagoges, including: Ivo Pogorelich, Eldar Nebolsin, Imre Rohman, Julian Martin, Robert McDonald, Josep Colom, Marta Zabaleta, Ricardo Requejo, Jose Ramón Mendez, James Giles, Nino Kereselidze, Gustavo Díaz Jerez, Mariana Gurkova, Jean-Philippe Guillo, Aurélie Forre, María Jesús Crespo, Maria Teresa Perez and Alexander Kandelaki.
     </string>
+    <string name="label_play">play</string>
+    <string name="label_pause">pause</string>
+    <string name="label_next">next</string>
+    <string name="label_previous">previous</string>
 </resources>

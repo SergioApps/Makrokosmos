@@ -1,4 +1,4 @@
-package com.keltapps.makrokosmos.audio.service
+package com.keltapps.makrokosmos.audio.service.player
 
 import android.content.*
 import android.media.AudioManager

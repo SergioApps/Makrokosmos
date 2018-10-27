@@ -1,4 +1,4 @@
-package com.keltapps.makrokosmos.audio.service.players
+package com.keltapps.makrokosmos.audio.service.player
 
 
 import android.content.Context
@@ -6,11 +6,15 @@ import android.media.MediaPlayer
 import android.os.SystemClock
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.PlaybackStateCompat
-import com.keltapps.makrokosmos.audio.service.*
 import com.keltapps.makrokosmos.audio.service.content.MusicLibrary
+import javax.inject.Inject
 
 
-class MediaPlayerAdapter(context: Context, private val mPlaybackInfoListener: PlaybackInfoListener) : PlayerAdapter(context) {
+class MediaPlayerAdapter @Inject constructor(
+        context: Context,
+        private val mPlaybackInfoListener: PlaybackInfoListener,
+        private val musicLibrary: MusicLibrary
+) : PlayerAdapter(context) {
 
     private val mContext: Context = context.applicationContext
     private var mMediaPlayer: MediaPlayer? = null
@@ -74,7 +78,7 @@ class MediaPlayerAdapter(context: Context, private val mPlaybackInfoListener: Pl
     override fun playFromMedia(metadata: MediaMetadataCompat) {
         currentMedia = metadata
         val mediaId = metadata.description.mediaId
-        playFile(MusicLibrary.getMusicFilename(mediaId ?: ""))
+        playFile(musicLibrary.getMusicFilename(mediaId ?: ""))
     }
 
     private fun playFile(filename: String?) {
@@ -119,7 +123,7 @@ class MediaPlayerAdapter(context: Context, private val mPlaybackInfoListener: Pl
 
     public override fun onStop() {
         // Regardless of whether or not the MediaPlayer has been created / started, the state must
-        // be updated, so that MediaNotificationManager can take down the notification.
+        // be updated, so that MakrokosmosMediaNotificationManager can take down the notification.
         setNewState(PlaybackStateCompat.STATE_STOPPED)
         release()
     }
