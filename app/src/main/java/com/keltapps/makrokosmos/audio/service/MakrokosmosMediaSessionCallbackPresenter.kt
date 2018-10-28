@@ -33,6 +33,18 @@ class MakrokosmosMediaSessionCallbackPresenter @Inject constructor(
         mediaSessionCallback.setQueue(playlist)
     }
 
+    override fun onPrepare(mediaId: String?) {
+        if (isSomethingToPlay()) {
+            for (queueItem in playlist) {
+                if (queueItem.description.mediaId == mediaId) {
+                    break
+                }
+                queueIndex++
+            }
+            onPrepare()
+        }
+    }
+
     override fun onPrepare() {
         if (isSomethingToPlay()) {
             playlist[queueIndex].description.mediaId?.let {

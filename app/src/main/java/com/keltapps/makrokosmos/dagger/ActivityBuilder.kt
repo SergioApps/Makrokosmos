@@ -4,11 +4,12 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import com.keltapps.makrokosmos.dagger.scope.ActivityScope
 import com.keltapps.makrokosmos.MainActivity
+import com.keltapps.makrokosmos.dagger.module.MainModule
 
 @Module
 interface ActivityBuilder {
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [FragmentBuilder::class])
+    @ContributesAndroidInjector(modules = [FragmentBuilder::class, MainModule::class])
     fun bindMainActivity(): MainActivity
 }

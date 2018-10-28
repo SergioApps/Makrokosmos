@@ -2,9 +2,10 @@ package com.keltapps.makrokosmos.base.resourceprovider
 
 import android.content.Context
 import javax.inject.Inject
+import javax.inject.Named
 
 class MakrokosmosResourceProvider @Inject constructor(
-        private val applicationContext: Context
+        @Named("applicationContext") private val applicationContext: Context
 ) : ResourceProvider {
 
     override fun getString(stringId: Int): String {

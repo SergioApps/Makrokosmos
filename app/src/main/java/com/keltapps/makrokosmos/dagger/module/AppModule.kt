@@ -6,6 +6,7 @@ import com.keltapps.makrokosmos.base.resourceprovider.MakrokosmosResourceProvide
 import com.keltapps.makrokosmos.base.resourceprovider.ResourceProvider
 import dagger.Binds
 import dagger.Module
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -17,5 +18,6 @@ interface AppModule {
 
     @Binds
     @Singleton
+    @Named("applicationContext")
     fun provideApplicationContext(application: Application): Context
 }

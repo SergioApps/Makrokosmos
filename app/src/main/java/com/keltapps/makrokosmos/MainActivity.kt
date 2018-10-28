@@ -1,29 +1,28 @@
 package com.keltapps.makrokosmos
 
-import android.content.Context
 import android.os.Bundle
-import android.support.v4.media.*
-import android.support.v4.media.session.*
-import com.keltapps.makrokosmos.audio.client.MediaBrowserHelper
-import com.keltapps.makrokosmos.audio.service.MusicService
+import com.keltapps.makrokosmos.audio.client.AudioRepository
+import com.keltapps.makrokosmos.audio.client.MakrokosmosMediaBrowserHelper
 import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity() {
 
-    private lateinit var mediaBrowserHelper: MediaBrowserHelper
+    @Inject
+    internal lateinit var audioRepository: AudioRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mediaBrowserHelper = MediaBrowserConnection(this)
-        mediaBrowserHelper.registerCallback(MediaBrowserListener())
+        //     makrokosmosMediaBrowserHelper = MakrokosmosMediaBrowserHelper(this)
+        // makrokosmosMediaBrowserHelper.registerCallback(MediaBrowserListener())
     }
     //    window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
     override fun onStart() {
         super.onStart()
-        mediaBrowserHelper.onStart()
+        audioRepository.start()
     }
 
     override fun onResume() {
@@ -32,11 +31,11 @@ class MainActivity : DaggerAppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        mediaBrowserHelper.onStop()
+        makrokosmosMediaBrowserHelper.onStop()
     }
 }
-
-private class MediaBrowserConnection constructor(context: Context) : MediaBrowserHelper(context, MusicService::class.java) {
+/*
+private class MediaBrowserConnection constructor(context: Context) : MakrokosmosMediaBrowserHelper(context, MusicService::class.java) {
 
     override fun onConnected(mediaController: MediaControllerCompat) {
         //mSeekBarAudio.setMediaController(mediaController)
@@ -48,19 +47,19 @@ private class MediaBrowserConnection constructor(context: Context) : MediaBrowse
     ) {
         super.onChildrenLoaded(parentId, children)
 
-        val mediaController = mMediaController
+        val mediaController = mediaController
 
         // Queue up all media items for this simple sample.
         for (mediaItem in children) {
             mediaController?.addQueueItem(mediaItem.description)
         }
 
-        // Call prepare now so pressing play just works.
+        // Call prepare now so pressing start just works.
         mediaController?.transportControls?.prepare()
-        mediaController?.transportControls?.play()
+        mediaController?.transportControls?.start()
     }
-}
-
+}*/
+/*
 private class MediaBrowserListener : MediaControllerCompat.Callback() {
     private var mIsPlaying: Boolean = false
     override fun onPlaybackStateChanged(playbackState: PlaybackStateCompat?) {
@@ -72,21 +71,6 @@ private class MediaBrowserListener : MediaControllerCompat.Callback() {
         if (mediaMetadata == null) {
             return
         }
-        /*  mTitleTextView.setText(
-                  mediaMetadata.getString(MediaMetadataCompat.METADATA_KEY_TITLE))
-          mArtistTextView.setText(
-                  mediaMetadata.getString(MediaMetadataCompat.METADATA_KEY_ARTIST))
-          mAlbumArt.setImageBitmap(MusicLibraryRepository.getAlbumBitmap(
-                  this@MainActivity,
-                  mediaMetadata.getString(MediaMetadataCompat.METADATA_KEY_MEDIA_ID)))*/
     }
-
-    override fun onSessionDestroyed() {
-        super.onSessionDestroyed()
-    }
-
-    override fun onQueueChanged(queue: List<MediaSessionCompat.QueueItem>?) {
-        super.onQueueChanged(queue)
-    }
-}
+}*/
 

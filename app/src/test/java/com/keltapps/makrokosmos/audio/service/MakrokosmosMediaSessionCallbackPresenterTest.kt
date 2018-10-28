@@ -29,6 +29,8 @@ class MakrokosmosMediaSessionCallbackPresenterTest {
     @Mock
     private lateinit var mockDescription: MediaDescriptionCompat
     @Mock
+    private lateinit var mockDescription2: MediaDescriptionCompat
+    @Mock
     private lateinit var mockQueueItem: MediaSessionCompat.QueueItem
     @Mock
     private lateinit var mockQueueItem2: MediaSessionCompat.QueueItem
@@ -38,6 +40,8 @@ class MakrokosmosMediaSessionCallbackPresenterTest {
     private lateinit var mockMediaMetadataCompat2: MediaMetadataCompat
     @Mock
     private lateinit var mockMediaDescriptionCompat: MediaDescriptionCompat
+    @Mock
+    private lateinit var mockMediaDescriptionCompat2: MediaDescriptionCompat
 
     @Before
     fun setUp() {
@@ -97,6 +101,21 @@ class MakrokosmosMediaSessionCallbackPresenterTest {
         sut.onRemoveQueueItem(mockDescription)
 
         verify(mediaSessionCallback, times(3)).setQueue(arrayListOf(mockQueueItem))
+    }
+
+    @Test
+    fun onPrepareWithMediaId_should_moveQueueIndex() {
+        `when`(mockQueueItem.description).thenReturn(mockMediaDescriptionCompat)
+        `when`(mockMediaDescriptionCompat.mediaId).thenReturn(null)
+        sut.onAddQueueItem(mockDescription)
+        `when`(mediaSessionCompatHelper.getQueueItem(mockDescription2)).thenReturn(mockQueueItem2)
+        `when`(mockQueueItem2.description).thenReturn(mockMediaDescriptionCompat2)
+        `when`(mockMediaDescriptionCompat2.mediaId).thenReturn(MEDIA_ID)
+        sut.onAddQueueItem(mockDescription2)
+
+        sut.onPrepare(MEDIA_ID)
+
+        assertThat(sut.queueIndex).isEqualTo(1)
     }
 
     @Test

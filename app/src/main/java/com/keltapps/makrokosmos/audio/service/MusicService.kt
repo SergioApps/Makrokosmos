@@ -5,8 +5,8 @@ import android.support.v4.media.*
 import android.support.v4.media.session.MediaSessionCompat
 import com.keltapps.makrokosmos.audio.domain.iteractor.GetMediaItemsUseCase
 import com.keltapps.makrokosmos.audio.domain.repository.MusicLibraryRepository
-import com.keltapps.makrokosmos.audio.service.player.PlayerAdapter
-import com.keltapps.makrokosmos.song.domain.repository.CDRepository
+import com.keltapps.makrokosmos.audio.service.player.MakrokosmosMediaPlayerAdapter
+import com.keltapps.makrokosmos.audio.service.player.MediaPlayerAdapter
 import dagger.android.AndroidInjection
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -16,7 +16,7 @@ class MusicService : MediaBrowserServiceCompat() {
     @Inject
     internal lateinit var session: MediaSessionCompat
     @Inject
-    internal lateinit var playback: PlayerAdapter
+    internal lateinit var playback: MediaPlayerAdapter
     @Inject
     internal lateinit var callbackMakrokosmos: MakrokosmosMediaSessionCallback
     @Inject

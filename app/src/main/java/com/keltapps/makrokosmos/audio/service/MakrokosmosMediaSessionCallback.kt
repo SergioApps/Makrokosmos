@@ -1,13 +1,15 @@
 package com.keltapps.makrokosmos.audio.service
 
+import android.os.Bundle
 import android.support.v4.media.*
 import android.support.v4.media.session.MediaSessionCompat
-import com.keltapps.makrokosmos.audio.service.player.PlayerAdapter
+import com.keltapps.makrokosmos.audio.service.player.MakrokosmosMediaPlayerAdapter
+import com.keltapps.makrokosmos.audio.service.player.MediaPlayerAdapter
 import javax.inject.Inject
 
 class MakrokosmosMediaSessionCallback @Inject constructor(
         private val session: MediaSessionCompat,
-        private val playback: PlayerAdapter,
+        private val playback: MediaPlayerAdapter,
         private val mediaSessionCallbackPresenter: MediaSessionCallbackPresenter
 ) : MediaSessionCompat.Callback(), MediaSessionCallback {
 
@@ -25,6 +27,10 @@ class MakrokosmosMediaSessionCallback @Inject constructor(
 
     override fun onPrepare() {
         mediaSessionCallbackPresenter.onPrepare()
+    }
+
+    override fun onPrepareFromMediaId(mediaId: String?, extras: Bundle?) {
+        mediaSessionCallbackPresenter.onPrepare(mediaId)
     }
 
     override fun onPlay() {
