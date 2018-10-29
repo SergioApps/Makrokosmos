@@ -3,8 +3,9 @@ package com.keltapps.makrokosmos.dagger
 import android.app.Application
 import com.keltapps.makrokosmos.MakrokosmosApplication
 import com.keltapps.makrokosmos.dagger.module.AppModule
-import com.keltapps.makrokosmos.dagger.module.info.data.InfoRepositoryModule
-import com.keltapps.makrokosmos.dagger.module.song.data.SongRepositoryModule
+import com.keltapps.makrokosmos.dagger.module.audio.service.data.AudioServiceDataModule
+import com.keltapps.makrokosmos.dagger.module.info.data.InfoDataModule
+import com.keltapps.makrokosmos.dagger.module.song.data.SongDataModule
 import dagger.*
 import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
@@ -15,8 +16,9 @@ import javax.inject.Singleton
     ActivityBuilder::class,
     ServiceBuilder::class,
     AppModule::class,
-    SongRepositoryModule::class,
-    InfoRepositoryModule::class
+    SongDataModule::class,
+    InfoDataModule::class,
+    AudioServiceDataModule::class
 ])
 interface AppComponent {
 

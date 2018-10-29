@@ -3,10 +3,10 @@ package com.keltapps.makrokosmos.audio.service
 import android.os.Bundle
 import android.support.v4.media.*
 import android.support.v4.media.session.MediaSessionCompat
-import com.keltapps.makrokosmos.audio.domain.iteractor.GetMediaItemsUseCase
-import com.keltapps.makrokosmos.audio.domain.repository.MusicLibraryRepository
-import com.keltapps.makrokosmos.audio.service.player.MakrokosmosMediaPlayerAdapter
-import com.keltapps.makrokosmos.audio.service.player.MediaPlayerAdapter
+import com.keltapps.makrokosmos.audio.service.data.player.MediaPlayerAdapter
+import com.keltapps.makrokosmos.audio.service.data.sessioncallback.MediaSessionCallback
+import com.keltapps.makrokosmos.audio.service.domain.iteractor.GetMediaItemsUseCase
+import com.keltapps.makrokosmos.audio.service.domain.repository.MusicLibraryRepository
 import dagger.android.AndroidInjection
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -16,11 +16,11 @@ class MusicService : MediaBrowserServiceCompat() {
     @Inject
     internal lateinit var session: MediaSessionCompat
     @Inject
-    internal lateinit var playback: MediaPlayerAdapter
-    @Inject
-    internal lateinit var callbackMakrokosmos: MakrokosmosMediaSessionCallback
+    internal lateinit var mediaSessionCallback: MediaSessionCallback
     @Inject
     internal lateinit var token: MediaSessionCompat.Token
+    @Inject
+    internal lateinit var mediaPlayerAdapter: MediaPlayerAdapter
     @Inject
     internal lateinit var getMediaItemsUseCase: GetMediaItemsUseCase
     @Inject
@@ -35,7 +35,7 @@ class MusicService : MediaBrowserServiceCompat() {
     }
 
     private fun setSession() {
-        session.setCallback(callbackMakrokosmos)
+        session.setCallback(mediaSessionCallback)
         session.setFlags(
                 MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS or
                         MediaSessionCompat.FLAG_HANDLES_QUEUE_COMMANDS or
@@ -62,7 +62,7 @@ class MusicService : MediaBrowserServiceCompat() {
     }
 
     override fun onDestroy() {
-        playback.stop()
+        mediaPlayerAdapter.stop()
         session.release()
         compositeDisposable.dispose()
         super.onDestroy()
