@@ -65,7 +65,6 @@ class MakrokosmosMediaBrowserHelper @Inject constructor(
         throw IllegalStateException("MediaController is null!")
     }
 
-
     inner class MediaBrowserConnectionCallback : MediaBrowserCompat.ConnectionCallback() {
 
         override fun onConnected() {
@@ -75,7 +74,6 @@ class MakrokosmosMediaBrowserHelper @Inject constructor(
                     mediaControllerCallback.onMetadataChanged(metadata)
                     mediaControllerCallback.onPlaybackStateChanged(playbackState)
                     it.subscribe(it.root, mediaBrowserSubscriptionCallback)
-
                 }
             }
         }

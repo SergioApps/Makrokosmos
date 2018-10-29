@@ -2,9 +2,8 @@ package com.keltapps.makrokosmos.data.repository
 
 import com.google.common.truth.Truth.assertThat
 import com.keltapps.makrokosmos.R
-import com.keltapps.makrokosmos.song.data.repository.MakrokosmosCDRepository
-import com.keltapps.makrokosmos.song.data.repository.RxSchedulersOverrideRule
 import com.keltapps.makrokosmos.base.resourceprovider.ResourceProvider
+import com.keltapps.makrokosmos.song.data.repository.MakrokosmosCDRepository
 import com.keltapps.makrokosmos.song.domain.entity.*
 import org.junit.*
 import org.mockito.*
@@ -13,10 +12,7 @@ import org.mockito.Mockito.`when`
 
 class MakrokosmosCDRepositoryTest {
 
-    private lateinit var repository: MakrokosmosCDRepository
-
-    @get:Rule
-    val overrideSchedulersRule = RxSchedulersOverrideRule()
+    private lateinit var sut: MakrokosmosCDRepository
 
     @Mock
     private lateinit var resourceProvider: ResourceProvider
@@ -85,14 +81,14 @@ class MakrokosmosCDRepositoryTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        repository = MakrokosmosCDRepository(resourceProvider)
+        sut = MakrokosmosCDRepository(resourceProvider)
+        mockStrings()
     }
 
     @Test
     fun getCD_should_returnMakrokosmosCD() {
-        mockStrings()
 
-        val testObserver = repository.getCD().test()
+        val testObserver = sut.getCD().test()
 
         val cd = testObserver.values()[0]
         assertThat(cd.title).isEqualTo(cdTitle)
@@ -205,5 +201,27 @@ class MakrokosmosCDRepositoryTest {
             assertSong(10, volumeIIEleventhSongTitle, null, ZodiacSign.Leo(resourceProvider.getString(R.string.zodiacSign_leo)))
             assertSong(11, volumeIITwelfthSongTitle, volumeIITwelfthSongSubTitle, ZodiacSign.Capricorn(resourceProvider.getString(R.string.zodiacSign_capricorn)))
         }
+    }
+
+    @Test
+    fun getSong_should_returnVolumeISeventhSong_when_idIsVolumeISeventhSong() {
+        val songId = "7. Music of Shadows (for Aeolian Harp) (Libra).mp3"
+
+        val testObserver = sut.getSong(songId).test()
+
+        testObserver.assertValue { it.title == volumeISeventhSongTitle }
+                .assertValue { it.subTitle == volumeISeventhSongSubTitle }
+                .assertValue { it.zodiacSign == ZodiacSign.Libra(resourceProvider.getString(R.string.zodiacSign_libra)) }
+    }
+
+    @Test
+    fun getSong_should_returnVolume2EleventhSong_when_idIsVolume2EleventhSong() {
+        val songId = "23. Litany of the Galactic Bells (Leo).mp3"
+
+        val testObserver = sut.getSong(songId).test()
+
+        testObserver.assertValue { it.title == volumeIIEleventhSongTitle }
+                .assertValue { it.subTitle == null }
+                .assertValue { it.zodiacSign == ZodiacSign.Leo(resourceProvider.getString(R.string.zodiacSign_leo)) }
     }
 }

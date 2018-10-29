@@ -38,6 +38,7 @@ class SongDetailFragment : DaggerFragment() {
     }
 
     private fun setupActionBar() {
+
         /*   with(activity as AppCompatActivity) {
                setSupportActionBar(binding.toolbar)
                supportActionBar?.setDisplayHomeAsUpEnabled(true)

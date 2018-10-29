@@ -4,8 +4,8 @@ import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.base.resourceprovider.ResourceProvider
 import com.keltapps.makrokosmos.song.domain.entity.*
 import com.keltapps.makrokosmos.song.domain.repository.CDRepository
+import io.reactivex.*
 import io.reactivex.Observable
-import io.reactivex.schedulers.Schedulers
 import java.util.*
 import javax.inject.Inject
 
@@ -13,9 +13,22 @@ class MakrokosmosCDRepository @Inject constructor(
         private val resourceProvider: ResourceProvider
 ) : CDRepository {
 
-    override fun getCD(): Observable<CD> {
-        return Observable.fromCallable { createCD() }
+    private var cd: CD? = null
 
+    override fun getSong(id: String): Single<Song> {
+        return Single.fromCallable {
+            getLocalCD().volumeList
+                    .flatMap { it.songList }
+                    .single { it.id == id }
+        }
+    }
+
+    override fun getCD(): Observable<CD> {
+        return Observable.fromCallable { getLocalCD() }
+    }
+
+    private fun getLocalCD(): CD {
+        return cd ?: createCD()
     }
 
     private fun createCD(): CD {
