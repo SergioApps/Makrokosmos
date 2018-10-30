@@ -61,7 +61,6 @@ class MakrokosmosMediaBrowserHelper @Inject constructor(
 
     override fun getTransportControls(): MediaControllerCompat.TransportControls {
         mediaController?.let {
-            it.playbackState.state
             return it.transportControls
         }
         throw IllegalStateException("MediaController is null!")
