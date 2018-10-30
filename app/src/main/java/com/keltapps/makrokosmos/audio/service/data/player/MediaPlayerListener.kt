@@ -13,13 +13,14 @@ class MediaPlayerListener @Inject constructor(
         private val serviceManager: ServiceManager
 ) : PlaybackInfoListener {
 
-    override fun onPlaybackStateChange(state: PlaybackStateCompat, currentMedia: MediaMetadataCompat) {
+    override fun onPlaybackStateChange(state: PlaybackStateCompat, currentMedia: MediaMetadataCompat?) {
         session.setPlaybackState(state)
         with(serviceManager) {
-            when (state.state) {
-                STATE_PLAYING -> moveServiceToStartedState(state, currentMedia)
-                STATE_PAUSED -> updateNotificationForPause(state, currentMedia)
-                STATE_STOPPED -> moveServiceOutOfStartedState()
+            when {
+                currentMedia == null -> moveServiceOutOfStartedState()
+                state.state == STATE_PLAYING -> moveServiceToStartedState(state, currentMedia)
+                state.state == STATE_PAUSED -> updateNotificationForPause(state, currentMedia)
+                state.state == STATE_STOPPED -> moveServiceOutOfStartedState()
             }
         }
     }

@@ -64,4 +64,12 @@ class MediaPlayerListenerTest {
         verify(session).setPlaybackState(mockState)
         verify(serviceManager).moveServiceOutOfStartedState()
     }
+
+    @Test
+    fun onPlaybackStateChange_should_moveServiceOutOfStartedState_when_currentMediaIsNull() {
+        sut.onPlaybackStateChange(mockState, null)
+
+        verify(session).setPlaybackState(mockState)
+        verify(serviceManager).moveServiceOutOfStartedState()
+    }
 }

@@ -1,6 +1,7 @@
 package com.keltapps.makrokosmos.audio.client.data
 
 import android.content.*
+import android.media.session.PlaybackState
 import android.support.v4.media.*
 import android.support.v4.media.session.*
 import io.reactivex.Observable
@@ -11,6 +12,7 @@ class MakrokosmosMediaBrowserHelper @Inject constructor(
         private val context: Context,
         private val mediaBrowserServiceClass: Class<out MediaBrowserServiceCompat>
 ) : MediaBrowserHelper {
+
 
     private val mediaBrowserConnectionCallback = MediaBrowserConnectionCallback()
     private val mediaControllerCallback = MediaControllerCallback()
@@ -63,6 +65,10 @@ class MakrokosmosMediaBrowserHelper @Inject constructor(
             return it.transportControls
         }
         throw IllegalStateException("MediaController is null!")
+    }
+
+    override fun getCurrentState(): Int {
+        return mediaController?.playbackState?.state ?: PlaybackState.STATE_STOPPED
     }
 
     inner class MediaBrowserConnectionCallback : MediaBrowserCompat.ConnectionCallback() {

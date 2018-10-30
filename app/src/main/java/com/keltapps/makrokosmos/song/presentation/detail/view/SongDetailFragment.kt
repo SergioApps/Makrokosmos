@@ -1,10 +1,14 @@
 package com.keltapps.makrokosmos.song.presentation.detail.view
 
+import android.arch.lifecycle.Observer
 import android.databinding.DataBindingUtil
+import android.graphics.drawable.Animatable
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.databinding.FragmentSongDetailBinding
 import com.keltapps.makrokosmos.song.presentation.detail.viewmodel.SongDetailViewModel
@@ -30,20 +34,25 @@ class SongDetailFragment : DaggerFragment() {
                 false
         )
         binding.viewModel = viewModel
+        binding.setLifecycleOwner(this)
         viewModel.initialize(
                 SongDetailFragmentArgs.fromBundle(arguments).songId
         )
+        viewModel.playOrPauseIcon.observe(this, Observer {
+            binding.playOrPause.setImageDrawable(it)
+            (binding.playOrPause.drawable as? Animatable)?.start()
+        })
         setupActionBar()
         return binding.root
     }
 
     private fun setupActionBar() {
+        with(activity as AppCompatActivity) {
+            setSupportActionBar(binding.toolbar)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.title = ""
+        }
+        binding.toolbar.setNavigationOnClickListener { binding.root.findNavController().navigateUp() }
 
-        /*   with(activity as AppCompatActivity) {
-               setSupportActionBar(binding.toolbar)
-               supportActionBar?.setDisplayHomeAsUpEnabled(true)
-           }
-           binding.toolbar.setNavigationOnClickListener { binding.root.findNavController().navigateUp() }
-     */
     }
 }

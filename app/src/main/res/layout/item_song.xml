@@ -53,7 +53,7 @@
                     android:gravity="center_horizontal"
                     android:maxLines="2"
                     android:text="@{viewModel.title}"
-                    android:textAppearance="@style/AppTheme.TextAppearance.TitleSong"
+                    android:textAppearance="@style/AppTheme.TextAppearance.Title"
                     tools:text="Title song" />
 
                 <TextView
@@ -64,7 +64,7 @@
                     android:gravity="bottom|center_horizontal"
                     android:maxLines="1"
                     android:text="@{viewModel.subTitle}"
-                    android:textAppearance="@style/AppTheme.TextAppearance.SubTitleSong"
+                    android:textAppearance="@style/AppTheme.TextAppearance.SubTitle"
                     android:textStyle="italic"
                     tools:text="SubTitle" />
             </LinearLayout>

@@ -5,12 +5,12 @@ import android.support.v4.media.MediaMetadataCompat
 interface MediaPlayerStateHelper {
     fun setNewState(
             state: Int,
-            currentMedia: MediaMetadataCompat,
+            currentMedia: MediaMetadataCompat?,
             position: Long
     )
 
     fun seekTo(
-            currentMedia: MediaMetadataCompat,
+            currentMedia: MediaMetadataCompat?,
             position: Long
     )
 }

@@ -7,6 +7,7 @@ import io.reactivex.Observable
 interface MediaBrowserHelper {
     val onMetadataChanged: Observable<MediaMetadataCompat>
     val onStateChanged: Observable<Int>
+    fun getCurrentState(): Int
     fun onStart()
     fun onPlay(mediaId: String)
     fun onStop()

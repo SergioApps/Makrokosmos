@@ -2,7 +2,6 @@
     <string name="app_name">Makrokosmos</string>
 
     <!-- Main -->
-
     <string name="content_description_image_about">image about</string>
     <string name="content_description_image_author">image author</string>
     <string name="content_description_image_interpreter">image interpreter</string>
@@ -16,6 +15,8 @@
     <string name="tab_name_volume_1">Volume one</string>
     <string name="tab_name_volume_2">Volume two</string>
     <string name="content_description_cd_image">CD image</string>
+    <!-- Song Detail -->
+    <string name="time_format">%d:%02d</string>
 
     <!-- CD songs -->
     <string name="title_cd_title">Makrokosmos</string>
@@ -114,4 +115,18 @@
     <string name="label_pause">pause</string>
     <string name="label_next">next</string>
     <string name="label_previous">previous</string>
+
+    <!-- animation --><!-- Play Icon -->
+    <string name="play_icon_upper_path_data">M 44 32 L 44 64 L 100 64 L 100 64 Z</string>
+    <string name="play_icon_bottom_path_data">M 44 96 L 44 64 L 100 64 L 100 64 Z</string>
+
+    <!-- Pause Icon -->
+    <string name="pause_icon_upper_path_data">M 32 40 L 32 56  L 96 56 L 96 40 Z</string>
+    <string name="pause_icon_bottom_path_data">M 32 88 L 32 72 L 96 72 L 96 88 Z</string>
+
+    <string name="play_icon_group_top">upperpart</string>
+    <string name="play_icon_group_bottom">bottompart</string>
+    <string name="play_icon_group_parts">parts</string>
+    <string name="play_icon_top_path_name">upper</string>
+    <string name="play_icon_bottom_path_name">bottom</string>
 </resources>

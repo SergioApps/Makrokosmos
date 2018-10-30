@@ -2,7 +2,7 @@ package com.keltapps.makrokosmos.audio.service.data.player.audiofocus
 
 import android.media.AudioManager
 import android.media.AudioManager.*
-import com.keltapps.makrokosmos.audio.service.data.player.MakrokosmosMediaPlayerAdapter
+import com.keltapps.makrokosmos.audio.service.data.player.MediaPlayerAdapter
 import javax.inject.Inject
 
 class MakrokosmosAudioFocusHelper @Inject constructor(
@@ -15,10 +15,10 @@ class MakrokosmosAudioFocusHelper @Inject constructor(
     }
 
     override var playOnAudioFocus = false
-    private lateinit var playerAdapterMakrokosmos: MakrokosmosMediaPlayerAdapter
+    private lateinit var playerAdapter: MediaPlayerAdapter
 
-    override fun initialize(playerAdapterMakrokosmos: MakrokosmosMediaPlayerAdapter) {
-        this.playerAdapterMakrokosmos = playerAdapterMakrokosmos
+    override fun initialize(playerAdapter: MediaPlayerAdapter) {
+        this.playerAdapter = playerAdapter
     }
 
     override fun requestAudioFocus(): Boolean {
@@ -44,28 +44,28 @@ class MakrokosmosAudioFocusHelper @Inject constructor(
     }
 
     private fun handleFocusGain() {
-        if (playOnAudioFocus && !playerAdapterMakrokosmos.isPlaying()) {
-            playerAdapterMakrokosmos.play()
-        } else if (playerAdapterMakrokosmos.isPlaying()) {
-            playerAdapterMakrokosmos.setVolume(MEDIA_VOLUME_DEFAULT)
+        if (playOnAudioFocus && !playerAdapter.isPlaying()) {
+            playerAdapter.play()
+        } else if (playerAdapter.isPlaying()) {
+            playerAdapter.setVolume(MEDIA_VOLUME_DEFAULT)
         }
         playOnAudioFocus = false
     }
 
     private fun handleFocusLossTransientCanDuck() {
-        playerAdapterMakrokosmos.setVolume(MEDIA_VOLUME_DUCK)
+        playerAdapter.setVolume(MEDIA_VOLUME_DUCK)
     }
 
     private fun handleFocusLossTransient() {
-        if (playerAdapterMakrokosmos.isPlaying()) {
+        if (playerAdapter.isPlaying()) {
             playOnAudioFocus = true
-            playerAdapterMakrokosmos.pause()
+            playerAdapter.pause()
         }
     }
 
     private fun handleFocusLoss() {
         audioManager.abandonAudioFocus(this)
         playOnAudioFocus = false
-        playerAdapterMakrokosmos.stop()
+        playerAdapter.stop()
     }
 }

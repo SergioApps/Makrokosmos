@@ -20,6 +20,8 @@ class MakrokosmosAudioRepositoryTest {
 
     @Mock
     private lateinit var mediaBrowserHelper: MediaBrowserHelper
+    @Mock
+    private lateinit var playingStateMapper: PlayingStateMapper
 
     @Mock
     private lateinit var mockTransportControls: MediaControllerCompat.TransportControls
@@ -33,7 +35,10 @@ class MakrokosmosAudioRepositoryTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        sut = MakrokosmosAudioRepository(mediaBrowserHelper)
+        sut = MakrokosmosAudioRepository(
+                mediaBrowserHelper,
+                playingStateMapper
+        )
         `when`(mediaBrowserHelper.getTransportControls()).thenReturn(mockTransportControls)
         `when`(mockMediaMetadataCompat.description).thenReturn(mockDescription)
         `when`(mockDescription.mediaId).thenReturn(MEDIA_ID)
@@ -109,57 +114,24 @@ class MakrokosmosAudioRepositoryTest {
     }
 
     @Test
-    fun getPlayingState_should_returnPlayingState_when_isPlaying() {
-        `when`(mediaBrowserHelper.onStateChanged).thenReturn(Observable.just(PlaybackStateCompat.STATE_PLAYING))
+    fun getPlayingState_should_returnPlayingState() {
+        val playingState = 1
+        `when`(mediaBrowserHelper.onStateChanged).thenReturn(Observable.just(playingState))
+        `when`(playingStateMapper.map(playingState)).thenReturn(PlayingState.Playing)
 
-        val testObserver = sut.getPlayingState().test()
+        val testObservable = sut.getPlayingState().test()
 
-        testObserver.assertValue { it is PlayingState.Playing }
+        testObservable.assertValue { it is PlayingState.Playing }
     }
 
     @Test
-    fun getPlayingState_should_returnPlayingState_when_isSkippingToPrevious() {
-        `when`(mediaBrowserHelper.onStateChanged).thenReturn(Observable.just(PlaybackStateCompat.STATE_SKIPPING_TO_PREVIOUS))
+    fun getCurrentPlayingState_should_returnPlayingState() {
+        val playingState = 1
+        `when`(mediaBrowserHelper.getCurrentState()).thenReturn(playingState)
+        `when`(playingStateMapper.map(playingState)).thenReturn(PlayingState.Playing)
 
-        val testObserver = sut.getPlayingState().test()
+        val result = sut.getCurrentPlayingState()
 
-        testObserver.assertValue { it is PlayingState.Playing }
-    }
-
-    @Test
-    fun getPlayingState_should_returnPlayingState_when_isSkippingToNext() {
-        `when`(mediaBrowserHelper.onStateChanged).thenReturn(Observable.just(PlaybackStateCompat.STATE_SKIPPING_TO_NEXT))
-
-        val testObserver = sut.getPlayingState().test()
-
-        testObserver.assertValue { it is PlayingState.Playing }
-    }
-
-    @Test
-    fun getPlayingState_should_returnPlayingPaused_when_isPaused() {
-        `when`(mediaBrowserHelper.onStateChanged).thenReturn(Observable.just(PlaybackStateCompat.STATE_PAUSED))
-
-        val testObserver = sut.getPlayingState().test()
-
-        testObserver.assertValue { it is PlayingState.Paused }
-    }
-
-
-    @Test
-    fun getPlayingState_should_returnStoppedState_when_isStopped() {
-        `when`(mediaBrowserHelper.onStateChanged).thenReturn(Observable.just(PlaybackStateCompat.STATE_STOPPED))
-
-        val testObserver = sut.getPlayingState().test()
-
-        testObserver.assertValue { it is PlayingState.Stopped }
-    }
-
-    @Test
-    fun getPlayingState_should_returnStoppedState_when_isOtherState() {
-        `when`(mediaBrowserHelper.onStateChanged).thenReturn(Observable.just(PlaybackStateCompat.STATE_NONE))
-
-        val testObserver = sut.getPlayingState().test()
-
-        testObserver.assertValue { it is PlayingState.Stopped }
+        assert(result is PlayingState.Playing)
     }
 }

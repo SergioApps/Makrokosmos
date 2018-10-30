@@ -14,7 +14,7 @@ class MakrokosmosMediaPlayerStateHelper @Inject constructor(
 
     override fun setNewState(
             state: Int,
-            currentMedia: MediaMetadataCompat,
+            currentMedia: MediaMetadataCompat?,
             position: Long
     ) {
         currentState = state
@@ -30,7 +30,7 @@ class MakrokosmosMediaPlayerStateHelper @Inject constructor(
     }
 
     override fun seekTo(
-            currentMedia: MediaMetadataCompat,
+            currentMedia: MediaMetadataCompat?,
             position: Long
     ) {
         setNewState(currentState, currentMedia, position)

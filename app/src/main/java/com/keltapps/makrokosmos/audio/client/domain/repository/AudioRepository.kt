@@ -15,4 +15,5 @@ interface AudioRepository {
     fun seekTo(position: Long)
     fun getSongIdPlaying(): Observable<String>
     fun getPlayingState(): Observable<PlayingState>
+    fun getCurrentPlayingState(): PlayingState
 }

@@ -8,6 +8,8 @@ import com.keltapps.makrokosmos.info.domain.iteractor.GetAuthorInfoUseCase
 import com.keltapps.makrokosmos.info.domain.iteractor.GetInterpreterInfoUseCase
 import com.keltapps.makrokosmos.info.presentation.model.InfoScreen
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class MakrokosmosInfoViewModel @Inject constructor(
@@ -22,6 +24,8 @@ class MakrokosmosInfoViewModel @Inject constructor(
 
     override fun initialize(infoScreen: InfoScreen) {
         getInfo(infoScreen)
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { setInfoScreen(it) }
                 .addDisposable()
     }

@@ -32,6 +32,7 @@ class InfoFragment : DaggerFragment() {
                 false
         )
         binding.viewModel = viewModel
+        binding.setLifecycleOwner(this)
         viewModel.initialize(
                 InfoFragmentArgs.fromBundle(arguments).infoScreen
         )

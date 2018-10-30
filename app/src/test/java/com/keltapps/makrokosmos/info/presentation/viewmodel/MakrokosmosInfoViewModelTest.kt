@@ -7,6 +7,7 @@ import com.keltapps.makrokosmos.info.domain.iteractor.GetAboutInfoUseCase
 import com.keltapps.makrokosmos.info.domain.iteractor.GetAuthorInfoUseCase
 import com.keltapps.makrokosmos.info.domain.iteractor.GetInterpreterInfoUseCase
 import com.keltapps.makrokosmos.info.presentation.model.InfoScreen
+import com.keltapps.makrokosmos.song.data.repository.RxSchedulersOverrideRule
 import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Rule
@@ -26,6 +27,8 @@ class MakrokosmosInfoViewModelTest {
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
+    @get:Rule
+    val overrideSchedulersRule = RxSchedulersOverrideRule()
 
     private lateinit var sut: MakrokosmosInfoViewModel
 

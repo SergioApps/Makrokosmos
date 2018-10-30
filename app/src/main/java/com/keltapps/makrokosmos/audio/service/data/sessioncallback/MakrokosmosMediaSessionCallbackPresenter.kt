@@ -34,6 +34,7 @@ class MakrokosmosMediaSessionCallbackPresenter @Inject constructor(
 
     override fun onPrepare(mediaId: String?) {
         if (isSomethingToPlay()) {
+            queueIndex = 0
             for (queueItem in playlist) {
                 if (queueItem.description.mediaId == mediaId) {
                     break

@@ -32,4 +32,8 @@ class MainModule {
     @Provides
     @ActivityScope
     fun provideAudioRepository(repository: MakrokosmosAudioRepository): AudioRepository = repository
+
+    @Provides
+    @ActivityScope
+    fun providePlayingStateMapper(mapper: MakrokosmosPlayingStateMapper): PlayingStateMapper = mapper
 }

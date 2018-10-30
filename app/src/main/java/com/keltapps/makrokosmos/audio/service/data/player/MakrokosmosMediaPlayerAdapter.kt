@@ -24,7 +24,7 @@ class MakrokosmosMediaPlayerAdapter @Inject constructor(
 
     private var mediaPlayer: MediaPlayer? = null
     private var filename: String? = null
-    private lateinit var currentMedia: MediaMetadataCompat
+    private var currentMedia: MediaMetadataCompat? = null
     private var currentMediaPlayedToCompletion: Boolean = false
 
     override fun isPlaying(): Boolean = mediaPlayer?.isPlaying ?: false
