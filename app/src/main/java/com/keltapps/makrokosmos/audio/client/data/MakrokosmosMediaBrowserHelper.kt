@@ -13,7 +13,6 @@ class MakrokosmosMediaBrowserHelper @Inject constructor(
         private val mediaBrowserServiceClass: Class<out MediaBrowserServiceCompat>
 ) : MediaBrowserHelper {
 
-
     private val mediaBrowserConnectionCallback = MediaBrowserConnectionCallback()
     private val mediaControllerCallback = MediaControllerCallback()
     private val mediaBrowserSubscriptionCallback = MediaBrowserSubscriptionCallback()
@@ -68,6 +67,10 @@ class MakrokosmosMediaBrowserHelper @Inject constructor(
 
     override fun getCurrentState(): Int {
         return mediaController?.playbackState?.state ?: PlaybackState.STATE_STOPPED
+    }
+
+    override fun getCurrentPosition(): Long {
+        return mediaController?.playbackState?.position ?: 0
     }
 
     inner class MediaBrowserConnectionCallback : MediaBrowserCompat.ConnectionCallback() {

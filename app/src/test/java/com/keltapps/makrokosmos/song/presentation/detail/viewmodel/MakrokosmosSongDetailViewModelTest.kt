@@ -10,8 +10,7 @@ import com.keltapps.makrokosmos.song.domain.entity.*
 import com.keltapps.makrokosmos.song.domain.iteractor.GetSongPlayingUseCase
 import com.keltapps.makrokosmos.song.domain.repository.CDRepository
 import com.keltapps.makrokosmos.song.presentation.ZodiacSignViewModel
-import io.reactivex.Observable
-import io.reactivex.Single
+import io.reactivex.*
 import org.junit.*
 import org.junit.rules.TestRule
 import org.mockito.*
@@ -41,6 +40,8 @@ class MakrokosmosSongDetailViewModelTest {
     @Mock
     private lateinit var zodiacSignViewModel: ZodiacSignViewModel
     @Mock
+    private lateinit var mediaSeekBarViewModel: MediaSeekBarViewModel
+    @Mock
     private lateinit var getSongPlayingUseCase: GetSongPlayingUseCase
     @Mock
     private lateinit var audioRepository: AudioRepository
@@ -61,6 +62,7 @@ class MakrokosmosSongDetailViewModelTest {
         MockitoAnnotations.initMocks(this)
         sut = MakrokosmosSongDetailViewModel(
                 zodiacSignViewModel,
+                mediaSeekBarViewModel,
                 getSongPlayingUseCase,
                 audioRepository,
                 cdRepository,
@@ -85,10 +87,11 @@ class MakrokosmosSongDetailViewModelTest {
     }
 
     @Test
-    fun initialize_should_initializeZodiacSignViewModel() {
+    fun initialize_should_initializeViewModels() {
         sut.initialize(MEDIA_ID)
 
         verify(zodiacSignViewModel).initialize(mockZodiacSign)
+        verify(mediaSeekBarViewModel).initialize()
     }
 
     @Test

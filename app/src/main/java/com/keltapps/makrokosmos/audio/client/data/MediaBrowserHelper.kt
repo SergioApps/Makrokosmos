@@ -12,4 +12,5 @@ interface MediaBrowserHelper {
     fun onPlay(mediaId: String)
     fun onStop()
     fun getTransportControls(): MediaControllerCompat.TransportControls
+    fun getCurrentPosition(): Long
 }

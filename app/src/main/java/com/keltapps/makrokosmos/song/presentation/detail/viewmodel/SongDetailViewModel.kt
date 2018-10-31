@@ -7,6 +7,7 @@ import com.keltapps.makrokosmos.song.presentation.ZodiacSignViewModel
 interface SongDetailViewModel {
     fun initialize(songId: String)
     val zodiacSignViewModel: ZodiacSignViewModel
+    val mediaSeekBarViewModel: MediaSeekBarViewModel
     val zodiacSignColor: LiveData<Int>
     val title: LiveData<String>
     val subTitle: LiveData<String>

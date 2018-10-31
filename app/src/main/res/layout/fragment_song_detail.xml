@@ -68,7 +68,6 @@
             app:layout_constraintStart_toStartOf="@+id/frameLayout"
             app:layout_constraintTop_toTopOf="@+id/frameLayout" />
 
-
         <android.support.v7.widget.AppCompatSeekBar
             android:id="@+id/seekBar"
             android:layout_width="match_parent"
@@ -76,6 +75,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="48dp"
             android:layout_marginEnd="16dp"
+            android:max="@{viewModel.mediaSeekBarViewModel.maxValue}"
+            android:onStopTrackingTouch="@{() -> viewModel.mediaSeekBarViewModel.stopTracking()}"
+            android:onStartTrackingTouch="@{() -> viewModel.mediaSeekBarViewModel.startTracking()}"
+            android:progress="@={viewModel.mediaSeekBarViewModel.progress}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
@@ -94,8 +97,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0:00"
-                android:textAppearance="@style/AppTheme.TextAppearance.Body" />
+                android:text="@{viewModel.mediaSeekBarViewModel.progress}"
+                android:textAppearance="@style/AppTheme.TextAppearance.Body"
+                tools:text="0:00" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -184,7 +188,6 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="@{()->viewModel.playOrPause()}"
-
                 android:tint="@android:color/white" />
 
             <ImageView

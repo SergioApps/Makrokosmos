@@ -13,6 +13,7 @@ interface AudioRepository {
     fun skipToNext()
     fun skipToPrevious()
     fun seekTo(position: Long)
+    fun getCurrentPosition(): Long
     fun getSongIdPlaying(): Observable<String>
     fun getPlayingState(): Observable<PlayingState>
     fun getCurrentPlayingState(): PlayingState

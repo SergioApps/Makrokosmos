@@ -1,7 +1,7 @@
 package com.keltapps.makrokosmos.dagger.module.song.presentation
 
+import android.animation.ValueAnimator
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Context
 import android.graphics.drawable.Drawable
 import android.support.v4.content.ContextCompat
 import com.keltapps.makrokosmos.R
@@ -9,11 +9,9 @@ import com.keltapps.makrokosmos.base.presentation.view.createFactory
 import com.keltapps.makrokosmos.dagger.scope.FragmentScope
 import com.keltapps.makrokosmos.song.presentation.ZodiacSignViewModel
 import com.keltapps.makrokosmos.song.presentation.detail.view.SongDetailFragment
-import com.keltapps.makrokosmos.song.presentation.detail.viewmodel.MakrokosmosSongDetailViewModel
-import com.keltapps.makrokosmos.song.presentation.detail.viewmodel.SongDetailViewModel
+import com.keltapps.makrokosmos.song.presentation.detail.viewmodel.*
 import com.keltapps.makrokosmos.song.presentation.list.MakrokosmosZodiacSignViewModel
-import dagger.Module
-import dagger.Provides
+import dagger.*
 import javax.inject.Named
 
 @Module
@@ -34,6 +32,16 @@ class SongDetailModule {
     fun provideZodiacSignViewModel(viewModel: MakrokosmosZodiacSignViewModel): ZodiacSignViewModel {
         return viewModel
     }
+
+    @Provides
+    @FragmentScope
+    fun provideMediaSeekBarViewModel(viewModel: MakrokosmosMediaSeekBarViewModel): MediaSeekBarViewModel {
+        return viewModel
+    }
+
+    @Provides
+    @FragmentScope
+    fun provideValueAnimator() = ValueAnimator()
 
     @Provides
     @FragmentScope

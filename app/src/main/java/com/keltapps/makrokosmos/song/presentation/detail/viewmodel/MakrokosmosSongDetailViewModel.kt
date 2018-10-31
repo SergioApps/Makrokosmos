@@ -6,18 +6,17 @@ import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.audio.client.domain.entity.PlayingState
 import com.keltapps.makrokosmos.audio.client.domain.repository.AudioRepository
 import com.keltapps.makrokosmos.base.presentation.viewmodel.MakrokosmosBaseViewModel
-import com.keltapps.makrokosmos.song.domain.entity.Element
-import com.keltapps.makrokosmos.song.domain.entity.Song
+import com.keltapps.makrokosmos.song.domain.entity.*
 import com.keltapps.makrokosmos.song.domain.iteractor.GetSongPlayingUseCase
 import com.keltapps.makrokosmos.song.domain.repository.CDRepository
 import com.keltapps.makrokosmos.song.presentation.ZodiacSignViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
-import javax.inject.Named
+import javax.inject.*
 
 class MakrokosmosSongDetailViewModel @Inject constructor(
         override val zodiacSignViewModel: ZodiacSignViewModel,
+        override val mediaSeekBarViewModel: MediaSeekBarViewModel,
         private val getSongPlayingUseCase: GetSongPlayingUseCase,
         private val audioRepository: AudioRepository,
         private val cdRepository: CDRepository,
@@ -39,15 +38,16 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
 
     override fun initialize(songId: String) {
         zodiacSignColor.value = R.color.earth_dark
+        mediaSeekBarViewModel.initialize()
+        getSongPlaying(songId)
+        subscribeToPlayingState()
+    }
+
+    private fun getSongPlaying(songId: String) {
         cdRepository.getSong(songId)
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(::handleCDSubscription)
-                .addDisposable()
-        audioRepository.getPlayingState()
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(::handlePlayingState)
                 .addDisposable()
     }
 
@@ -81,6 +81,14 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
 
     private fun setDuration(durationInSeconds: Int) {
         duration.value = String.format(timeFormat, durationInSeconds / 60, durationInSeconds % 60)
+    }
+
+    private fun subscribeToPlayingState() {
+        audioRepository.getPlayingState()
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(::handlePlayingState)
+                .addDisposable()
     }
 
     private fun handlePlayingState(playingState: PlayingState) {

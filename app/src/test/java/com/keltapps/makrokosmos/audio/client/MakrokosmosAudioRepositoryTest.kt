@@ -1,7 +1,8 @@
 package com.keltapps.makrokosmos.audio.client
 
 import android.support.v4.media.*
-import android.support.v4.media.session.*
+import android.support.v4.media.session.MediaControllerCompat
+import com.google.common.truth.Truth.assertThat
 import com.keltapps.makrokosmos.audio.client.data.*
 import com.keltapps.makrokosmos.audio.client.domain.entity.PlayingState
 import com.keltapps.makrokosmos.song.domain.entity.Song
@@ -133,5 +134,15 @@ class MakrokosmosAudioRepositoryTest {
         val result = sut.getCurrentPlayingState()
 
         assert(result is PlayingState.Playing)
+    }
+
+    @Test
+    fun getCurrentPosition_should_returnCurrentPosition() {
+        val position = 100L
+        `when`(mediaBrowserHelper.getCurrentPosition()).thenReturn(position)
+
+        val result = sut.getCurrentPosition()
+
+        assertThat(result).isEqualTo(position)
     }
 }
