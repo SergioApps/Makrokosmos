@@ -1,7 +1,7 @@
 package com.keltapps.makrokosmos.dagger.module.song.presentation
 
-import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.recyclerview.extensions.ListAdapter
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.ListAdapter
 import com.keltapps.makrokosmos.base.presentation.SingleLiveEvent
 import com.keltapps.makrokosmos.base.presentation.view.createFactory
 import com.keltapps.makrokosmos.dagger.scope.SubFragmentScope

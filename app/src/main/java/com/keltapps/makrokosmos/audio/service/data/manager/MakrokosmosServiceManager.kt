@@ -1,9 +1,9 @@
 package com.keltapps.makrokosmos.audio.service.data.manager
 
 import android.content.Intent
-import android.support.v4.content.ContextCompat
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.*
+import androidx.core.content.ContextCompat
 import com.keltapps.makrokosmos.audio.service.MusicService
 import com.keltapps.makrokosmos.audio.service.data.notification.MediaNotificationManager
 import javax.inject.Inject

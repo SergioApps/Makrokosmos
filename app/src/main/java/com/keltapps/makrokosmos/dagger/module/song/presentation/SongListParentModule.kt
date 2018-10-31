@@ -1,6 +1,6 @@
 package com.keltapps.makrokosmos.dagger.module.song.presentation
 
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.navigation.fragment.findNavController
 import com.keltapps.makrokosmos.dagger.scope.FragmentScope
 import com.keltapps.makrokosmos.menu.presentation.view.MenuFragment

@@ -1,6 +1,6 @@
 package com.keltapps.makrokosmos.dagger.module.info.presentation
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import com.keltapps.makrokosmos.base.presentation.view.createFactory
 import com.keltapps.makrokosmos.dagger.scope.FragmentScope
 import com.keltapps.makrokosmos.info.presentation.view.InfoFragment

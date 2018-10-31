@@ -1,6 +1,6 @@
 package com.keltapps.makrokosmos.menu.presentation.viewmodel
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Rule

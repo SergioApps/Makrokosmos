@@ -1,6 +1,6 @@
 package com.keltapps.makrokosmos.info.presentation.viewmodel
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.keltapps.makrokosmos.info.presentation.model.InfoScreen
 
 interface InfoViewModel {

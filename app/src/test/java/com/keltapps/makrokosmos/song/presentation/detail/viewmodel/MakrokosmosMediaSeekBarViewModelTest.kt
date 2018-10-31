@@ -1,7 +1,7 @@
 package com.keltapps.makrokosmos.song.presentation.detail.viewmodel
 
 import android.animation.ValueAnimator
-import android.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import com.keltapps.makrokosmos.audio.client.domain.entity.PlayingState
 import com.keltapps.makrokosmos.audio.client.domain.repository.AudioRepository

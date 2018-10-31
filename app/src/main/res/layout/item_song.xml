@@ -10,7 +10,7 @@
             type="com.keltapps.makrokosmos.song.presentation.list.viewmodel.SongItemViewModel" />
     </data>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="4dp"
@@ -69,5 +69,5 @@
                     tools:text="SubTitle" />
             </LinearLayout>
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </layout>

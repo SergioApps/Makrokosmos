@@ -1,6 +1,6 @@
 package com.keltapps.makrokosmos.song.presentation.detail.viewmodel
 
-import android.arch.lifecycle.*
+import androidx.lifecycle.*
 
 interface MediaSeekBarViewModel {
     fun initialize()

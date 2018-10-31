@@ -1,6 +1,6 @@
 package com.keltapps.makrokosmos.song.presentation.list
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.song.domain.entity.ZodiacSign
 import com.keltapps.makrokosmos.song.presentation.ZodiacSignViewModel

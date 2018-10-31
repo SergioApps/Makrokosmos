@@ -1,6 +1,6 @@
 package com.keltapps.makrokosmos.info.presentation.viewmodel
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import com.keltapps.makrokosmos.base.presentation.viewmodel.MakrokosmosBaseViewModel
 import com.keltapps.makrokosmos.info.domain.entity.Info
 import com.keltapps.makrokosmos.info.domain.iteractor.GetAboutInfoUseCase

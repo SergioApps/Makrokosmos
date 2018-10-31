@@ -1,6 +1,6 @@
 package com.keltapps.makrokosmos.base.presentation.viewmodel
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.*
 
 abstract class MakrokosmosBaseViewModel : ViewModel() {

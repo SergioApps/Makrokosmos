@@ -1,6 +1,6 @@
 package com.keltapps.makrokosmos.info.presentation.viewmodel
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import com.keltapps.makrokosmos.info.domain.entity.Info
 import com.keltapps.makrokosmos.info.domain.iteractor.GetAboutInfoUseCase

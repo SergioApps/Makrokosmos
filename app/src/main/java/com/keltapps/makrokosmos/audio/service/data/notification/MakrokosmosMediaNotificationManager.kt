@@ -5,12 +5,13 @@ import android.content.*
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
-import android.support.annotation.RequiresApi
-import android.support.v4.app.NotificationCompat
-import android.support.v4.content.ContextCompat
+import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import android.support.v4.media.*
-import android.support.v4.media.app.NotificationCompat.MediaStyle
+import androidx.media.app.NotificationCompat.MediaStyle
 import android.support.v4.media.session.*
+import androidx.media.session.MediaButtonReceiver
 import com.keltapps.makrokosmos.*
 import com.keltapps.makrokosmos.audio.service.MusicService
 import javax.inject.Inject

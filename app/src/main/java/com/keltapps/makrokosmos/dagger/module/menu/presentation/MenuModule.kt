@@ -1,6 +1,6 @@
 package com.keltapps.makrokosmos.dagger.module.menu.presentation
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.keltapps.makrokosmos.base.presentation.view.createFactory
 import com.keltapps.makrokosmos.dagger.scope.FragmentScope

@@ -1,7 +1,7 @@
 package com.keltapps.makrokosmos.song.presentation.detail.viewmodel
 
 import android.animation.ValueAnimator
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import com.keltapps.makrokosmos.audio.client.domain.entity.PlayingState
 import com.keltapps.makrokosmos.audio.client.domain.repository.AudioRepository
 import com.keltapps.makrokosmos.base.presentation.viewmodel.MakrokosmosBaseViewModel

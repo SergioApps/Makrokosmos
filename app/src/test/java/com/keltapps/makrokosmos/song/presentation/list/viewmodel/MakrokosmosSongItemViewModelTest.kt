@@ -1,6 +1,6 @@
 package com.keltapps.makrokosmos.song.presentation.list.viewmodel
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.base.presentation.SingleLiveEvent

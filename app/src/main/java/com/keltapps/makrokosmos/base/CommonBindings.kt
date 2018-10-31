@@ -1,7 +1,7 @@
 package com.keltapps.makrokosmos.base
 
 import com.bumptech.glide.Glide
-import android.databinding.BindingAdapter
+import androidx.databinding.BindingAdapter
 import android.view.View
 import android.widget.ImageView
 

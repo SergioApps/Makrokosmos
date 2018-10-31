@@ -3,6 +3,7 @@ package com.keltapps.makrokosmos.audio.service
 import android.os.Bundle
 import android.support.v4.media.*
 import android.support.v4.media.session.MediaSessionCompat
+import androidx.media.MediaBrowserServiceCompat
 import com.keltapps.makrokosmos.audio.service.data.player.MediaPlayerAdapter
 import com.keltapps.makrokosmos.audio.service.data.sessioncallback.MediaSessionCallback
 import com.keltapps.makrokosmos.audio.service.domain.iteractor.GetMediaItemsUseCase

@@ -1,6 +1,6 @@
 package com.keltapps.makrokosmos.song.presentation.detail.viewmodel
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import android.graphics.drawable.Drawable
 import com.keltapps.makrokosmos.song.presentation.ZodiacSignViewModel
 

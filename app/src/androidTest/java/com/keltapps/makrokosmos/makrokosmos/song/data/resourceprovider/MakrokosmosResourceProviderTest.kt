@@ -1,7 +1,7 @@
 package com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider
 
-import android.support.test.InstrumentationRegistry
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.InstrumentationRegistry
+import androidx.test.runner.AndroidJUnit4
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.base.resourceprovider.MakrokosmosResourceProvider
 import junit.framework.TestCase.assertEquals
