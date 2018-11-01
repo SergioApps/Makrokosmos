@@ -1,14 +1,11 @@
 package com.keltapps.makrokosmos.song.presentation.list.view
 
-import androidx.lifecycle.Observer
-import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.GridLayoutManager
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.*
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.base.presentation.SingleLiveEvent
 import com.keltapps.makrokosmos.databinding.FragmentSongListBinding
@@ -17,12 +14,14 @@ import com.keltapps.makrokosmos.song.domain.entity.Song
 import com.keltapps.makrokosmos.song.presentation.list.adapter.BlockSongListAdapter
 import com.keltapps.makrokosmos.song.presentation.list.viewmodel.SongListViewModel
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.fragment_song_list.*
 import javax.inject.Inject
 
 class SongListFragment : DaggerFragment() {
 
     companion object {
         const val ARG_INDEX = "argIndex"
+        private const val STATE_SCROLL = "stateScroll"
     }
 
     @Inject
@@ -67,5 +66,15 @@ class SongListFragment : DaggerFragment() {
         binding.recyclerView.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerView.adapter = adapter
         viewModel.cdListItems.observe(this, Observer { adapter.submitList(it) })
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recyclerView.scrollY = savedInstanceState?.getInt(STATE_SCROLL) ?: 0
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(STATE_SCROLL, recyclerView.scrollY)
     }
 }

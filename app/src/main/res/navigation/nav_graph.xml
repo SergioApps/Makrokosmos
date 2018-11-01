@@ -10,10 +10,18 @@
         android:label="MenuFragment">
         <action
             android:id="@+id/action_menuFragment_to_songListParentFragment"
-            app:destination="@id/songListParentFragment" />
+            app:destination="@id/songListParentFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_menuFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
+            app:destination="@id/infoFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/songListParentFragment"
@@ -21,7 +29,11 @@
         android:label="SongListParentFragment">
         <action
             android:id="@+id/action_songListParentFragment_to_songDetailFragment"
-            app:destination="@id/songDetailFragment" />
+            app:destination="@id/songDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/infoFragment"

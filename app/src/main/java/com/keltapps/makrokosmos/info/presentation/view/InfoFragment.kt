@@ -1,19 +1,23 @@
 package com.keltapps.makrokosmos.info.presentation.view
 
-import androidx.databinding.DataBindingUtil
 import android.os.Bundle
+import android.util.DisplayMetrics
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.databinding.FragmentInfoBinding
 import com.keltapps.makrokosmos.info.presentation.viewmodel.InfoViewModel
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.fragment_info.*
 import javax.inject.Inject
 
 class InfoFragment : DaggerFragment() {
+
+    private companion object {
+        const val IMAGE_ASPECT_RATIO = 1.51
+    }
 
     @Inject
     internal lateinit var viewModel: InfoViewModel
@@ -46,5 +50,16 @@ class InfoFragment : DaggerFragment() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
         binding.toolbar.setNavigationOnClickListener { binding.root.findNavController().navigateUp() }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setImageViewAspectRatio()
+    }
+
+    private fun setImageViewAspectRatio() {
+        val displayMetrics = DisplayMetrics()
+        this.activity?.windowManager?.defaultDisplay?.getMetrics(displayMetrics)
+        imageView.minimumHeight = (displayMetrics.widthPixels * IMAGE_ASPECT_RATIO).toInt()
     }
 }

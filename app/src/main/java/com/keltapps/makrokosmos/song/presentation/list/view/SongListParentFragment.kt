@@ -1,19 +1,22 @@
 package com.keltapps.makrokosmos.song.presentation.list.view
 
-import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import androidx.fragment.app.FragmentPagerAdapter
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.navigation.findNavController
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.databinding.FragmentSongListParentBinding
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.fragment_song_list_parent.*
 import javax.inject.Inject
 
 class SongListParentFragment : DaggerFragment() {
+
+    private companion object {
+        const val SELECTED_TAB = "selectedTab"
+    }
 
     @Inject
     internal lateinit var pageAdapter: FragmentPagerAdapter
@@ -39,5 +42,15 @@ class SongListParentFragment : DaggerFragment() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
         binding.toolbar.setNavigationOnClickListener { binding.root.findNavController().navigateUp() }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        tabLayout.getTabAt(savedInstanceState?.getInt(SELECTED_TAB) ?: 0)?.select()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(SELECTED_TAB, tabLayout.selectedTabPosition)
     }
 }
