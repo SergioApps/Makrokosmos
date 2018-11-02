@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.media.*
 import android.support.v4.media.session.MediaSessionCompat
 import com.keltapps.makrokosmos.audio.service.data.player.MediaPlayerAdapter
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class MakrokosmosMediaSessionCallback @Inject constructor(
@@ -12,8 +13,15 @@ class MakrokosmosMediaSessionCallback @Inject constructor(
         private val mediaSessionCallbackPresenter: MediaSessionCallbackPresenter
 ) : MediaSessionCallback() {
 
+    private val compositeDisposable = CompositeDisposable()
+
     init {
         mediaSessionCallbackPresenter.attach(this)
+        compositeDisposable.add(
+                playback.onPlaybackCompleted()
+                        .subscribe { onSkipToNext() }
+        )
+
     }
 
     override fun onAddQueueItem(description: MediaDescriptionCompat) {
@@ -68,5 +76,9 @@ class MakrokosmosMediaSessionCallback @Inject constructor(
     override fun prepareMedia(media: MediaMetadataCompat) {
         session.setMetadata(media)
         if (!session.isActive) session.isActive = true
+    }
+
+    override fun cleanUp() {
+        compositeDisposable.dispose()
     }
 }

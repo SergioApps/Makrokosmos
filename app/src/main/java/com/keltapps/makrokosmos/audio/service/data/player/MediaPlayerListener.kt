@@ -24,6 +24,4 @@ class MediaPlayerListener @Inject constructor(
             }
         }
     }
-
-    override fun onPlaybackCompleted() {}
 }

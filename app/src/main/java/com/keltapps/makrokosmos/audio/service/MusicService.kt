@@ -64,6 +64,7 @@ class MusicService : MediaBrowserServiceCompat() {
 
     override fun onDestroy() {
         mediaPlayerAdapter.stop()
+        mediaSessionCallback.cleanUp()
         session.release()
         compositeDisposable.dispose()
         super.onDestroy()

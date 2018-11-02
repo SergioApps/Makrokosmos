@@ -7,4 +7,5 @@ abstract class MediaSessionCallback : MediaSessionCompat.Callback() {
     abstract fun prepareMedia(media: MediaMetadataCompat)
     abstract fun play(media: MediaMetadataCompat)
     abstract fun setQueue(queue: List<MediaSessionCompat.QueueItem>)
+    abstract fun cleanUp()
 }

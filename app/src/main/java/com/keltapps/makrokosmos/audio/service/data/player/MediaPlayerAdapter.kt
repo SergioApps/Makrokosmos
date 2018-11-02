@@ -1,6 +1,7 @@
 package com.keltapps.makrokosmos.audio.service.data.player
 
 import android.support.v4.media.MediaMetadataCompat
+import io.reactivex.Observable
 
 interface MediaPlayerAdapter {
     fun play()
@@ -10,4 +11,5 @@ interface MediaPlayerAdapter {
     fun seekTo(position: Long)
     fun setVolume(volume: Float)
     fun playFromMedia(metadata: MediaMetadataCompat)
+    fun onPlaybackCompleted(): Observable<Unit>
 }

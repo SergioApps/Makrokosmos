@@ -6,11 +6,12 @@ import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.PlaybackStateCompat.*
 import com.keltapps.makrokosmos.audio.service.data.player.audiofocus.AudioFocusHelper
 import com.keltapps.makrokosmos.audio.service.domain.repository.MusicLibraryRepository
+import io.reactivex.Observable
+import io.reactivex.subjects.PublishSubject
 import javax.inject.*
 
 class MakrokosmosMediaPlayerAdapter @Inject constructor(
         @Named("applicationContext") private val applicationContext: Context,
-        private val playbackInfoListener: PlaybackInfoListener,
         private val musicLibraryRepository: MusicLibraryRepository,
         private val audioFocusHelper: AudioFocusHelper,
         private val audioNoisyReceiver: AudioNoisyReceiver,
@@ -26,6 +27,9 @@ class MakrokosmosMediaPlayerAdapter @Inject constructor(
     private var filename: String? = null
     private var currentMedia: MediaMetadataCompat? = null
     private var currentMediaPlayedToCompletion: Boolean = false
+    private val onPlaybackCompletedPublishSubject = PublishSubject.create<Unit>()
+
+    override fun onPlaybackCompleted(): Observable<Unit> = onPlaybackCompletedPublishSubject.hide()
 
     override fun isPlaying(): Boolean = mediaPlayer?.isPlaying ?: false
 
@@ -108,12 +112,7 @@ class MakrokosmosMediaPlayerAdapter @Inject constructor(
         if (mediaPlayer == null) {
             mediaPlayer = MediaPlayer()
             mediaPlayer?.setOnCompletionListener {
-                playbackInfoListener.onPlaybackCompleted()
-                mediaPlayerStateHelper.setNewState(
-                        STATE_PAUSED,
-                        currentMedia,
-                        mediaPlayer?.currentPosition?.toLong() ?: 0
-                )
+                onPlaybackCompletedPublishSubject.onNext(Unit)
             }
         }
     }
