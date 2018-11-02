@@ -43,7 +43,7 @@ class MakrokosmosAudioRepository @Inject constructor(
         mediaBrowserHelper.getTransportControls().seekTo(position)
     }
 
-    override fun getCurrentPosition(): Long = mediaBrowserHelper.getCurrentPosition()
+    override fun getCurrentPositionInSeconds(): Long = mediaBrowserHelper.getCurrentPosition() / 1000
 
 
     override fun getSongIdPlaying(): Observable<String> {

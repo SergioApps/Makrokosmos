@@ -2,7 +2,6 @@ package com.keltapps.makrokosmos.song.presentation.detail.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import android.graphics.drawable.Drawable
-import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.audio.client.domain.entity.PlayingState
 import com.keltapps.makrokosmos.audio.client.domain.repository.AudioRepository
 import com.keltapps.makrokosmos.base.presentation.viewmodel.MakrokosmosBaseViewModel
@@ -20,7 +19,6 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
         private val getSongPlayingUseCase: GetSongPlayingUseCase,
         private val audioRepository: AudioRepository,
         private val cdRepository: CDRepository,
-        @Named("timeFormat") private val timeFormat: String,
         @Named("airColor") private val airColor: Int,
         @Named("fireColor") private val fireColor: Int,
         @Named("earthColor") private val earthColor: Int,
@@ -33,11 +31,10 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
     override val subTitle = MutableLiveData<String>()
     override val zodiacSignColor = MutableLiveData<Int>()
     override val zodiacSignName = MutableLiveData<String>()
-    override val duration = MutableLiveData<String>()
     override val playOrPauseIcon = MutableLiveData<Drawable>()
 
     override fun initialize(songId: String) {
-        zodiacSignColor.value = R.color.earth_dark
+        zodiacSignColor.value = airColor
         mediaSeekBarViewModel.initialize()
         getSongPlaying(songId)
         subscribeToPlayingState()
@@ -67,7 +64,6 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
         subTitle.value = song.subTitle
         zodiacSignName.value = song.zodiacSign.name
         setZodiacSignColor(song.zodiacSign.element)
-        setDuration(song.durationInSeconds)
     }
 
     private fun setZodiacSignColor(element: Element) {
@@ -77,10 +73,6 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
             Element.Earth -> earthColor
             Element.Water -> waterColor
         }
-    }
-
-    private fun setDuration(durationInSeconds: Int) {
-        duration.value = String.format(timeFormat, durationInSeconds / 60, durationInSeconds % 60)
     }
 
     private fun subscribeToPlayingState() {

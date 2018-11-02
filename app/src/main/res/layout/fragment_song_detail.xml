@@ -97,7 +97,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.mediaSeekBarViewModel.progress}"
+                android:text="@{viewModel.mediaSeekBarViewModel.progressFormatted}"
                 android:textAppearance="@style/AppTheme.TextAppearance.Body"
                 tools:text="0:00" />
 
@@ -105,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="@{viewModel.duration}"
+                android:text="@{viewModel.mediaSeekBarViewModel.duration}"
                 android:textAppearance="@style/AppTheme.TextAppearance.Body"
                 tools:text="3:23" />
         </LinearLayout>

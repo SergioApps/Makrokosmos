@@ -50,6 +50,6 @@ class MenuFragment : DaggerFragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt(STATE_SCROLL, scrollView.scrollY)
+        scrollView?.let { outState.putInt(STATE_SCROLL, it.scrollY) }
     }
 }

@@ -1,6 +1,7 @@
 package com.keltapps.makrokosmos.song.presentation.detail.viewmodel
 
 import android.animation.ValueAnimator
+import android.view.animation.LinearInterpolator
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import com.keltapps.makrokosmos.audio.client.domain.entity.PlayingState
@@ -19,6 +20,8 @@ class MakrokosmosMediaSeekBarViewModelTest {
     private companion object {
         const val CURRENT_POSITION = 1L
         const val DURATION = 5
+        const val TIME_FORMAT = "%d:%02d"
+        const val MILLISECOND_MULTIPLIER = 1000
     }
 
     @get:Rule
@@ -44,29 +47,31 @@ class MakrokosmosMediaSeekBarViewModelTest {
         sut = MakrokosmosMediaSeekBarViewModel(
                 audioRepository,
                 mockValueAnimator,
-                getSongPlayingUseCase
+                getSongPlayingUseCase,
+                TIME_FORMAT
         )
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.create {})
         `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.create {})
     }
 
     @Test
-    fun initialize_should_setProgressTo0AndMaxToSongDuration_when_songChangeReceived() {
+    fun initialize_should_setProgressToCurrentPositionAndMaxToSongDuration_when_songChangeReceived() {
         `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
         `when`(audioRepository.getCurrentPlayingState()).thenReturn(PlayingState.Paused)
+        `when`(audioRepository.getCurrentPositionInSeconds()).thenReturn(CURRENT_POSITION)
 
         sut.initialize()
 
-        assertThat(sut.progress.value).isEqualTo(0)
-        assertThat(sut.maxValue.value).isEqualTo(DURATION)
+        assertThat(sut.progress.value).isEqualTo(CURRENT_POSITION * MILLISECOND_MULTIPLIER)
+        assertThat(sut.maxValue.value).isEqualTo(DURATION * MILLISECOND_MULTIPLIER)
         verify(mockValueAnimator).cancel()
     }
 
     @Test
     fun initialize_should_cancelAnimation_when_songChangeReceivedMaxValueIsSetAndPlayingStateIsPlaying() {
-        sut.progress.value = CURRENT_POSITION.toInt()
-        sut.maxValue.value = DURATION
+        sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
+        sut.maxValue.value = DURATION * MILLISECOND_MULTIPLIER
         `when`(audioRepository.getCurrentPlayingState()).thenReturn(PlayingState.Playing)
         `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
@@ -74,16 +79,16 @@ class MakrokosmosMediaSeekBarViewModelTest {
         sut.initialize()
 
         assertThat(sut.progress.value).isEqualTo(0)
-        assertThat(sut.maxValue.value).isEqualTo(DURATION)
-        verify(mockValueAnimator).setIntValues(0, DURATION)
-        verify(mockValueAnimator).duration = DURATION.toLong()
+        assertThat(sut.maxValue.value).isEqualTo(DURATION * MILLISECOND_MULTIPLIER)
+        verify(mockValueAnimator).setIntValues(0, DURATION * MILLISECOND_MULTIPLIER)
+        verify(mockValueAnimator).duration = (DURATION * MILLISECOND_MULTIPLIER).toLong()
         verify(mockValueAnimator).start()
     }
 
     @Test
     fun initialize_should_cancelAnimation_when_stateChangeReceivedMaxValueIsSetAndPlayingStateIsPaused() {
-        sut.progress.value = CURRENT_POSITION.toInt()
-        sut.maxValue.value = DURATION
+        sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
+        sut.maxValue.value = DURATION * MILLISECOND_MULTIPLIER
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Paused))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
@@ -94,8 +99,8 @@ class MakrokosmosMediaSeekBarViewModelTest {
 
     @Test
     fun initialize_should_cancelAnimation_when_stateChangeReceivedMaxValueIsSetAndPlayingStateIsStopped() {
-        sut.progress.value = CURRENT_POSITION.toInt()
-        sut.maxValue.value = DURATION
+        sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
+        sut.maxValue.value = DURATION * MILLISECOND_MULTIPLIER
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Stopped))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
@@ -106,27 +111,61 @@ class MakrokosmosMediaSeekBarViewModelTest {
 
     @Test
     fun initialize_should_doNothing_when_stateChangeReceivedMaxValueIsNotSetAndPlayingStateIsPlaying() {
-        sut.progress.value = CURRENT_POSITION.toInt()
+        sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Playing))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
         sut.initialize()
 
-        verifyZeroInteractions(mockValueAnimator)
+        verify(mockValueAnimator, never()).cancel()
+        verify(mockValueAnimator, never()).start()
     }
 
     @Test
     fun initialize_should_handleAnimation_when_stateChangeReceivedMaxValueIsSetAndPlayingStateIsPlaying() {
-        sut.progress.value = CURRENT_POSITION.toInt()
-        sut.maxValue.value = DURATION
+        sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
+        sut.maxValue.value = DURATION * MILLISECOND_MULTIPLIER
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Playing))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
         sut.initialize()
 
-        verify(mockValueAnimator).setIntValues(CURRENT_POSITION.toInt(), DURATION)
-        verify(mockValueAnimator).duration = (DURATION - CURRENT_POSITION)
+        verify(mockValueAnimator).setIntValues(
+                (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt(),
+                DURATION * MILLISECOND_MULTIPLIER
+        )
+        verify(mockValueAnimator).duration = (DURATION * MILLISECOND_MULTIPLIER - CURRENT_POSITION * MILLISECOND_MULTIPLIER)
         verify(mockValueAnimator).start()
+    }
+
+    @Test
+    fun initialize_should_setDurationWith3Digits_when_secondsAreLessThan10() {
+        `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
+        `when`(mockSong.durationInSeconds).thenReturn(189)
+
+        sut.initialize()
+
+        assertThat(sut.duration.value).isEqualTo("3:09")
+    }
+
+    @Test
+    fun initialize_should_setDurationWith4Digits_when_minutesAreMoreThan10() {
+        `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
+        `when`(mockSong.durationInSeconds).thenReturn(600)
+
+        sut.initialize()
+
+        assertThat(sut.duration.value).isEqualTo("10:00")
+    }
+
+    @Test
+    fun initialize_should_setDuration() {
+        `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
+        `when`(mockSong.durationInSeconds).thenReturn(200)
+
+        sut.initialize()
+
+        assertThat(sut.duration.value).isEqualTo("3:20")
     }
 
     @Test
@@ -159,15 +198,15 @@ class MakrokosmosMediaSeekBarViewModelTest {
 
     @Test
     fun stopTracking_should_handleAnimation_when_maxValueIsSetAndPlayingStateIsPlaying() {
-        sut.progress.value = CURRENT_POSITION.toInt()
-        sut.maxValue.value = DURATION
+        sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
+        sut.maxValue.value = DURATION * MILLISECOND_MULTIPLIER
         `when`(audioRepository.getCurrentPlayingState()).thenReturn(PlayingState.Playing)
 
         sut.stopTracking()
 
-        verify(audioRepository).seekTo(CURRENT_POSITION)
-        verify(mockValueAnimator).setIntValues(CURRENT_POSITION.toInt(), DURATION)
-        verify(mockValueAnimator).duration = DURATION - CURRENT_POSITION
+        verify(audioRepository).seekTo(CURRENT_POSITION * MILLISECOND_MULTIPLIER)
+        verify(mockValueAnimator).setIntValues(CURRENT_POSITION.toInt() * MILLISECOND_MULTIPLIER, DURATION * MILLISECOND_MULTIPLIER)
+        verify(mockValueAnimator).duration = DURATION * MILLISECOND_MULTIPLIER - CURRENT_POSITION * MILLISECOND_MULTIPLIER
         verify(mockValueAnimator).start()
     }
 

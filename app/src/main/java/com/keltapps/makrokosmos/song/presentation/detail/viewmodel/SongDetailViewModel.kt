@@ -12,7 +12,6 @@ interface SongDetailViewModel {
     val title: LiveData<String>
     val subTitle: LiveData<String>
     val zodiacSignName: LiveData<String>
-    val duration: LiveData<String>
     val playOrPauseIcon: LiveData<Drawable>
     fun playOrPause()
     fun skipToNext()

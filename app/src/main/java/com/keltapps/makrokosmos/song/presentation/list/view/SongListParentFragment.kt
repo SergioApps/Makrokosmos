@@ -16,6 +16,7 @@ class SongListParentFragment : DaggerFragment() {
 
     private companion object {
         const val SELECTED_TAB = "selectedTab"
+        const val STATE_SCROLL = "stateScroll"
     }
 
     @Inject
@@ -47,10 +48,12 @@ class SongListParentFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tabLayout.getTabAt(savedInstanceState?.getInt(SELECTED_TAB) ?: 0)?.select()
+        coordinatorLayout.scrollY = savedInstanceState?.getInt(STATE_SCROLL) ?: 0
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt(SELECTED_TAB, tabLayout.selectedTabPosition)
+        tabLayout?.let { outState.putInt(SELECTED_TAB, it.selectedTabPosition) }
+        coordinatorLayout?.let { outState.putInt(STATE_SCROLL, it.scrollY) }
     }
 }

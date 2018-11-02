@@ -23,7 +23,6 @@ class MakrokosmosSongDetailViewModelTest {
         const val TITLE = "title"
         const val SUBTITLE = "subtitle"
         const val ZODIAC_NAME = "aries"
-        const val TIME_FORMAT = "%d:%02d"
         const val AIR_COLOR = 1
         const val FIRE_COLOR = 2
         const val EARTH_COLOR = 3
@@ -66,7 +65,6 @@ class MakrokosmosSongDetailViewModelTest {
                 getSongPlayingUseCase,
                 audioRepository,
                 cdRepository,
-                TIME_FORMAT,
                 AIR_COLOR,
                 FIRE_COLOR,
                 EARTH_COLOR,
@@ -146,33 +144,6 @@ class MakrokosmosSongDetailViewModelTest {
     }
 
     @Test
-    fun initialize_should_setDurationWith3Digits_when_secondsAreLessThan10() {
-        `when`(mockSong.durationInSeconds).thenReturn(189)
-
-        sut.initialize(MEDIA_ID)
-
-        assertThat(sut.duration.value).isEqualTo("3:09")
-    }
-
-    @Test
-    fun initialize_should_setDurationWith4Digits_when_minutesAreMoreThan10() {
-        `when`(mockSong.durationInSeconds).thenReturn(600)
-
-        sut.initialize(MEDIA_ID)
-
-        assertThat(sut.duration.value).isEqualTo("10:00")
-    }
-
-    @Test
-    fun initialize_should_setDuration() {
-        `when`(mockSong.durationInSeconds).thenReturn(200)
-
-        sut.initialize(MEDIA_ID)
-
-        assertThat(sut.duration.value).isEqualTo("3:20")
-    }
-
-    @Test
     fun initialize_should_playSong() {
         sut.initialize(MEDIA_ID)
 
@@ -199,7 +170,6 @@ class MakrokosmosSongDetailViewModelTest {
         assertThat(sut.subTitle.value).isEqualTo(mockSong2.subTitle)
         assertThat(sut.zodiacSignName.value).isEqualTo(mockZodiacSign2.name)
         assertThat(sut.zodiacSignColor.value).isEqualTo(AIR_COLOR)
-        assertThat(sut.duration.value).isEqualTo("3:20")
     }
 
     @Test

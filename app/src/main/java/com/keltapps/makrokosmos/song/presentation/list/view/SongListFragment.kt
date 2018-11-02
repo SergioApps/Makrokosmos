@@ -75,6 +75,6 @@ class SongListFragment : DaggerFragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt(STATE_SCROLL, recyclerView.scrollY)
+        recyclerView?.let { outState.putInt(STATE_SCROLL, it.scrollY) }
     }
 }

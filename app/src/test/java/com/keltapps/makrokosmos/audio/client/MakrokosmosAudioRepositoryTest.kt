@@ -137,12 +137,12 @@ class MakrokosmosAudioRepositoryTest {
     }
 
     @Test
-    fun getCurrentPosition_should_returnCurrentPosition() {
-        val position = 100L
+    fun getCurrentPositionInSeconds_should_returnCurrentPosition() {
+        val position = 1000L
         `when`(mediaBrowserHelper.getCurrentPosition()).thenReturn(position)
 
-        val result = sut.getCurrentPosition()
+        val result = sut.getCurrentPositionInSeconds()
 
-        assertThat(result).isEqualTo(position)
+        assertThat(result).isEqualTo(1)
     }
 }
