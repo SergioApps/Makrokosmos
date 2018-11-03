@@ -22,9 +22,7 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
         @Named("airColor") private val airColor: Int,
         @Named("fireColor") private val fireColor: Int,
         @Named("earthColor") private val earthColor: Int,
-        @Named("waterColor") private val waterColor: Int,
-        @Named("playToPause") private val playToPause: Drawable,
-        @Named("pauseToPlay") private val pauseToPlay: Drawable
+        @Named("waterColor") private val waterColor: Int
 ) : MakrokosmosBaseViewModel(), SongDetailViewModel {
 
     override val title = MutableLiveData<String>()
@@ -84,11 +82,11 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
     }
 
     private fun handlePlayingState(playingState: PlayingState) {
-        playOrPauseIcon.value = if (playingState is PlayingState.Playing) {
+      /*  playOrPauseIcon.value = if (playingState is PlayingState.Playing) {
             playToPause
         } else {
             pauseToPlay
-        }
+        }*/
     }
 
     override fun playOrPause() {

@@ -8,7 +8,7 @@
     <string name="main_makrokosmos">Makrokosmos</string>
     <string name="main_about">About</string>
     <string name="main_author">George Crumb</string>
-    <string name="main_interpreter">Fabio Alvarez</string>
+    <string name="main_interpreter">Fabio Álvarez</string>
 
     <!-- Song List -->
     <string name="title_songListActivity">Makrokosmos</string>
@@ -16,54 +16,54 @@
     <string name="tab_name_volume_2">Volume two</string>
     <string name="content_description_cd_image">CD image</string>
     <!-- Song Detail -->
-    <string name="time_format">%d:%02d</string>
+    <string name="time_format" translatable="false">%d:%02d</string>
 
     <!-- CD songs -->
-    <string name="title_cd_title">Makrokosmos</string>
-    <string name="volumeITitle">Volume one</string>
-    <string name="volumeIFirstSongTitle">1.- Primeval Sounds</string>
-    <string name="volumeIFirstSongSubTitle">Genesis I</string>
-    <string name="volumeISecondSongTitle">2.- Proteus</string>
-    <string name="volumeIThirdSongTitle">3.- Pastorale</string>
-    <string name="volumeIThirdSongSubTitle">From the Kingdom of Atlantis, ca. 10,000 B.C.</string>
-    <string name="volumeIFourthSongTitle">4.- Crucifixus</string>
-    <string name="volumeIFourthSongSubTitle">[SYMBOL]</string>
+    <string name="title_cd_title" translatable="false">Makrokosmos</string>
+    <string name="volumeITitle" translatable="false">Volume one</string>
+    <string name="volumeIFirstSongTitle" translatable="false">1.- Primeval Sounds</string>
+    <string name="volumeIFirstSongSubTitle" translatable="false">Genesis I</string>
+    <string name="volumeISecondSongTitle" translatable="false">2.- Proteus</string>
+    <string name="volumeIThirdSongTitle" translatable="false">3.- Pastorale</string>
+    <string name="volumeIThirdSongSubTitle" translatable="false">From the Kingdom of Atlantis, ca. 10,000 B.C.</string>
+    <string name="volumeIFourthSongTitle" translatable="false">4.- Crucifixus</string>
+    <string name="volumeIFourthSongSubTitle" translatable="false">[SYMBOL]</string>
 
-    <string name="volumeIFifthSongTitle">5.- The Phantom Gondolier</string>
-    <string name="volumeISixthSongTitle">6.- Night-Spell I</string>
-    <string name="volumeISeventhSongTitle">7.- Music of Shadows</string>
-    <string name="volumeISeventhSongSubTitle">For Aeolian Harp</string>
-    <string name="volumeIEighthSongTitle">8.- The Magic Circle of Infinity</string>
-    <string name="volumeIEighthSongSubTitle">Moto Perpetuo [SYMBOL]</string>
+    <string name="volumeIFifthSongTitle" translatable="false">5.- The Phantom Gondolier</string>
+    <string name="volumeISixthSongTitle" translatable="false">6.- Night-Spell I</string>
+    <string name="volumeISeventhSongTitle" translatable="false">7.- Music of Shadows</string>
+    <string name="volumeISeventhSongSubTitle" translatable="false">For Aeolian Harp</string>
+    <string name="volumeIEighthSongTitle" translatable="false">8.- The Magic Circle of Infinity</string>
+    <string name="volumeIEighthSongSubTitle" translatable="false">Moto Perpetuo [SYMBOL]</string>
 
-    <string name="volumeINinthSongTitle">9.- The Abyss of Time</string>
-    <string name="volumeITenthSongTitle">10.- Spring-Fire</string>
-    <string name="volumeIEleventhSongTitle">11.- Dream Images</string>
-    <string name="volumeIEleventhSongSubTitle">Love-Death Music</string>
-    <string name="volumeITwelfthSongTitle">12.- Spiral Galaxy</string>
-    <string name="volumeITwelfthSongSubTitle">[SYMBOL]</string>
+    <string name="volumeINinthSongTitle" translatable="false">9.- The Abyss of Time</string>
+    <string name="volumeITenthSongTitle" translatable="false">10.- Spring-Fire</string>
+    <string name="volumeIEleventhSongTitle" translatable="false">11.- Dream Images</string>
+    <string name="volumeIEleventhSongSubTitle" translatable="false">Love-Death Music</string>
+    <string name="volumeITwelfthSongTitle" translatable="false">12.- Spiral Galaxy</string>
+    <string name="volumeITwelfthSongSubTitle" translatable="false">[SYMBOL]</string>
 
-    <string name="volumeII">Volume two</string>
-    <string name="volumeIIFirstSongTitle">1.- Morning Music</string>
-    <string name="volumeIIFirstSongSubTitle">Genesis II</string>
-    <string name="volumeIISecondSongTitle">2.- The Mystic Chord</string>
-    <string name="volumeIIThirdSongTitle">3.- Rain-Death Variations</string>
-    <string name="volumeIIFourthSongTitle">4.- Twin Suns</string>
-    <string name="volumeIIFourthSongSubTitle">DoppelgÑnger aus der Ewigkeit [SYMBOL]</string>
+    <string name="volumeII" translatable="false">Volume two</string>
+    <string name="volumeIIFirstSongTitle" translatable="false">1.- Morning Music</string>
+    <string name="volumeIIFirstSongSubTitle" translatable="false">Genesis II</string>
+    <string name="volumeIISecondSongTitle" translatable="false">2.- The Mystic Chord</string>
+    <string name="volumeIIThirdSongTitle" translatable="false">3.- Rain-Death Variations</string>
+    <string name="volumeIIFourthSongTitle" translatable="false">4.- Twin Suns</string>
+    <string name="volumeIIFourthSongSubTitle" translatable="false">DoppelgÑnger aus der Ewigkeit [SYMBOL]</string>
 
-    <string name="volumeIIFifthSongTitle">5.- Ghost-Nocturne: for the Druids of Stonehenge</string>
-    <string name="volumeIIFifthSongSubTitle">Night-Spell II</string>
-    <string name="volumeIISixthSongTitle">6.- Gargoyles</string>
-    <string name="volumeIISeventhSongTitle">7.- Tora! Tora! Tora!</string>
-    <string name="volumeIISeventhSongSubTitle">Cadenza Apocalittica</string>
-    <string name="volumeIIEighthSongTitle">8.- A Prophecy of Nostradamus</string>
-    <string name="volumeIIEighthSongSubTitle">[SYMBOL]</string>
+    <string name="volumeIIFifthSongTitle" translatable="false">5.- Ghost-Nocturne: for the Druids of Stonehenge</string>
+    <string name="volumeIIFifthSongSubTitle" translatable="false">Night-Spell II</string>
+    <string name="volumeIISixthSongTitle" translatable="false">6.- Gargoyles</string>
+    <string name="volumeIISeventhSongTitle" translatable="false">7.- Tora! Tora! Tora!</string>
+    <string name="volumeIISeventhSongSubTitle" translatable="false">Cadenza Apocalittica</string>
+    <string name="volumeIIEighthSongTitle" translatable="false">8.- A Prophecy of Nostradamus</string>
+    <string name="volumeIIEighthSongSubTitle" translatable="false">[SYMBOL]</string>
 
-    <string name="volumeIINinthSongTitle">9.- Cosmic wind</string>
-    <string name="volumeIITenthSongTitle">10.- Voices from "Corona Borealis"</string>
-    <string name="volumeIIEleventhSongTitle">11.- Litany of the Galactic Bells</string>
-    <string name="volumeIITwelfthSongTitle">12.- Agnus Dei</string>
-    <string name="volumeIITwelfthSongSubTitle">[SYMBOL]</string>
+    <string name="volumeIINinthSongTitle" translatable="false">9.- Cosmic wind</string>
+    <string name="volumeIITenthSongTitle" translatable="false">10.- Voices from "Corona Borealis"</string>
+    <string name="volumeIIEleventhSongTitle" translatable="false">11.- Litany of the Galactic Bells</string>
+    <string name="volumeIITwelfthSongTitle" translatable="false">12.- Agnus Dei</string>
+    <string name="volumeIITwelfthSongSubTitle" translatable="false">[SYMBOL]</string>
 
     <!-- zodiac signs -->
     <string name="zodiacSign_aries">Aries</string>
@@ -100,7 +100,7 @@
 
     <string name="infoAuthor_title">George Crumb</string>
     <string name="infoAuthor_body">George Crumb (b. 1929) is one of the most frequently performed composers in today\'s musical world. Crumb is the winner of Grammy and Pulitzer Prizes, and continues to compose new scores that enrich the lives of all who come in contact with his profoundly humanistic art. Crumb\'s music often juxtaposes contrasting musical styles, ranging from music of the western art-music tradition, to hymns and folk music, to non-Western musics. Many of Crumb\'s works include programmatic, symbolic, mystical and theatrical elements, which are often reflected in his beautiful and meticulously notated scores.\n\n
-        A shy, yet warmly eloquent personality, Crumb retired from his teaching position at the University of Pennsylvania after more than 30 years of service. Honored by numerous institutions with honorary Doctorates, and the recipient of dozens of awards and prizes, Crumb makes his home in Pennsylvania, in the same house where he and his wife of more than 60 years raised their three children. George Crumb\'s music is published by C.F. Peters and an ongoing series of "Complete Crumb" recordings, supervised by the composer, is being issued on Bridge Records.\n
+        A shy, yet warmly eloquent personality, Crumb retired from his teaching position at the University of Pennsylvania after more than 30 years of service. Honored by numerous institutions with honorary Doctorates, and the recipient of dozens of awards and prizes, Crumb makes his home in Pennsylvania, in the same house where he and his wife of more than 60 years raised their three children. George Crumb\'s music is published by C.F. Peters and an ongoing series of "Complete Crumb" recordings, supervised by the composer, is being issued on Bridge Records.
     </string>
 
     <string name="infoInterpreter_title">Fabio Álvarez</string>
@@ -115,18 +115,4 @@
     <string name="label_pause">pause</string>
     <string name="label_next">next</string>
     <string name="label_previous">previous</string>
-
-    <!-- animation --><!-- Play Icon -->
-    <string name="play_icon_upper_path_data">M 44 32 L 44 64 L 100 64 L 100 64 Z</string>
-    <string name="play_icon_bottom_path_data">M 44 96 L 44 64 L 100 64 L 100 64 Z</string>
-
-    <!-- Pause Icon -->
-    <string name="pause_icon_upper_path_data">M 32 40 L 32 56  L 96 56 L 96 40 Z</string>
-    <string name="pause_icon_bottom_path_data">M 32 88 L 32 72 L 96 72 L 96 88 Z</string>
-
-    <string name="play_icon_group_top">upperpart</string>
-    <string name="play_icon_group_bottom">bottompart</string>
-    <string name="play_icon_group_parts">parts</string>
-    <string name="play_icon_top_path_name">upper</string>
-    <string name="play_icon_bottom_path_name">bottom</string>
 </resources>

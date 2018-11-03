@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Makrokosmos</string>
+
+    <!-- Main -->
+    <string name="content_description_image_about">imagen acerca de</string>
+    <string name="content_description_image_author">imagen autor</string>
+    <string name="content_description_image_interpreter">imagen interprete</string>
+    <string name="main_makrokosmos">Makrokosmos</string>
+    <string name="main_about">Acerca de</string>
+    <string name="main_author">George Crumb</string>
+    <string name="main_interpreter">Fabio Álvarez</string>
+
+    <!-- Song List -->
+    <string name="title_songListActivity">Makrokosmos</string>
+    <string name="tab_name_volume_1">Volumen uno</string>
+    <string name="tab_name_volume_2">Volumen dos</string>
+    <string name="content_description_cd_image">CD imagen</string>
+
+    <!-- zodiac signs -->
+    <string name="zodiacSign_aries">Aries</string>
+    <string name="zodiacSign_taurus">Tauro</string>
+    <string name="zodiacSign_gemini">Geminis</string>
+    <string name="zodiacSign_cancer">Cancer</string>
+    <string name="zodiacSign_leo">Leo</string>
+    <string name="zodiacSign_virgo">Virgo</string>
+    <string name="zodiacSign_libra">Libra</string>
+    <string name="zodiacSign_scorpio">Escorpio</string>
+    <string name="zodiacSign_sagittarius">Sagitario</string>
+    <string name="zodiacSign_capricorn">Capricornio</string>
+    <string name="zodiacSign_aquarius">Aquario</string>
+    <string name="zodiacSign_pisces">Piscis</string>
+    <string name="contentDescription_zodiacSign">Simbolo zodiaco</string>
+
+    <!-- Info -->
+    <string name="infoAbout_title">Acerca de</string>
+    <string name="infoAbout_body">“La música es un sistema de proporciones al servicio de un impulso espiritual”\nGeorge Crumb\n\n
+        Makrokosmos I y II (1972/73) es uno de los ciclos más completos e influyentes de los nuevos recursos técnicos del piano de finales del siglo XX.\n\n
+        El primer volumen está compuesto en memoria de Béla Bartok (1881 – 1945) y dedicado al pianista David Burge (1930 – 2013) y el segundo en memoria de Gustav Mahler (1860 – 1911) y dedicado al pianista Robert Miller (1930 – 1981).\n\n
+        Cada pieza tiene asignado un signo del zodiaco como reflejo de su preocupación por el tiempo y el espacio.\nCada volumen está dividido en tres partes, divididas a su vez en cuatro piezas que deben ser interpretadas sin interrupción. Crumb diseñó la cuarta pieza de cada parte con la forma de un símbolo en relación a la composición. En el primer volumen: Crucifixus en cruz, The Magic Circle of Infinity en círculo y Spiral Galaxy en espiral (foto en la contraportada).\n\n
+        Ambos volúmenes subtitulados: Doce piezas de fantasía después del zodiaco para piano amplificado. Veinticuatro piezas que constituyen una exploración masiva y detallada de las posibilidades sonoras del piano, creando una virtuosa síntesis entre el pianismo convencional (teclado) y el no convencional (dentro del piano), incluyendo al pianista mediante susurros, silbidos, cantos o gritos.\n\n
+        Crumb explota todos los tonos de color pianísticos imaginables en el teclado y dentro del piano aprovechando todo el rango de tono del instrumento, utilizando los tres pedales, explotando un rango dinámico (extraordinariamente amplio a través de la amplificación), usando las manos del pianista para percutir, puntear y raspar las cuerdas y a través del uso de objetos: cadenas, vasos de cristal, púas metálicas, dedales metálicos, hojas de papel o una escobilla metálica.\n
+        Fabio Álvarez\n\n
+        George Crumb, Makrokosmos Volume I Notas*:\n
+        “El título y formato de Makrokosmos refleja la admiración que tengo por dos de los grandes compositores del S. XX: Béla Bartók y Claude Debussy. Estoy pensando especialmente en el Mikrokosmos de Bártok y los 24 Preludios de Debussy. Sin embargo, estas son puramente asociaciones externas, ya que sospecho que el impulso espiritual de mi música es más similar al lado oscuro de Chopin, e incluso a la fantasía infantil de un joven Schumann.\n\n
+        Y luego está siempre la cuestión de un “mundo más amplio” de conceptos e ideas que influyen en la evolución del lenguaje de un compositor. Durante la composición del Makrokosmos era consciente de ciertas imágenes recurrentes en mi cabeza. A veces imágenes vívidas, a veces vagas y casi subliminales, estas imágenes parecían coalecerse alrededor de ciertas ideas: “propiedades mágicas” de la música; el problema del origen de lo malvado; la “intemporalidad” del tiempo; la profunda sensación de ironía de la vida (tan bellamente expresado en la música de Mozart y Mahler); las inquietantes palabras de Pascal: “Le silence éternel des espaces infinis m´effraie” (“El eterno silencio del espacio infinito me aterra”); y esas líneas de Rilke: “Und in den Nächten fállt die schwere Erde aus allen Sternen in die Einsamkeit. Wir alle fallen. Und doch ist Einer, welcher dieses Fallen unendlich sanft in seinen Händen halt” (“Y en las noches la pesada Tierra está cayendo desde las estrellas en la soledad. Nosotros estamos cayendo. Y sin embargo hay Uno que mantiene esta caída sin fin suavemente en sus manos”).\n\n
+        Cada una de las veinticuatro “piezas de fantasía” está asociada con diferentes signos del zodiaco y con el enigma de las iniciales de una persona de ese signo (Brahms, Federico García Lorca, etc). Quería caprichosamente plantear un “enigma” con estas iniciales del subíndice; sin embargo, mis perspicaces amigos identificaron rápidamente el Aries de Spring-Fire como David Burge, y el Escorpio de The Phantom Gondolier como yo.\n\n
+        Makrokosmos, Volumen I se estrenó en Colorado College (en Colorado Springs) el 8 de febrero de 1973.\n
+        Makrokosmos, Volume II fue estrenado por Robert Miller en New York City (Alice Tully Hall) el 12 de noviembre de 1974.”\n\n
+        *Extracto de las notas escrtias para la grabación de Nonesuch de Makrokosmos Volume I (interpretación grabada por David Burge, Nonesuch H-71293).
+    </string>
+
+    <string name="infoAuthor_title">George Crumb</string>
+    <string name="infoAuthor_body">George Crumb (1929) es uno de los compositores contemporáneos más interpretados actualmente. Crumb es ganador de los premios Grammy y Pulitzer, y continúa componiendo nuevas piezas que enriquecen las vidas de todos los que tienen contacto con su profunda humanidad artística. La música de Crumb suele yuxtaponer estilos musicales contrastantes, que van desde la música de la tradición occidental de la música de arte, a los himnos y la música folclórica, hasta las músicas no occidentales. Muchas de las obras de Crumb incluyen elementos programáticos, simbólicos, místicos y teatrales, que a menudo se reflejan en sus puntajes hermosos y meticulosamente anotados.\n\n
+        Una personalidad tímida, pero cálidamente elocuente, Crumb se retiró de su puesto docente en la Universidad de Pensilvania después de más de 30 años de servicio. Honrado por numerosas instituciones con doctorados honorarios y ganador de docenas de premios, Crumb hace su hogar en Pennsylvania, en la misma casa donde él y su esposa criaron a sus tres hijos por más de 60 años. La música de George Crumb es publicada por C.F. Peters y una serie continua de grabaciones de "Complete Crumb", supervisadas por el compositor, se publicarán en Bridge Records.
+    </string>
+
+    <string name="infoInterpreter_title">Fabio Álvarez</string>
+    <string name="infoInterpreter_body">El pianista español Fabio Álvarez combina musicalidad, gran temperamento y talento para la comunicación en sus interpretaciones mostrando su pasión por la música a través de sus conciertos comentados, su participación en conciertos benéficos y su contribución a entidades sociales que usan el arte para ayudar a la gente.\n\n
+        Tras haber recibido el mecenazgo de tres fundaciones (Cum Laude, Gondra Barandiarán y FIDAH) y más de 60 patrones privados el pianista obtuvo su Master of Music bajo la tutela del reconocido pianista y pedagogo Phillip Kawin en la prestigiosa Manhattan School of Music.
+        Desde haber estudiado con el pianista francés Emmanuel Ferrer-Lalöe en Musikene, Conservatorio Superior de Música del País Vasco, recientes compromisos le han  llevado a Francia, Portugal, España y Estados Unidos actuando en varias salas como solista y solista con orquesta, incluyendo: Carnegie Hall (Nueva York, EE.UU), Greenfield Hall (Nueva York, EE.UU), Teatro Campos Elíseos de Bilbao (Bilbao, España), Orfeón Donostiarra (Donostia, España) o Le Prieuré du Mesnil Saint Martin (Aquitania, Francia).\n\n
+        Fabio se ha especializado en diferentes campos como la música contemporánea con Ricardo Descalzo y Anthony De Mare, acompañamiento vocal con Maciej Pikulski y Raymond Beegle, música de cámara Irini Gaitani y Gabriel Loidi y órgano con Dr. Katherine Meloan. promoviendo y estrenando piezas para piano sólo y música de cámara de compositores actuales.\n\n
+        Ha sido seleccionado para participar en varios festivales internacionales como LV “Música en Compostela” (Santiago de Compostela, Spain) dedicado enteramente a la música española; III Círculo Mercantil (Vigo, España) o International Piano Festival “Jesús González Alonso” (Gijón, España).\n\n
+        Ha recibido consejos de maestros de la talla de Ivo Pogorelich, Imre Rohmann, Josep Colom, Eldar Nebolsin, Ricardo Requejo, Jose Ramón Mendez, Julian Martin, Robert McDonald, James Giles, Nino Kereselidze, Gustavo Díaz Jerez, Mariana Gurkova, Jean-Philippe Guillo, Aurélie Forre, María Jesús Crespo, Maria Teresa Perez yAlexander Kandelaki.
+    </string>
+    <string name="label_play">reproducir</string>
+    <string name="label_pause">pausa</string>
+    <string name="label_next">siguiente</string>
+    <string name="label_previous">anterior</string>
+
+</resources>

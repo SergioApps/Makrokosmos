@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "279127710067",
+    "firebase_url": "https://makrokosmos-eeb01.firebaseio.com",
+    "project_id": "makrokosmos-eeb01",
+    "storage_bucket": "makrokosmos-eeb01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279127710067:android:1bd3e5a2d9478454",
+        "android_client_info": {
+          "package_name": "com.keltapps.makrokosmos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279127710067-0eedv3bcbig07g1s8dfl2j0j2804b0vp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.keltapps.makrokosmos",
+            "certificate_hash": "6359bfcfccd7015898075e2a598c1b4090a05074"
+          }
+        },
+        {
+          "client_id": "279127710067-7hk73igrfrvpiupdjcthah4v778oshoh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSXQtnSHMNNSWvPKSUP68vYrURl2o5lvk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279127710067-7hk73igrfrvpiupdjcthah4v778oshoh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

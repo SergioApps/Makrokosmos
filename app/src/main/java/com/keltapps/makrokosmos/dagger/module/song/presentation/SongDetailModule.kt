@@ -77,18 +77,4 @@ class SongDetailModule {
     fun provideWaterColor(fragment: SongDetailFragment): Int {
         return ContextCompat.getColor(fragment.requireContext(), R.color.water_light)
     }
-
-    @Provides
-    @FragmentScope
-    @Named("playToPause")
-    fun providePlayToPause(fragment: SongDetailFragment): Drawable {
-        return fragment.requireContext().getDrawable(R.drawable.play_to_pause_animation)!!
-    }
-
-    @Provides
-    @FragmentScope
-    @Named("pauseToPlay")
-    fun providePauseToPlay(fragment: SongDetailFragment): Drawable {
-        return fragment.requireContext().getDrawable(R.drawable.pause_to_play_animation)!!
-    }
 }

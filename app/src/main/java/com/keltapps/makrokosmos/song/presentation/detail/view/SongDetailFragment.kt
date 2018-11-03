@@ -38,10 +38,10 @@ class SongDetailFragment : DaggerFragment() {
         viewModel.initialize(
                 SongDetailFragmentArgs.fromBundle(arguments).songId
         )
-        viewModel.playOrPauseIcon.observe(this, Observer {
+        /*viewModel.playOrPauseIcon.observe(this, Observer {
             binding.playOrPause.setImageDrawable(it)
             (binding.playOrPause.drawable as? Animatable)?.start()
-        })
+        })*/
         setupActionBar()
         return binding.root
     }
