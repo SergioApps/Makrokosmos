@@ -34,7 +34,6 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
 
     override fun initialize(songId: String) {
         zodiacSignColor.value = airColor
-        mediaSeekBarViewModel.initialize()
         getSongPlaying(songId)
         subscribeToPlayingState()
     }
@@ -48,6 +47,7 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
     }
 
     private fun handleCDSubscription(song: Song) {
+        mediaSeekBarViewModel.initialize(song)
         setLiveData(song)
         getSongPlayingUseCase.execute()
                 .subscribeOn(Schedulers.computation())

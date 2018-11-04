@@ -61,7 +61,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
         `when`(audioRepository.getCurrentPlayingState()).thenReturn(PlayingState.Paused)
         `when`(audioRepository.getCurrentPositionInSeconds()).thenReturn(CURRENT_POSITION)
 
-        sut.initialize()
+        sut.initialize(mockSong)
 
         assertThat(sut.progress.value).isEqualTo(CURRENT_POSITION * MILLISECOND_MULTIPLIER)
         assertThat(sut.maxValue.value).isEqualTo(DURATION * MILLISECOND_MULTIPLIER)
@@ -76,7 +76,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
         `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
-        sut.initialize()
+        sut.initialize(mockSong)
 
         assertThat(sut.progress.value).isEqualTo(0)
         assertThat(sut.maxValue.value).isEqualTo(DURATION * MILLISECOND_MULTIPLIER)
@@ -92,7 +92,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Paused))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
-        sut.initialize()
+        sut.initialize(mockSong)
 
         verify(mockValueAnimator).cancel()
     }
@@ -104,7 +104,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Stopped))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
-        sut.initialize()
+        sut.initialize(mockSong)
 
         verify(mockValueAnimator).cancel()
     }
@@ -115,7 +115,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Playing))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
-        sut.initialize()
+        sut.initialize(mockSong)
 
         verify(mockValueAnimator, never()).cancel()
         verify(mockValueAnimator, never()).start()
@@ -128,7 +128,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Playing))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
-        sut.initialize()
+        sut.initialize(mockSong)
 
         verify(mockValueAnimator).setIntValues(
                 (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt(),
@@ -143,7 +143,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
         `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
         `when`(mockSong.durationInSeconds).thenReturn(189)
 
-        sut.initialize()
+        sut.initialize(mockSong)
 
         assertThat(sut.duration.value).isEqualTo("3:09")
     }
@@ -153,7 +153,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
         `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
         `when`(mockSong.durationInSeconds).thenReturn(600)
 
-        sut.initialize()
+        sut.initialize(mockSong)
 
         assertThat(sut.duration.value).isEqualTo("10:00")
     }
@@ -163,7 +163,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
         `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
         `when`(mockSong.durationInSeconds).thenReturn(200)
 
-        sut.initialize()
+        sut.initialize(mockSong)
 
         assertThat(sut.duration.value).isEqualTo("3:20")
     }
