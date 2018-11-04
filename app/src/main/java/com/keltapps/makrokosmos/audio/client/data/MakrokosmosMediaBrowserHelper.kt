@@ -4,8 +4,10 @@ import android.content.*
 import android.media.session.PlaybackState
 import android.support.v4.media.*
 import android.support.v4.media.session.*
+import android.support.v4.media.session.PlaybackStateCompat.STATE_NONE
 import androidx.media.MediaBrowserServiceCompat
 import io.reactivex.Observable
+import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
@@ -19,8 +21,8 @@ class MakrokosmosMediaBrowserHelper @Inject constructor(
     private val mediaBrowserSubscriptionCallback = MediaBrowserSubscriptionCallback()
     private val publishSubjectMetadata: PublishSubject<MediaMetadataCompat> = PublishSubject.create()
     override val onMetadataChanged: Observable<MediaMetadataCompat> = publishSubjectMetadata.hide()
-    private val publishSubjectState: PublishSubject<Int> = PublishSubject.create()
-    override val onStateChanged: Observable<Int> = publishSubjectState.hide()
+    private val behaviorSubjectState: BehaviorSubject<Int> = BehaviorSubject.createDefault(STATE_NONE)
+    override val onStateChanged: Observable<Int> = behaviorSubjectState.hide()
 
     private var mediaBrowser: MediaBrowserCompat? = null
     private var mediaController: MediaControllerCompat? = null
@@ -106,7 +108,7 @@ class MakrokosmosMediaBrowserHelper @Inject constructor(
 
         override fun onPlaybackStateChanged(state: PlaybackStateCompat?) {
             super.onPlaybackStateChanged(state)
-            state?.state?.let { publishSubjectState.onNext(it) }
+            state?.state?.let { behaviorSubjectState.onNext(it) }
         }
     }
 }

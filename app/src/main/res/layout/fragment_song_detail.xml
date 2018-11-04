@@ -178,19 +178,21 @@
                 android:src="@drawable/ic_skip_previous"
                 android:tint="@android:color/white" />
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/playOrPause"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@android:color/transparent"
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:onClick="@{()->viewModel.playOrPause()}"
-                android:scaleType="centerCrop"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/play_pause" />
+                android:onClick="@{()->viewModel.playOrPause()}">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/playOrPause"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="centerCrop"
+                    app:lottie_rawRes="@raw/play_pause" />
+            </FrameLayout>
 
             <ImageView
                 android:id="@+id/skipNext"

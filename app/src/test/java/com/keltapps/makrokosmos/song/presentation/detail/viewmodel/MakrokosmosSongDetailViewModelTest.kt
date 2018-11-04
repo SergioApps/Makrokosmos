@@ -51,10 +51,6 @@ class MakrokosmosSongDetailViewModelTest {
     private lateinit var mockSong: Song
     @Mock
     private lateinit var mockZodiacSign: ZodiacSign
-    @Mock
-    private lateinit var mockPlayToPause: Drawable
-    @Mock
-    private lateinit var mockPauseToPlay: Drawable
 
     @Before
     fun setUp() {
@@ -68,9 +64,7 @@ class MakrokosmosSongDetailViewModelTest {
                 AIR_COLOR,
                 FIRE_COLOR,
                 EARTH_COLOR,
-                WATER_COLOR,
-                mockPlayToPause,
-                mockPauseToPlay
+                WATER_COLOR
         )
         with(mockSong) {
             `when`(title).thenReturn(TITLE)
@@ -173,30 +167,30 @@ class MakrokosmosSongDetailViewModelTest {
     }
 
     @Test
-    fun initialize_should_updatePlayToPauseIconToPlayToPause_when_getPlayingStateSentPause() {
+    fun initialize_should_updateIsPlayingToFalse_when_getPlayingStateSentPause() {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Paused))
 
         sut.initialize(MEDIA_ID)
 
-        assertThat(sut.playOrPauseIcon.value).isEqualTo(mockPauseToPlay)
+        assertThat(sut.isPlaying.value).isFalse()
     }
 
     @Test
-    fun initialize_should_updatePlayToPauseIconToPlayToPause_when_getPlayingStateSentStopped() {
+    fun initialize_should_updateIsPlayingToFalse_when_getPlayingStateSentStopped() {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Stopped))
 
         sut.initialize(MEDIA_ID)
 
-        assertThat(sut.playOrPauseIcon.value).isEqualTo(mockPauseToPlay)
+        assertThat(sut.isPlaying.value).isFalse()
     }
 
     @Test
-    fun initialize_should_updatePlayToPauseIconToPauseToPlay_when_getPlayingStateSentPlaying() {
+    fun initialize_should_updateIsPlayingToTrue_when_getPlayingStateSentPlaying() {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Playing))
 
         sut.initialize(MEDIA_ID)
 
-        assertThat(sut.playOrPauseIcon.value).isEqualTo(mockPlayToPause)
+        assertThat(sut.isPlaying.value).isTrue()
     }
 
     @Test

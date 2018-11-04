@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import android.graphics.drawable.Drawable
 import com.keltapps.makrokosmos.audio.client.domain.entity.PlayingState
 import com.keltapps.makrokosmos.audio.client.domain.repository.AudioRepository
+import com.keltapps.makrokosmos.base.presentation.SingleLiveEvent
 import com.keltapps.makrokosmos.base.presentation.viewmodel.MakrokosmosBaseViewModel
 import com.keltapps.makrokosmos.song.domain.entity.*
 import com.keltapps.makrokosmos.song.domain.iteractor.GetSongPlayingUseCase
@@ -29,7 +30,7 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
     override val subTitle = MutableLiveData<String>()
     override val zodiacSignColor = MutableLiveData<Int>()
     override val zodiacSignName = MutableLiveData<String>()
-    override val playOrPauseIcon = MutableLiveData<Drawable>()
+    override val isPlaying = MutableLiveData<Boolean>()
 
     override fun initialize(songId: String) {
         zodiacSignColor.value = airColor
@@ -82,11 +83,7 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
     }
 
     private fun handlePlayingState(playingState: PlayingState) {
-      /*  playOrPauseIcon.value = if (playingState is PlayingState.Playing) {
-            playToPause
-        } else {
-            pauseToPlay
-        }*/
+        isPlaying.value = playingState is PlayingState.Playing
     }
 
     override fun playOrPause() {
