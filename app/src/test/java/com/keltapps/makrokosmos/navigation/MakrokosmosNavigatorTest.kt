@@ -5,11 +5,9 @@ import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.info.presentation.model.InfoScreen
 import com.keltapps.makrokosmos.menu.presentation.view.MenuFragmentDirections
 import com.keltapps.makrokosmos.song.presentation.list.view.SongListParentFragmentDirections
-import org.junit.Before
-import org.junit.Test
-import org.mockito.Mock
+import org.junit.*
+import org.mockito.*
 import org.mockito.Mockito.verify
-import org.mockito.MockitoAnnotations
 
 class MakrokosmosNavigatorTest {
 
@@ -73,7 +71,7 @@ class MakrokosmosNavigatorTest {
         sut.openSongDetail(navController, SONG_ID)
 
         verify(navController).navigate(
-                SongListParentFragmentDirections.actionSongListParentFragmentToSongDetailFragment(
+                SongListParentFragmentDirections.actionToSongDetailFragment(
                         SONG_ID
                 )
         )

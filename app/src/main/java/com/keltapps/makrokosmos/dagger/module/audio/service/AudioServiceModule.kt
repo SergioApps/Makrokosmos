@@ -1,6 +1,6 @@
 package com.keltapps.makrokosmos.dagger.module.audio.service
 
-import com.keltapps.makrokosmos.MainActivity
+import com.keltapps.makrokosmos.main.view.MainActivity
 import com.keltapps.makrokosmos.audio.service.data.manager.*
 import com.keltapps.makrokosmos.audio.service.data.notification.*
 import com.keltapps.makrokosmos.dagger.scope.ServiceScope

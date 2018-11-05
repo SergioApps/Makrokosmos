@@ -39,7 +39,7 @@ class MakrokosmosNavigator @Inject constructor() : Navigator {
 
     override fun openSongDetail(navController: NavController, songId: String) {
         navController.navigate(
-                SongListParentFragmentDirections.actionSongListParentFragmentToSongDetailFragment(
+                SongListParentFragmentDirections.actionToSongDetailFragment(
                         songId
                 )
         )

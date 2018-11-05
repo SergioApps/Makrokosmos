@@ -11,6 +11,7 @@
     <string name="main_about">Acerca de</string>
     <string name="main_author">George Crumb</string>
     <string name="main_interpreter">Fabio Álvarez</string>
+    <string name="contentDescription_expand">expandir</string>
 
     <!-- Song List -->
     <string name="title_songListActivity">Makrokosmos</string>

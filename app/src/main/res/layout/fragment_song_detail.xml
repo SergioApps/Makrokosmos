@@ -104,7 +104,7 @@
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="21dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
@@ -120,7 +120,7 @@
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
-            android:layout_height="23dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
@@ -137,7 +137,7 @@
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
-            android:layout_height="23dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
@@ -172,7 +172,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
-                android:onClick="@{()->viewModel.skipToPrevious()}"
+                android:onClick="@{()->viewModel.audioViewModel.skipToPrevious()}"
                 android:src="@drawable/ic_skip_previous"
                 android:tint="@android:color/white" />
 
@@ -184,7 +184,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
-                android:onClick="@{()->viewModel.playOrPause()}">
+                android:onClick="@{()->viewModel.audioViewModel.playOrPause()}">
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/playOrPause"
@@ -202,7 +202,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
-                android:onClick="@{()->viewModel.skipToNext()}"
+                android:onClick="@{()->viewModel.audioViewModel.skipToNext()}"
                 android:src="@drawable/ic_skip_next"
                 android:tint="@android:color/white" />
 

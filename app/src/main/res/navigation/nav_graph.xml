@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
     app:startDestination="@id/menuFragment">
+    <action
+        android:id="@+id/action_to_songDetailFragment"
+        app:destination="@id/songDetailFragment"
+        app:enterAnim="@android:anim/fade_in"
+        app:exitAnim="@android:anim/fade_out"
+        app:popEnterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
 
     <fragment
         android:id="@+id/menuFragment"
@@ -26,15 +33,7 @@
     <fragment
         android:id="@+id/songListParentFragment"
         android:name="com.keltapps.makrokosmos.song.presentation.list.view.SongListParentFragment"
-        android:label="SongListParentFragment">
-        <action
-            android:id="@+id/action_songListParentFragment_to_songDetailFragment"
-            app:destination="@id/songDetailFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
-    </fragment>
+        android:label="SongListParentFragment"/>
     <fragment
         android:id="@+id/infoFragment"
         android:name="com.keltapps.makrokosmos.info.presentation.view.InfoFragment"

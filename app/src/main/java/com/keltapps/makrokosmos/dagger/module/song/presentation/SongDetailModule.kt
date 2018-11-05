@@ -1,9 +1,7 @@
 package com.keltapps.makrokosmos.dagger.module.song.presentation
 
-import android.animation.ValueAnimator
-import androidx.lifecycle.ViewModelProviders
-import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProviders
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.base.presentation.view.createFactory
 import com.keltapps.makrokosmos.dagger.scope.FragmentScope
@@ -31,23 +29,6 @@ class SongDetailModule {
     @FragmentScope
     fun provideZodiacSignViewModel(viewModel: MakrokosmosZodiacSignViewModel): ZodiacSignViewModel {
         return viewModel
-    }
-
-    @Provides
-    @FragmentScope
-    fun provideMediaSeekBarViewModel(viewModel: MakrokosmosMediaSeekBarViewModel): MediaSeekBarViewModel {
-        return viewModel
-    }
-
-    @Provides
-    @FragmentScope
-    fun provideValueAnimator() = ValueAnimator()
-
-    @Provides
-    @FragmentScope
-    @Named("timeFormat")
-    fun provideTimeFormat(fragment: SongDetailFragment): String {
-        return fragment.getString(R.string.time_format)
     }
 
     @Provides

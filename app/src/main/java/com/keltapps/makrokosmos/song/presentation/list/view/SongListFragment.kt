@@ -49,7 +49,7 @@ class SongListFragment : DaggerFragment() {
         }
         setUpRecyclerView(binding)
         openSongDetail.observe(this, Observer {
-            navigator.openSongDetail(findNavController(), it!!)
+            navigator.openSongDetail(findNavController(), it)
         })
         return binding.root
     }

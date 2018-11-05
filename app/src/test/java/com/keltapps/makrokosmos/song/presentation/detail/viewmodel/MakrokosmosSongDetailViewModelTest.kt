@@ -1,10 +1,10 @@
 package com.keltapps.makrokosmos.song.presentation.detail.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import android.graphics.drawable.Drawable
 import com.google.common.truth.Truth.assertThat
 import com.keltapps.makrokosmos.audio.client.domain.entity.PlayingState
 import com.keltapps.makrokosmos.audio.client.domain.repository.AudioRepository
+import com.keltapps.makrokosmos.audio.client.presentation.viewmodel.AudioViewModel
 import com.keltapps.makrokosmos.song.data.repository.RxSchedulersOverrideRule
 import com.keltapps.makrokosmos.song.domain.entity.*
 import com.keltapps.makrokosmos.song.domain.iteractor.GetSongPlayingUseCase
@@ -46,6 +46,8 @@ class MakrokosmosSongDetailViewModelTest {
     private lateinit var audioRepository: AudioRepository
     @Mock
     private lateinit var cdRepository: CDRepository
+    @Mock
+    private lateinit var audioViewModel: AudioViewModel
 
     @Mock
     private lateinit var mockSong: Song
@@ -64,7 +66,8 @@ class MakrokosmosSongDetailViewModelTest {
                 AIR_COLOR,
                 FIRE_COLOR,
                 EARTH_COLOR,
-                WATER_COLOR
+                WATER_COLOR,
+                audioViewModel
         )
         with(mockSong) {
             `when`(title).thenReturn(TITLE)
@@ -191,49 +194,5 @@ class MakrokosmosSongDetailViewModelTest {
         sut.initialize(MEDIA_ID)
 
         assertThat(sut.isPlaying.value).isTrue()
-    }
-
-    @Test
-    fun skipToNext_should_callSkipToNext() {
-        sut.skipToNext()
-
-        verify(audioRepository).skipToNext()
-    }
-
-    @Test
-    fun skipToPrevious_should_callSkipToPrevious() {
-        sut.skipToPrevious()
-
-        verify(audioRepository).skipToPrevious()
-    }
-
-    @Test
-    fun playOrPause_should_callPause_when_currentStateIsPlaying() {
-        `when`(audioRepository.getCurrentPlayingState()).thenReturn(PlayingState.Playing)
-        sut.initialize(MEDIA_ID)
-
-        sut.playOrPause()
-
-        verify(audioRepository).pause()
-    }
-
-    @Test
-    fun playOrPause_should_callContinuePlaying_when_currentStateIsPaused() {
-        `when`(audioRepository.getCurrentPlayingState()).thenReturn(PlayingState.Paused)
-        sut.initialize(MEDIA_ID)
-
-        sut.playOrPause()
-
-        verify(audioRepository).continuePlaying()
-    }
-
-    @Test
-    fun playOrPause_should_callContinuePlaying_when_currentStateIsStopped() {
-        `when`(audioRepository.getCurrentPlayingState()).thenReturn(PlayingState.Stopped)
-        sut.initialize(MEDIA_ID)
-
-        sut.playOrPause()
-
-        verify(audioRepository).continuePlaying()
     }
 }

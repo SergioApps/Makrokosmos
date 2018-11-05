@@ -1,10 +1,9 @@
 package com.keltapps.makrokosmos.song.presentation.detail.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import android.graphics.drawable.Drawable
 import com.keltapps.makrokosmos.audio.client.domain.entity.PlayingState
 import com.keltapps.makrokosmos.audio.client.domain.repository.AudioRepository
-import com.keltapps.makrokosmos.base.presentation.SingleLiveEvent
+import com.keltapps.makrokosmos.audio.client.presentation.viewmodel.AudioViewModel
 import com.keltapps.makrokosmos.base.presentation.viewmodel.MakrokosmosBaseViewModel
 import com.keltapps.makrokosmos.song.domain.entity.*
 import com.keltapps.makrokosmos.song.domain.iteractor.GetSongPlayingUseCase
@@ -23,7 +22,8 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
         @Named("airColor") private val airColor: Int,
         @Named("fireColor") private val fireColor: Int,
         @Named("earthColor") private val earthColor: Int,
-        @Named("waterColor") private val waterColor: Int
+        @Named("waterColor") private val waterColor: Int,
+        override val audioViewModel: AudioViewModel
 ) : MakrokosmosBaseViewModel(), SongDetailViewModel {
 
     override val title = MutableLiveData<String>()
@@ -84,21 +84,5 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
 
     private fun handlePlayingState(playingState: PlayingState) {
         isPlaying.value = playingState is PlayingState.Playing
-    }
-
-    override fun playOrPause() {
-        if (audioRepository.getCurrentPlayingState() is PlayingState.Playing) {
-            audioRepository.pause()
-        } else {
-            audioRepository.continuePlaying()
-        }
-    }
-
-    override fun skipToNext() {
-        audioRepository.skipToNext()
-    }
-
-    override fun skipToPrevious() {
-        audioRepository.skipToPrevious()
     }
 }
