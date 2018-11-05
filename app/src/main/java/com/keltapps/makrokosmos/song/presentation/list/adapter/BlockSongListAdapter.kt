@@ -1,13 +1,9 @@
 package com.keltapps.makrokosmos.song.presentation.list.adapter
 
-import androidx.lifecycle.Observer
-import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
 import android.view.*
-import com.keltapps.makrokosmos.BR
-import com.keltapps.makrokosmos.R
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.*
+import com.keltapps.makrokosmos.*
 import com.keltapps.makrokosmos.databinding.ItemSongBinding
 import com.keltapps.makrokosmos.song.domain.entity.Song
 import com.keltapps.makrokosmos.song.presentation.list.factory.SongItemViewModelFactory

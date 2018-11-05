@@ -1,9 +1,6 @@
 package com.keltapps.makrokosmos.song.presentation.list.factory
 
 import com.keltapps.makrokosmos.base.presentation.SingleLiveEvent
-import com.keltapps.makrokosmos.navigation.Navigator
-import com.keltapps.makrokosmos.song.presentation.ZodiacSignViewModel
-import com.keltapps.makrokosmos.song.presentation.list.MakrokosmosZodiacSignViewModel
 import com.keltapps.makrokosmos.song.presentation.list.viewmodel.MakrokosmosSongItemViewModel
 import com.keltapps.makrokosmos.song.presentation.list.viewmodel.SongItemViewModel
 import javax.inject.Inject

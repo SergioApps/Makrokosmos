@@ -1,7 +1,6 @@
 package com.keltapps.makrokosmos.song.presentation.list.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.keltapps.makrokosmos.base.presentation.SingleLiveEvent
 import com.keltapps.makrokosmos.song.domain.entity.*
 import com.keltapps.makrokosmos.song.domain.iteractor.GetCDUseCase
 import com.keltapps.makrokosmos.base.presentation.viewmodel.MakrokosmosBaseViewModel

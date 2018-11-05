@@ -172,6 +172,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
+                android:contentDescription="@string/label_previous"
                 android:onClick="@{()->viewModel.audioViewModel.skipToPrevious()}"
                 android:src="@drawable/ic_skip_previous"
                 android:tint="@android:color/white" />
@@ -201,6 +202,7 @@
                 android:layout_height="36dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
+                android:contentDescription="@string/label_next"
                 android:focusable="true"
                 android:onClick="@{()->viewModel.audioViewModel.skipToNext()}"
                 android:src="@drawable/ic_skip_next"

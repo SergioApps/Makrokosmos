@@ -2,7 +2,6 @@ package com.keltapps.makrokosmos.menu.presentation.viewmodel
 
 import com.keltapps.makrokosmos.base.presentation.SingleLiveEvent
 import com.keltapps.makrokosmos.base.presentation.viewmodel.MakrokosmosBaseViewModel
-import com.keltapps.makrokosmos.navigation.Navigator
 import javax.inject.Inject
 
 class MakrokosmosMenuViewModel @Inject constructor() : MakrokosmosBaseViewModel(), MenuViewModel {
