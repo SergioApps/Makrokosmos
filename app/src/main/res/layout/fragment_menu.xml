@@ -20,6 +20,7 @@
             android:orientation="vertical">
 
             <FrameLayout
+                android:id="@+id/makrokosmosContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="250dp"
                 android:clickable="true"
@@ -53,6 +54,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/aboutContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="250dp"
                 android:clickable="true"
@@ -61,6 +63,7 @@
                 android:onClick="@{()->viewModel.openAbout()}">
 
                 <ImageView
+                    android:id="@+id/imageViewAbout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
@@ -85,6 +88,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/authorContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="250dp"
                 android:clickable="true"
@@ -93,6 +97,7 @@
                 android:onClick="@{()->viewModel.openAuthor()}">
 
                 <ImageView
+                    android:id="@+id/imageViewAuthor"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
@@ -117,6 +122,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/interpreterContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="250dp"
                 android:clickable="true"
@@ -125,6 +131,7 @@
                 android:onClick="@{()->viewModel.openInterpreter()}">
 
                 <ImageView
+                    android:id="@+id/imageViewInterpreter"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"

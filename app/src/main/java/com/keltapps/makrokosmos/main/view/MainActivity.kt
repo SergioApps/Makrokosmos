@@ -50,7 +50,7 @@ class MainActivity : DaggerAppCompatActivity() {
         viewModel.isPlaying.observe(this, Observer {
             findNavController(R.id.my_nav_host_fragment).addOnNavigatedListener { _, destination ->
                 val isSongDetailFragment = destination.id == R.id.songDetailFragment
-                toolbar2.visibility = if (it && !isSongDetailFragment) View.VISIBLE else View.GONE
+                toolbar2?.visibility = if (it && !isSongDetailFragment) View.VISIBLE else View.GONE
             }
         })
     }

@@ -60,6 +60,6 @@ class InfoFragment : DaggerFragment() {
     private fun setImageViewAspectRatio() {
         val displayMetrics = DisplayMetrics()
         this.activity?.windowManager?.defaultDisplay?.getMetrics(displayMetrics)
-        imageView.minimumHeight = (displayMetrics.widthPixels * IMAGE_ASPECT_RATIO).toInt()
+        imageViewInfo?.minimumHeight = (displayMetrics.widthPixels * IMAGE_ASPECT_RATIO).toInt()
     }
 }

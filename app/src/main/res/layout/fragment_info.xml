@@ -31,7 +31,7 @@
                 app:title="@{viewModel.title}">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageViewInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
@@ -55,7 +55,6 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -63,6 +62,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
