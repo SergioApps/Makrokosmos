@@ -1,30 +1,14 @@
 package com.keltapps.makrokosmos.song.presentation.detail.view
 
-import android.animation.Animator
-import android.animation.ValueAnimator
-import android.graphics.Color
-import android.graphics.ColorFilter
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
-import androidx.lifecycle.Observer
-import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.util.Log
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.airbnb.lottie.LottieAnimationView
-import com.airbnb.lottie.LottieProperty
-import com.airbnb.lottie.model.KeyPath
-import com.airbnb.lottie.value.SimpleLottieValueCallback
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.databinding.FragmentSongDetailBinding
 import com.keltapps.makrokosmos.song.presentation.detail.viewmodel.SongDetailViewModel
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_song_detail.*
 import javax.inject.Inject
 
 class SongDetailFragment : DaggerFragment() {
@@ -47,70 +31,9 @@ class SongDetailFragment : DaggerFragment() {
         )
         binding.viewModel = viewModel
         binding.setLifecycleOwner(this)
-        viewModel.initialize(
-                SongDetailFragmentArgs.fromBundle(arguments).songId
-        )
-        viewModel.isPlaying.observe(this, Observer {
-            handlePlayAnimation(it)
-            if (it) {
-                binding.ripple.playAnimation()
-            } else {
-                binding.ripple.pauseAnimation()
-            }
-        })
-
+        viewModel.initialize(SongDetailFragmentArgs.fromBundle(arguments).songId)
         setupActionBar()
-        viewModel.zodiacSignColor.observe(this, Observer { color ->
-            binding.ripple.addValueCallback(
-                    KeyPath("**"),
-                    LottieProperty.COLOR)
-            { color }
-        })
-
-
         return binding.root
-    }
-
-    private fun handlePlayAnimation(isPlaying: Boolean) {
-        playOrPause.removeAllAnimatorListeners()
-        if (isPlaying) {
-            if (!playOrPause.isAnimating) {
-                setPauseToPlayAnimation()
-                playOrPause.addAnimatorListener(object : Animator.AnimatorListener {
-                    override fun onAnimationRepeat(animation: Animator?) {}
-                    override fun onAnimationEnd(animation: Animator?) {
-                        setPlayingAnimation()
-                    }
-
-                    override fun onAnimationCancel(animation: Animator?) {}
-                    override fun onAnimationStart(animation: Animator?) {}
-                })
-            } else {
-                setPlayingAnimation()
-            }
-        } else {
-            setPlayToPauseAnimation()
-        }
-    }
-
-    private fun setPauseToPlayAnimation() {
-        playOrPause.setMinAndMaxProgress(0.285f, 0.857f)
-        playOrPause.repeatCount = 0
-        playOrPause.playAnimation()
-    }
-
-    private fun setPlayingAnimation() {
-        playOrPause.removeAllAnimatorListeners()
-        playOrPause.setMinAndMaxProgress(0.4345f, 0.857f)
-        playOrPause.repeatCount = ValueAnimator.INFINITE
-        playOrPause.playAnimation()
-    }
-
-    private fun setPlayToPauseAnimation() {
-        playOrPause.removeAllAnimatorListeners()
-        playOrPause.setMinAndMaxProgress(0.857f, 1f)
-        playOrPause.repeatCount = 0
-        playOrPause.playAnimation()
     }
 
     private fun setupActionBar() {

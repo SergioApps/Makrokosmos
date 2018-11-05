@@ -38,10 +38,11 @@
                 android:layout_width="@dimen/width"
                 android:layout_height="@dimen/width"
                 android:layout_gravity="center"
-                android:tint="@{viewModel.zodiacSignColor}"
+                app:color="@{viewModel.zodiacSignColor}"
+                app:isPlaying="@{viewModel.isPlaying}"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/ripple_3" />
+                app:lottie_rawRes="@raw/ripple" />
         </FrameLayout>
 
         <ImageView
@@ -190,7 +191,8 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:scaleType="centerCrop"
-                    app:lottie_rawRes="@raw/play_pause" />
+                    app:lottie_rawRes="@raw/play_pause"
+                    app:playPauseAnimation="@{viewModel.isPlaying}" />
             </FrameLayout>
 
             <ImageView
