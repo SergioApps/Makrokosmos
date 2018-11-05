@@ -53,7 +53,6 @@ dependencies {
     //RxJava
     implementation "io.reactivex.rxjava2:rxjava:2.2.3"
     implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
-    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
 
     //Dagger
     implementation "com.google.dagger:dagger-android:$daggerVersion"

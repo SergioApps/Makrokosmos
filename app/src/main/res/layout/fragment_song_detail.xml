@@ -26,42 +26,29 @@
             android:id="@+id/frameLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2">
+            app:layout_constraintVertical_bias="0.25">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_margin="16dp"
-                android:alpha="0.4"
-                android:backgroundTint="@{viewModel.zodiacSignColor}"
-                app:borderWidth="0dp" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/ripple"
+                android:layout_width="@dimen/width"
+                android:layout_height="@dimen/width"
                 android:layout_gravity="center"
-                android:alpha="0.4"
-                android:backgroundTint="@{viewModel.zodiacSignColor}"
-                app:borderWidth="0dp" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:alpha="0.4"
-                android:backgroundTint="@{viewModel.zodiacSignColor}"
-                app:borderWidth="0dp" />
-
+                android:tint="@{viewModel.zodiacSignColor}"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/ripple_3" />
         </FrameLayout>
 
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
+            android:contentDescription="@string/contentDescription_zodiacSign"
             app:imageDrawable="@{viewModel.zodiacSignViewModel.zodiacSign}"
             app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
             app:layout_constraintEnd_toEndOf="@+id/frameLayout"
@@ -73,15 +60,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:max="@{viewModel.mediaSeekBarViewModel.maxValue}"
             android:onStopTrackingTouch="@{() -> viewModel.mediaSeekBarViewModel.stopTracking()}"
             android:onStartTrackingTouch="@{() -> viewModel.mediaSeekBarViewModel.startTracking()}"
             android:progress="@={viewModel.mediaSeekBarViewModel.progress}"
+            app:layout_constraintBottom_toTopOf="@+id/position"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+            app:layout_constraintVertical_bias="0.71000004" />
 
         <LinearLayout
             android:id="@+id/position"
@@ -90,6 +79,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekBar">
@@ -113,13 +103,14 @@
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="21dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:gravity="center"
             android:text="@{viewModel.title}"
             android:textAppearance="@style/AppTheme.TextAppearance.Title"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/position"
@@ -135,9 +126,11 @@
             android:gravity="center"
             android:text="@{viewModel.subTitle}"
             android:textAppearance="@style/AppTheme.TextAppearance.SubTitle"
+            app:layout_constraintBottom_toTopOf="@+id/textView5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintVertical_bias="0.0"
             tools:text="SubTitle" />
 
         <TextView
@@ -156,16 +149,20 @@
             tools:text="Zodiac Sign name" />
 
         <LinearLayout
+            android:id="@+id/controls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
             android:gravity="center"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5">
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintVertical_bias="0.7">
 
             <ImageView
                 android:id="@+id/skipPrevious"
@@ -181,9 +178,11 @@
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:onClick="@{()->viewModel.playOrPause()}">
 
                 <com.airbnb.lottie.LottieAnimationView

@@ -2,14 +2,24 @@ package com.keltapps.makrokosmos.song.presentation.detail.view
 
 import android.animation.Animator
 import android.animation.ValueAnimator
+import android.graphics.Color
+import android.graphics.ColorFilter
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import androidx.lifecycle.Observer
 import androidx.databinding.DataBindingUtil
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
+import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieProperty
+import com.airbnb.lottie.model.KeyPath
+import com.airbnb.lottie.value.SimpleLottieValueCallback
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.databinding.FragmentSongDetailBinding
 import com.keltapps.makrokosmos.song.presentation.detail.viewmodel.SongDetailViewModel
@@ -40,33 +50,47 @@ class SongDetailFragment : DaggerFragment() {
         viewModel.initialize(
                 SongDetailFragmentArgs.fromBundle(arguments).songId
         )
-        handlePlayAnimation()
+        viewModel.isPlaying.observe(this, Observer {
+            handlePlayAnimation(it)
+            if (it) {
+                binding.ripple.playAnimation()
+            } else {
+                binding.ripple.pauseAnimation()
+            }
+        })
+
         setupActionBar()
+        viewModel.zodiacSignColor.observe(this, Observer { color ->
+            binding.ripple.addValueCallback(
+                    KeyPath("**"),
+                    LottieProperty.COLOR)
+            { color }
+        })
+
+
         return binding.root
     }
 
-    private fun handlePlayAnimation() {
-        viewModel.isPlaying.observe(this, Observer { isPlaying ->
-            playOrPause.removeAllAnimatorListeners()
-            if (isPlaying) {
-                if (!playOrPause.isAnimating) {
-                    setPauseToPlayAnimation()
-                    playOrPause.addAnimatorListener(object : Animator.AnimatorListener {
-                        override fun onAnimationRepeat(animation: Animator?) {}
-                        override fun onAnimationEnd(animation: Animator?) {
-                            setPlayingAnimation()
-                        }
+    private fun handlePlayAnimation(isPlaying: Boolean) {
+        playOrPause.removeAllAnimatorListeners()
+        if (isPlaying) {
+            if (!playOrPause.isAnimating) {
+                setPauseToPlayAnimation()
+                playOrPause.addAnimatorListener(object : Animator.AnimatorListener {
+                    override fun onAnimationRepeat(animation: Animator?) {}
+                    override fun onAnimationEnd(animation: Animator?) {
+                        setPlayingAnimation()
+                    }
 
-                        override fun onAnimationCancel(animation: Animator?) {}
-                        override fun onAnimationStart(animation: Animator?) {}
-                    })
-                } else {
-                    setPlayingAnimation()
-                }
+                    override fun onAnimationCancel(animation: Animator?) {}
+                    override fun onAnimationStart(animation: Animator?) {}
+                })
             } else {
-                setPlayToPauseAnimation()
+                setPlayingAnimation()
             }
-        })
+        } else {
+            setPlayToPauseAnimation()
+        }
     }
 
     private fun setPauseToPlayAnimation() {
@@ -96,6 +120,5 @@ class SongDetailFragment : DaggerFragment() {
             supportActionBar?.title = ""
         }
         binding.toolbar.setNavigationOnClickListener { binding.root.findNavController().navigateUp() }
-
     }
 }
