@@ -80,7 +80,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintBottom_toTopOf="@+id/textViewTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekBar">
@@ -94,7 +94,7 @@
                 tools:text="0:00" />
 
             <TextView
-                android:id="@+id/duration"
+                android:id="@+id/songDetailDuration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -104,7 +104,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textViewTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -129,15 +129,15 @@
             android:gravity="center"
             android:text="@{viewModel.subTitle}"
             android:textAppearance="@style/AppTheme.TextAppearance.SubTitle"
-            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintBottom_toTopOf="@+id/zodiacSignName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
             app:layout_constraintVertical_bias="0.0"
             tools:text="SubTitle" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/zodiacSignName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -164,7 +164,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintTop_toBottomOf="@+id/zodiacSignName"
             app:layout_constraintVertical_bias="0.7">
 
             <ImageView
@@ -190,7 +190,7 @@
                 android:onClick="@{()->viewModel.audioViewModel.playOrPause()}">
 
                 <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/playOrPause"
+                    android:id="@+id/playOrPauseSongDetail"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:scaleType="centerCrop"

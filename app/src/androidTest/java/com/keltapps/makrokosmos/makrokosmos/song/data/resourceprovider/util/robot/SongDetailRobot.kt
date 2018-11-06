@@ -4,7 +4,7 @@ import com.keltapps.makrokosmos.R
 
 class SongDetailRobot : BaseTestRobot() {
     private fun matchSongTitle(textId: Int) {
-        matchText(R.id.textView3, textId)
+        matchText(R.id.textViewTitle, textId)
     }
 
     private fun matchSongSubTitle(textId: Int) {
@@ -12,11 +12,11 @@ class SongDetailRobot : BaseTestRobot() {
     }
 
     private fun matchZodiacName(textId: Int) {
-        matchText(R.id.textView5, textId)
+        matchText(R.id.zodiacSignName, textId)
     }
 
     private fun matchDuration(text: String) {
-        matchText(R.id.duration, text)
+        matchText(R.id.songDetailDuration, text)
     }
 
     fun matchVolume1Song1(){
@@ -70,7 +70,7 @@ class SongDetailRobot : BaseTestRobot() {
     }
 
     fun clickPlayOrPause() {
-        clickButton(R.id.playOrPause)
+        clickButton(R.id.playOrPauseSongDetail)
     }
 
     fun clickSkipToNext() {

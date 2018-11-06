@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.audio.client.domain.repository.AudioRepository
@@ -40,7 +41,7 @@ class MainActivity : DaggerAppCompatActivity() {
     private fun handleOpenSongDetails() {
         viewModel.openSongDetail.observe(this, Observer {
             navigator.openSongDetail(
-                    findNavController(R.id.my_nav_host_fragment),
+                    navController(),
                     it
             )
         })
@@ -48,12 +49,19 @@ class MainActivity : DaggerAppCompatActivity() {
 
     private fun handleToolbarPlayVisibility() {
         viewModel.isPlaying.observe(this, Observer {
-            findNavController(R.id.my_nav_host_fragment).addOnNavigatedListener { _, destination ->
-                val isSongDetailFragment = destination.id == R.id.songDetailFragment
-                toolbar2?.visibility = if (it && !isSongDetailFragment) View.VISIBLE else View.GONE
-            }
+            shouldShowPlayToolbar(it, navController().currentDestination?.id ?: 0)
         })
+        navController().addOnNavigatedListener { _, destination ->
+            shouldShowPlayToolbar(viewModel.isPlaying.value ?: false, destination.id)
+        }
     }
+
+    private fun shouldShowPlayToolbar(isPlaying: Boolean, currentDestination: Int) {
+        val isSongDetailFragment = currentDestination == R.id.songDetailFragment
+        toolbar2?.visibility = if (isPlaying && !isSongDetailFragment) View.VISIBLE else View.GONE
+    }
+
+    private fun navController() = findNavController(R.id.my_nav_host_fragment)
     //    window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
     override fun onStart() {
