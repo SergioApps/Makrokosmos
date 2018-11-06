@@ -1,19 +1,20 @@
-package com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.base
+package com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.matcher
 
 import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
-import org.hamcrest.*
+import androidx.test.espresso.matcher.BoundedMatcher
+import org.hamcrest.Description
 
-class DrawableMatcher(private val expectedId: Int) : TypeSafeMatcher<View>() {
+class DrawableMatcher(private val expectedId: Int) : BoundedMatcher<View, ImageView>(ImageView::class.java) {
 
     override fun describeTo(description: Description?) {}
 
-    override fun matchesSafely(item: View?): Boolean {
+    override fun matchesSafely(item: ImageView?): Boolean {
         val resources = item?.context?.resources
         val expectedDrawable = resources?.getDrawable(expectedId)
-        return (item as? ImageView)?.drawable?.bitmap()?.sameAs(expectedDrawable?.bitmap()) ?: false
+        return item?.drawable?.bitmap()?.sameAs(expectedDrawable?.bitmap()) ?: false
     }
 
     private fun Drawable.bitmap(): Bitmap {

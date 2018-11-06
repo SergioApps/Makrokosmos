@@ -18,15 +18,16 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="?android:attr/colorPrimary" />
+            android:background="?android:attr/colorPrimary"
+            app:title="@{viewModel.title}"/>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:background="@color/colorPrimaryDark">
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"

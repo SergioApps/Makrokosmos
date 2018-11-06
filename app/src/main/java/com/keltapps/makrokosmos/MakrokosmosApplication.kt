@@ -18,8 +18,8 @@ class MakrokosmosApplication : Application(), HasActivityInjector, HasServiceInj
 
     override fun onCreate() {
         super.onCreate()
-        val appComponent = createAppComponent()
-        appComponent.inject(this)
+        createAppComponent()
+                .inject(this)
     }
 
     private fun createAppComponent(): AppComponent {

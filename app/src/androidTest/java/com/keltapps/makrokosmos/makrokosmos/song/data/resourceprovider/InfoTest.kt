@@ -3,7 +3,8 @@ package com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.keltapps.makrokosmos.main.view.MainActivity
-import com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.robot.*
+import com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.*
+import com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.robot.*
 import org.junit.*
 import org.junit.runner.RunWith
 
@@ -14,13 +15,14 @@ class InfoTest {
     var activityRule: ActivityTestRule<MainActivity> = ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun testAboutInfo() {
+    fun testAboutInfoPortrait() {
+        activityRule.setPortrait()
         menu {
             matchMenu()
             clickAbout()
         }
         info {
-            matchAbout()
+            matchAboutPortrait()
             pressUp()
         }
         menu {
@@ -29,13 +31,30 @@ class InfoTest {
     }
 
     @Test
-    fun testAuthorInfo() {
+    fun testAboutInfoLandscape() {
+        activityRule.setLandscape()
+        menu {
+            matchMenu()
+            clickAbout()
+        }
+        info {
+            matchAboutLandscape()
+            pressUp()
+        }
+        menu {
+            matchMenu()
+        }
+    }
+
+    @Test
+    fun testAuthorInfoPortrait() {
+        activityRule.setPortrait()
         menu {
             matchMenu()
             clickAuthor()
         }
         info {
-            matchAuthor()
+            matchAuthorPortrait()
             pressUp()
         }
         menu {
@@ -44,13 +63,46 @@ class InfoTest {
     }
 
     @Test
-    fun testInterpreterInfo() {
+    fun testAuthorInfoLandscape() {
+        activityRule.setLandscape()
+        menu {
+            matchMenu()
+            clickAuthor()
+        }
+        info {
+            matchAuthorLandscape()
+            pressUp()
+        }
+        menu {
+            matchMenu()
+        }
+    }
+
+    @Test
+    fun testInterpreterInfoPortrait() {
+        activityRule.setPortrait()
         menu {
             matchMenu()
             clickInterpreter()
         }
         info {
-            matchInterpreter()
+            matchInterpreterPortrait()
+            pressUp()
+        }
+        menu {
+            matchMenu()
+        }
+    }
+
+    @Test
+    fun testInterpreterInfoLandscape() {
+        activityRule.setLandscape()
+        menu {
+            matchMenu()
+            clickInterpreter()
+        }
+        info {
+            matchInterpreterLandscape()
             pressUp()
         }
         menu {

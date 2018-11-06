@@ -122,7 +122,7 @@ class MakrokosmosCDRepositoryTest {
         `when`(resourceProvider.getString(R.string.volumeITwelfthSongTitle)).thenReturn(volumeITwelfthSongTitle)
         `when`(resourceProvider.getString(R.string.volumeITwelfthSongSubTitle)).thenReturn(volumeITwelfthSongSubTitle)
 
-        `when`(resourceProvider.getString(R.string.volumeII)).thenReturn(volumeIITitle)
+        `when`(resourceProvider.getString(R.string.volumeIITitle)).thenReturn(volumeIITitle)
         `when`(resourceProvider.getString(R.string.volumeIIFirstSongTitle)).thenReturn(volumeIIFirstSongTitle)
         `when`(resourceProvider.getString(R.string.volumeIIFirstSongSubTitle)).thenReturn(volumeIIFirstSongSubTitle)
         `when`(resourceProvider.getString(R.string.volumeIISecondSongTitle)).thenReturn(volumeIISecondSongTitle)

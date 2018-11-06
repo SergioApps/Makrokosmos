@@ -86,6 +86,7 @@
             app:layout_constraintTop_toBottomOf="@+id/seekBar">
 
             <TextView
+                android:id="@+id/progress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.mediaSeekBarViewModel.progressFormatted}"
@@ -93,6 +94,7 @@
                 tools:text="0:00" />
 
             <TextView
+                android:id="@+id/duration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -171,8 +173,8 @@
                 android:layout_height="36dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
-                android:focusable="true"
                 android:contentDescription="@string/label_previous"
+                android:focusable="true"
                 android:onClick="@{()->viewModel.audioViewModel.skipToPrevious()}"
                 android:src="@drawable/ic_skip_previous"
                 android:tint="@android:color/white" />

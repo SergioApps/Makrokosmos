@@ -1,18 +1,25 @@
-package com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.base
+package com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.robot
 
-import androidx.test.espresso.Espresso.*
+import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
-import org.hamcrest.Matchers.*
+import com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.matcher.*
+import org.hamcrest.Matchers.allOf
+
 
 open class BaseTestRobot {
 
     fun clickButton(resId: Int): ViewInteraction = onView((withId(resId))).perform(ViewActions.click())
+
+    fun clickButtonWithText(text: Int): ViewInteraction = onView((withText(text))).perform(ViewActions.click())
 
     fun matchText(resId: Int, text: String): ViewInteraction = matchText(view(resId), text)
 
@@ -40,10 +47,25 @@ open class BaseTestRobot {
         return viewInteraction.perform(scrollTo())
     }
 
+    fun scrollToPositionRecyclerView(resId: Int, position: Int): ViewInteraction {
+        return onView(allOf(withId(resId), isDisplayed())).perform(scrollToPosition<RecyclerView.ViewHolder>(position))
+    }
+
     fun clickListItem(listRes: Int, position: Int) {
-        onData(anything())
-                .inAdapterView(allOf(withId(listRes)))
-                .atPosition(position).perform(ViewActions.click())
+        onView(allOf(withId(listRes), isDisplayed()))
+                .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(position, click()))
+    }
+
+    fun matchCollapsingToolbarTitle(resId: Int, text: Int): ViewInteraction {
+        return view(resId).check(matches(CollapsingToolbarTitleMatcher(text)))
+    }
+
+    fun matchToolbarTitle(resId: Int, text: Int): ViewInteraction {
+        return view(resId).check(matches(ToolbarTitleMatcher(text)))
+    }
+
+    fun matchTabLayout(resId: Int, textIdList: List<Int>): ViewInteraction {
+        return view(resId).check(matches(TabLayoutMatcher(textIdList)))
     }
 
     fun pressUp(): ViewInteraction {

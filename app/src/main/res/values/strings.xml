@@ -44,7 +44,7 @@
     <string name="volumeITwelfthSongTitle" translatable="false">12.- Spiral Galaxy</string>
     <string name="volumeITwelfthSongSubTitle" translatable="false">[SYMBOL]</string>
 
-    <string name="volumeII" translatable="false">Volume two</string>
+    <string name="volumeIITitle" translatable="false">Volume two</string>
     <string name="volumeIIFirstSongTitle" translatable="false">1.- Morning Music</string>
     <string name="volumeIIFirstSongSubTitle" translatable="false">Genesis II</string>
     <string name="volumeIISecondSongTitle" translatable="false">2.- The Mystic Chord</string>

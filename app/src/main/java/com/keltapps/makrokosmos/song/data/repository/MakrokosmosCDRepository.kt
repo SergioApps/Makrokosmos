@@ -219,7 +219,7 @@ class MakrokosmosCDRepository @Inject constructor(
                 durationInSeconds = 209
         )
         return Volume(
-                title = resourceProvider.getString(R.string.volumeII),
+                title = resourceProvider.getString(R.string.volumeIITitle),
                 songList = listSong
         )
     }

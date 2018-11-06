@@ -44,6 +44,7 @@
                     android:background="@color/main_makrokosmos" />
 
                 <TextView
+                    android:id="@+id/textViewMakrokosmos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -78,6 +79,7 @@
                     android:background="@color/main_about" />
 
                 <TextView
+                    android:id="@+id/textViewAbout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -112,6 +114,7 @@
                     android:background="@color/main_author" />
 
                 <TextView
+                    android:id="@+id/textViewAuthor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -146,6 +149,7 @@
                     android:background="@color/main_interpreter" />
 
                 <TextView
+                    android:id="@+id/textViewInterpreter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
