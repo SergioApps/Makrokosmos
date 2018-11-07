@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -20,16 +21,131 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@+id/toolbarInclude"
+            app:layout_constraintBottom_toTopOf="@+id/playBarToolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/nav_graph" />
 
-        <include
-            android:id="@+id/toolbarInclude"
-            layout="@layout/toolbar_play"
-            app:viewModel="@{viewModel}" />
+        <Toolbar
+            android:id="@+id/playBarToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_nav_host_fragment"
+            tools:layout_editor_absoluteX="0dp"
+            tools:showIn="@layout/activity_main">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatSeekBar
+                    android:id="@+id/playBarSeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:max="@{viewModel.mediaSeekBarViewModel.maxValue}"
+                    android:progress="@={viewModel.mediaSeekBarViewModel.progress}"
+                    android:thumbTint="@android:color/transparent"
+                    app:layout_constraintBottom_toTopOf="@+id/playBarTextContainer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/playBarOpen"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="@string/contentDescription_expand"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/playBarProgress"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/playBarSeekBar" />
+
+                <TextView
+                    android:id="@+id/playBarProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.mediaSeekBarViewModel.progressFormatted}"
+                    android:textAppearance="@style/AppTheme.TextAppearance.Body"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/playBarTextContainer"
+                    app:layout_constraintStart_toEndOf="@+id/playBarOpen"
+                    app:layout_constraintTop_toBottomOf="@+id/playBarSeekBar"
+                    tools:text="0:00" />
+
+                <LinearLayout
+                    android:id="@+id/playBarTextContainer"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/playBarDuration"
+                    app:layout_constraintStart_toEndOf="@+id/playBarProgress"
+                    app:layout_constraintTop_toBottomOf="@+id/playBarSeekBar">
+
+                    <TextView
+                        android:id="@+id/playBarTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@{viewModel.title}"
+                        android:textAppearance="@style/AppTheme.TextAppearance.Title"
+                        tools:text="Title" />
+
+                    <TextView
+                        android:id="@+id/playBarZodiacName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@{viewModel.zodiacSignName}"
+                        android:textAppearance="@style/AppTheme.TextAppearance.Body"
+                        tools:text="Zodiac Sign" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/playBarDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.mediaSeekBarViewModel.duration}"
+                    android:textAppearance="@style/AppTheme.TextAppearance.Body"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/playBarPlayPauseContainer"
+                    app:layout_constraintStart_toEndOf="@+id/playBarTextContainer"
+                    app:layout_constraintTop_toBottomOf="@+id/playBarSeekBar"
+                    tools:text="3:23" />
+
+                <FrameLayout
+                    android:id="@+id/playBarPlayPauseContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="@{()->viewModel.audioViewModel.playOrPause()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.38"
+                    app:layout_constraintStart_toEndOf="@+id/playBarDuration"
+                    app:layout_constraintTop_toBottomOf="@+id/playBarSeekBar">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/playBarPlayOrPause"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:scaleType="centerCrop"
+                        app:lottie_rawRes="@raw/play_pause"
+                        app:playPauseAnimation="@{viewModel.isPlaying}" />
+                </FrameLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </Toolbar>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

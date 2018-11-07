@@ -14,6 +14,13 @@ class SongTest {
     @get:Rule
     var activityRule: ActivityTestRule<MainActivity> = ActivityTestRule(MainActivity::class.java)
 
+    private lateinit var mainRobot: MainRobot
+
+    @Before
+    fun setUp() {
+        mainRobot = MainRobot(activityRule.activity)
+    }
+
     @Test
     fun testSongListDisplayBothVolumesPortrait() {
         activityRule.setPortrait()
@@ -69,13 +76,13 @@ class SongTest {
         }
         songDetail {
             matchVolume1Song3()
-            checkMusicIsPlaying()
+            mainRobot.checkMusicIsPlaying()
             clickPlayOrPause()
-            checkMusicIsNotPlaying()
+            mainRobot.checkMusicIsNotPlaying()
             clickSkipToNext()
             matchVolume1Song4()
             pressUp()
-            checkMusicIsPlaying()
+            mainRobot.checkMusicIsPlaying()
         }
         songList {
             matchHeader()
@@ -107,17 +114,22 @@ class SongTest {
         }
         songDetail {
             matchVolume1Song12()
-            checkMusicIsPlaying()
+            mainRobot.checkMusicIsPlaying()
             clickSkipToNext()
             matchVolume2Song1()
             clickSkipToPrevious()
             matchVolume1Song12()
             pressUp()
-            checkMusicIsPlaying()
+            mainRobot.checkMusicIsPlaying()
         }
         songList {
             matchHeader()
             matchVolume1()
+        }
+        playBar {
+            checkPlayBarIsDisplayed()
+            clickPlayOrPause()
+            mainRobot.checkMusicIsNotPlaying()
         }
     }
 
@@ -146,17 +158,85 @@ class SongTest {
         }
         songDetail {
             matchVolume2Song12()
-            checkMusicIsPlaying()
+            mainRobot.checkMusicIsPlaying()
             clickSkipToNext()
             matchVolume1Song1()
             clickSkipToPrevious()
             matchVolume2Song12()
             pressUp()
-            checkMusicIsPlaying()
+        }
+        songList {
+            mainRobot.checkMusicIsPlaying()
+            matchHeader()
+            matchVolume2()
+        }
+        playBar {
+            checkPlayBarIsDisplayed()
+            clickPlayOrPause()
+            mainRobot.checkMusicIsNotPlaying()
+        }
+    }
+
+    @Test
+    fun testShowPlayBarPortrait() {
+        activityRule.setPortrait()
+        testShowPlayBar()
+    }
+
+    @Test
+    fun testShowPlayBarLandscape() {
+        activityRule.setLandscape()
+        testShowPlayBar()
+    }
+
+    private fun testShowPlayBar() {
+        menu {
+            matchMenu()
+            clickMakrokosmos()
         }
         songList {
             matchHeader()
-            matchVolume2()
+            clickSong(11)
+        }
+        songDetail {
+            mainRobot.checkMusicIsPlaying()
+            pressUp()
+        }
+        playBar {
+            checkPlayBarIsDisplayed()
+        }
+        songList {
+            mainRobot.checkMusicIsPlaying()
+            matchHeader()
+            pressUp()
+        }
+        playBar {
+            checkPlayBarIsDisplayed()
+        }
+        menu {
+            matchMenu()
+            clickAbout()
+        }
+        playBar {
+            checkPlayBarIsDisplayed()
+            pressUp()
+        }
+        menu {
+            matchMenu()
+            clickAuthor()
+        }
+        playBar {
+            checkPlayBarIsDisplayed()
+            pressUp()
+        }
+        menu {
+            matchMenu()
+            clickInterpreter()
+        }
+        playBar {
+            checkPlayBarIsDisplayed()
+            clickPlayOrPause()
+            mainRobot.checkMusicIsNotPlaying()
         }
     }
 }

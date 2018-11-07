@@ -282,8 +282,8 @@ class SongListRobot : BaseTestRobot() {
     }
 
     fun clickSong(songNumber: Int) {
-        //scrollToPositionRecyclerView(R.id.recyclerView, songNumber - 1)
-        scrollToPositionRecyclerView2(R.id.recyclerView, R.string.volumeITwelfthSongTitle)
+        swipeUp(R.id.coordinatorLayout)
+        scrollToPositionRecyclerView(R.id.recyclerView, songNumber - 1)
         clickListItem(R.id.recyclerView, songNumber - 1)
     }
 }

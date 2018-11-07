@@ -19,7 +19,7 @@ class SongDetailRobot : BaseTestRobot() {
         matchText(R.id.songDetailDuration, text)
     }
 
-    fun matchVolume1Song1(){
+    fun matchVolume1Song1() {
         matchSongTitle(R.string.volumeIFirstSongTitle)
         matchSongSubTitle(R.string.volumeIFirstSongSubTitle)
         matchZodiacName(R.string.zodiacSign_cancer)
@@ -61,13 +61,6 @@ class SongDetailRobot : BaseTestRobot() {
         matchDuration("3:29")
     }
 
-    fun checkMusicIsPlaying() {
-        //assert(MakrokosmosApplication.appComponent.provideMediaPlayerAdapter().isPlaying())
-    }
-
-    fun checkMusicIsNotPlaying() {
-        //assert(!MakrokosmosApplication.appComponent.provideMediaPlayerAdapter().isPlaying())
-    }
 
     fun clickPlayOrPause() {
         clickButton(R.id.playOrPauseSongDetail)

@@ -8,14 +8,11 @@ import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.matcher.*
-import com.schibsted.spain.barista.interaction.BaristaListInteractions.scrollListToPosition
 import org.hamcrest.Matchers.allOf
-import java.lang.Exception
 
 
 open class BaseTestRobot {
@@ -50,28 +47,12 @@ open class BaseTestRobot {
         return viewInteraction.perform(scrollTo())
     }
 
-    fun scrollToPositionRecyclerView(resId: Int, position: Int) {
-        //return onView(allOf(withId(resId), isDisplayed())).perform(scrollToPosition<RecyclerView.ViewHolder>(position))
-        scrollListToPosition(resId, position)
+    fun scrollToPositionRecyclerView(resId: Int, position: Int): ViewInteraction {
+        return onView(allOf(withId(resId), isDisplayed())).perform(scrollToPosition<RecyclerView.ViewHolder>(position))
     }
 
-    fun scrollToPositionRecyclerView2(resId: Int, text: Int) {
-        /* return onView(allOf(withId(resId), isDisplayed()))
-                 .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(position, NestedScrollToAction.scrollTo()))*/
-        //return onView(withText(text)).perform(NestedScrollToAction.scrollTo())
-        //scrollLToView(text)
-        var result = true
-        while (result) {
-            result = try {
-                onView(withText(text)).check(matches(isDisplayed()))
-                true
-            } catch (e: Exception) {
-                onView(allOf(withId(resId), isDisplayed())).perform(ViewActions.swipeUp())
-                false
-            }
-        }
-
-
+    fun swipeUp(resId: Int): ViewInteraction {
+        return onView(allOf(withId(resId), isDisplayed())).perform(swipeUp())
     }
 
     fun clickListItem(listRes: Int, position: Int) {
@@ -93,5 +74,9 @@ open class BaseTestRobot {
 
     fun pressUp(): ViewInteraction {
         return onView(withContentDescription("Navigate up")).perform(click())
+    }
+
+    fun viewIsDisplayed(resId: Int): ViewInteraction {
+        return view(resId).check(matches(isDisplayed()))
     }
 }
