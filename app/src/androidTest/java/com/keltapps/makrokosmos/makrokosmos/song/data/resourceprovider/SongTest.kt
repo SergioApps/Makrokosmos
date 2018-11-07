@@ -99,7 +99,7 @@ class SongTest {
     @Test
     fun testSongListOpenSongDetailMoveBetweenVolumeLandscape() {
         activityRule.setLandscape()
-        testSongListOpenSongDetail()
+        testSongListOpenSongDetailMoveBetweenVolume()
     }
 
     private fun testSongListOpenSongDetailMoveBetweenVolume() {
