@@ -48,7 +48,7 @@ class SongListParentFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tabLayout.getTabAt(savedInstanceState?.getInt(SELECTED_TAB) ?: 0)?.select()
-        coordinatorLayout.scrollY = savedInstanceState?.getInt(STATE_SCROLL) ?: 0
+        coordinatorLayout?.scrollY = savedInstanceState?.getInt(STATE_SCROLL) ?: 0
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

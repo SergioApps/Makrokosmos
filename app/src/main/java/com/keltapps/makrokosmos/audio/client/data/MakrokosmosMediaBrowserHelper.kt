@@ -10,9 +10,10 @@ import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
+import javax.inject.Named
 
 class MakrokosmosMediaBrowserHelper @Inject constructor(
-        private val context: Context,
+        @Named("applicationContext") private val context: Context,
         private val mediaBrowserServiceClass: Class<out MediaBrowserServiceCompat>
 ) : MediaBrowserHelper {
 

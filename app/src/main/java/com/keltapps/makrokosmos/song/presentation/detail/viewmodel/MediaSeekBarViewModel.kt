@@ -4,7 +4,7 @@ import androidx.lifecycle.*
 import com.keltapps.makrokosmos.song.domain.entity.Song
 
 interface MediaSeekBarViewModel {
-    fun initialize(song: Song)
+    fun initialize()
     val progress: MutableLiveData<Int>
     val maxValue: LiveData<Int>
     val progressFormatted: LiveData<String>

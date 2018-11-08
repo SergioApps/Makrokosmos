@@ -44,6 +44,7 @@ class SongListRobot : BaseTestRobot() {
 
     private fun matchVolume1Song1() {
         scrollToPositionRecyclerView(R.id.recyclerView, 0)
+        Thread.sleep(1000)
         matchRecyclerViewItem(
                 0,
                 R.string.volumeIFirstSongTitle,
@@ -62,6 +63,7 @@ class SongListRobot : BaseTestRobot() {
 
     private fun matchVolume1Song3() {
         scrollToPositionRecyclerView(R.id.recyclerView, 2)
+        Thread.sleep(1000)
         matchRecyclerViewItem(
                 2,
                 R.string.volumeIThirdSongTitle,
@@ -80,6 +82,7 @@ class SongListRobot : BaseTestRobot() {
 
     private fun matchVolume1Song5() {
         scrollToPositionRecyclerView(R.id.recyclerView, 4)
+        Thread.sleep(1000)
         matchRecyclerViewItem(
                 4,
                 R.string.volumeIFifthSongTitle,
@@ -98,6 +101,7 @@ class SongListRobot : BaseTestRobot() {
 
     private fun matchVolume1Song7() {
         scrollToPositionRecyclerView(R.id.recyclerView, 6)
+        Thread.sleep(1000)
         matchRecyclerViewItem(
                 6,
                 R.string.volumeISeventhSongTitle,
@@ -116,6 +120,7 @@ class SongListRobot : BaseTestRobot() {
 
     private fun matchVolume1Song9() {
         scrollToPositionRecyclerView(R.id.recyclerView, 8)
+        Thread.sleep(1000)
         matchRecyclerViewItem(
                 8,
                 R.string.volumeINinthSongTitle,
@@ -134,6 +139,7 @@ class SongListRobot : BaseTestRobot() {
 
     private fun matchVolume1Song11() {
         scrollToPositionRecyclerView(R.id.recyclerView, 10)
+        Thread.sleep(1000)
         matchRecyclerViewItem(
                 10,
                 R.string.volumeIEleventhSongTitle,
@@ -167,6 +173,7 @@ class SongListRobot : BaseTestRobot() {
 
     private fun matchVolume2Song1() {
         scrollToPositionRecyclerView(R.id.recyclerView, 0)
+        Thread.sleep(1000)
         matchRecyclerViewItem(
                 0,
                 R.string.volumeIIFirstSongTitle,
@@ -185,6 +192,7 @@ class SongListRobot : BaseTestRobot() {
 
     private fun matchVolume2Song3() {
         scrollToPositionRecyclerView(R.id.recyclerView, 2)
+        Thread.sleep(1000)
         matchRecyclerViewItem(
                 2,
                 R.string.volumeIIThirdSongTitle,
@@ -203,6 +211,7 @@ class SongListRobot : BaseTestRobot() {
 
     private fun matchVolume2Song5() {
         scrollToPositionRecyclerView(R.id.recyclerView, 4)
+        Thread.sleep(1000)
         matchRecyclerViewItem(
                 4,
                 R.string.volumeIIFifthSongTitle,
@@ -221,6 +230,7 @@ class SongListRobot : BaseTestRobot() {
 
     private fun matchVolume2Song7() {
         scrollToPositionRecyclerView(R.id.recyclerView, 6)
+        Thread.sleep(1000)
         matchRecyclerViewItem(
                 6,
                 R.string.volumeIISeventhSongTitle,
@@ -239,6 +249,7 @@ class SongListRobot : BaseTestRobot() {
 
     private fun matchVolume2Song9() {
         scrollToPositionRecyclerView(R.id.recyclerView, 8)
+        Thread.sleep(1000)
         matchRecyclerViewItem(
                 8,
                 R.string.volumeIINinthSongTitle,
@@ -257,6 +268,7 @@ class SongListRobot : BaseTestRobot() {
 
     private fun matchVolume2Song11() {
         scrollToPositionRecyclerView(R.id.recyclerView, 10)
+        Thread.sleep(1000)
         matchRecyclerViewItem(
                 10,
                 R.string.volumeIIEleventhSongTitle,

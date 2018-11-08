@@ -27,10 +27,9 @@ class MakrokosmosMediaSeekBarViewModel @Inject constructor(
     override val progressFormatted: LiveData<String> = Transformations.map(progress) { it -> (it / 1000).formatTime() }
     override val duration = MutableLiveData<String>()
 
-    override fun initialize(song: Song) {
+    override fun initialize() {
         valueAnimator.interpolator = LinearInterpolator()
         valueAnimator.addUpdateListener(this)
-        duration.value = song.durationInSeconds.formatTime()
         subscribeToSongPlaying()
         subscribeToPlayingState()
     }

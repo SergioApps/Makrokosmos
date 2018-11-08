@@ -17,6 +17,7 @@ import com.keltapps.makrokosmos.navigation.*
 import com.keltapps.makrokosmos.song.presentation.detail.viewmodel.*
 import dagger.*
 import javax.inject.Named
+import javax.inject.Singleton
 
 @Module
 class MainModule {
@@ -24,27 +25,6 @@ class MainModule {
     @Provides
     @ActivityScope
     fun provideContext(activity: MainActivity): Context = activity
-
-
-    @Provides
-    @ActivityScope
-    fun provideMediaBrowserHelper(helper: MakrokosmosMediaBrowserHelper): MediaBrowserHelper {
-        return helper
-    }
-
-    @Provides
-    @ActivityScope
-    fun provideMediaBrowserServiceClass(): Class<out MediaBrowserServiceCompat> {
-        return MusicService::class.java
-    }
-
-    @Provides
-    @ActivityScope
-    fun provideAudioRepository(repository: MakrokosmosAudioRepository): AudioRepository = repository
-
-    @Provides
-    @ActivityScope
-    fun providePlayingStateMapper(mapper: MakrokosmosPlayingStateMapper): PlayingStateMapper = mapper
 
     @Provides
     @ActivityScope
@@ -59,21 +39,6 @@ class MainModule {
     @Provides
     @ActivityScope
     fun provideAudioViewModel(viewModel: MakrokosmosAudioViewModel): AudioViewModel = viewModel
-
-    @Provides
-    fun provideMediaSeekBarViewModel(viewModel: MakrokosmosMediaSeekBarViewModel): MediaSeekBarViewModel {
-        return viewModel
-    }
-
-    @Provides
-    fun provideValueAnimator() = ValueAnimator()
-
-    @Provides
-    @ActivityScope
-    @Named("timeFormat")
-    fun provideTimeFormat(activity: MainActivity): String {
-        return activity.getString(R.string.time_format)
-    }
 
     @Provides
     @ActivityScope

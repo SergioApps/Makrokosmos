@@ -1,7 +1,10 @@
 package com.keltapps.makrokosmos.main.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.OnLifecycleEvent
 import com.google.common.truth.Truth.assertThat
+import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.audio.client.domain.entity.PlayingState
 import com.keltapps.makrokosmos.audio.client.domain.repository.AudioRepository
 import com.keltapps.makrokosmos.audio.client.presentation.viewmodel.AudioViewModel
@@ -47,25 +50,28 @@ class MakrokosmosMainViewModelTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
+        `when`(audioRepository.getPlayingState()).thenReturn(Observable.create {})
+        `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.create {})
+    }
+
+    private fun init() {
         sut = MakrokosmosMainViewModel(
                 mediaSeekBarViewModel,
                 getSongPlayingUseCase,
                 audioRepository,
                 audioViewModel
         )
-        `when`(audioRepository.getPlayingState()).thenReturn(Observable.create {})
-        `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.create {})
     }
 
     @Test
     fun initialize_should_initializeMediaSeekBarViewModelAndSetTitleAndZodiacSignName_when_receiveSong() {
         mockGetSongPlayingUseCase()
 
-        sut.initialize()
+        init()
 
         assertThat(sut.title.value).isEqualTo(TITLE)
         assertThat(sut.zodiacSignName.value).isEqualTo(ZODIAC_NAME)
-        verify(mediaSeekBarViewModel).initialize(mockSong)
+        verify(mediaSeekBarViewModel).initialize()
     }
 
     private fun mockGetSongPlayingUseCase() {
@@ -79,39 +85,39 @@ class MakrokosmosMainViewModelTest {
     }
 
     @Test
-    fun initialize_should_setVisibleAndIsPlayingToTrue_when_stateIsPlaying() {
+    fun initialize_should_setIsStoppedToFalseAndIsPlayingToTrue_when_stateIsPlaying() {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Playing))
 
-        sut.initialize()
+        init()
 
-        assertThat(sut.isVisible.value).isTrue()
+        assertThat(sut.isStopped.value).isFalse()
         assertThat(sut.isPlaying.value).isTrue()
     }
 
     @Test
-    fun initialize_should_setVisibleToTrueAndIsPlayingToFalse_when_stateIsPaused() {
+    fun initialize_should_setIsStoppedToFalseAndIsPlayingToFalse_when_stateIsPaused() {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Paused))
 
-        sut.initialize()
+        init()
 
-        assertThat(sut.isVisible.value).isTrue()
+        assertThat(sut.isStopped.value).isFalse()
         assertThat(sut.isPlaying.value).isFalse()
     }
 
     @Test
-    fun initialize_should_setVisibleAndIsPlayingToFalse_when_stateIsStopped() {
+    fun initialize_should_setSsStoppedToTrueAndIsPlayingToFalse_when_stateIsStopped() {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Stopped))
 
-        sut.initialize()
+        init()
 
-        assertThat(sut.isVisible.value).isFalse()
+        assertThat(sut.isStopped.value).isTrue()
         assertThat(sut.isPlaying.value).isFalse()
     }
 
     @Test
     fun openSongDetail_should_emitEvent_when_songHasBeingReceived() {
         mockGetSongPlayingUseCase()
-        sut.initialize()
+        init()
 
         sut.openSongDetail()
 
@@ -120,10 +126,28 @@ class MakrokosmosMainViewModelTest {
 
     @Test
     fun openSongDetail_should_doNothing_when_songHasNotBeingReceived() {
-        sut.initialize()
+        init()
 
         sut.openSongDetail()
 
         assertThat(sut.openSongDetail.value).isNull()
+    }
+
+    @Test
+    fun connectListener_should_callAudioRepositoryStart() {
+        init()
+
+        sut.connectListener()
+
+        verify(audioRepository).start()
+    }
+
+    @Test
+    fun disconnectListener_should_callAudioRepositoryStop() {
+        init()
+
+        sut.disconnectListener()
+
+        verify(audioRepository).stop()
     }
 }

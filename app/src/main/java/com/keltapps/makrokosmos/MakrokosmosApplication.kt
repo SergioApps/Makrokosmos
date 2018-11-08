@@ -16,10 +16,14 @@ class MakrokosmosApplication : Application(), HasActivityInjector, HasServiceInj
     override fun activityInjector(): AndroidInjector<Activity> = activityDispatchingAndroidInjector
     override fun serviceInjector(): AndroidInjector<Service> = serviceDispatchingAndroidInjector
 
+    companion object {
+        lateinit var appComponent: AppComponent
+    }
+
     override fun onCreate() {
         super.onCreate()
-        createAppComponent()
-                .inject(this)
+        appComponent = createAppComponent()
+        appComponent.inject(this)
     }
 
     private fun createAppComponent(): AppComponent {

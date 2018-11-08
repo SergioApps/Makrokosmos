@@ -86,7 +86,6 @@ class MakrokosmosSongDetailViewModelTest {
         sut.initialize(MEDIA_ID)
 
         verify(zodiacSignViewModel).initialize(mockZodiacSign)
-        verify(mediaSeekBarViewModel).initialize(mockSong)
     }
 
     @Test

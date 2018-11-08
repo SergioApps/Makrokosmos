@@ -1,6 +1,7 @@
 package com.keltapps.makrokosmos.main.viewmodel
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.*
+import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.audio.client.domain.entity.PlayingState
 import com.keltapps.makrokosmos.audio.client.domain.repository.AudioRepository
 import com.keltapps.makrokosmos.audio.client.presentation.viewmodel.AudioViewModel
@@ -20,16 +21,30 @@ class MakrokosmosMainViewModel @Inject constructor(
         override val audioViewModel: AudioViewModel
 ) : MakrokosmosBaseViewModel(), MainViewModel {
 
-    override val isVisible = MutableLiveData<Boolean>()
     override val title = MutableLiveData<String>()
     override val zodiacSignName = MutableLiveData<String>()
     override val isPlaying = MutableLiveData<Boolean>()
     override val openSongDetail = SingleLiveEvent<String>()
     private var currentSongId: String? = null
+    override val destination = MutableLiveData<Int>()
+    override val isSongDetail: LiveData<Boolean> = Transformations.map(destination) { it -> it == R.id.songDetailFragment }
+    override val isStopped = MutableLiveData<Boolean>()
 
-    override fun initialize() {
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun connectListener() {
+        audioRepository.start()
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    fun disconnectListener() {
+        audioRepository.stop()
+        isStopped.value = true
+    }
+
+    init {
         subscribeToSongPlaying()
         subscribeToPlayingState()
+        mediaSeekBarViewModel.initialize()
     }
 
     private fun subscribeToSongPlaying() {
@@ -42,7 +57,6 @@ class MakrokosmosMainViewModel @Inject constructor(
 
     private fun handleSongReceived(song: Song) {
         currentSongId = song.id
-        mediaSeekBarViewModel.initialize(song)
         title.value = song.title
         zodiacSignName.value = song.zodiacSign.name
     }
@@ -58,15 +72,15 @@ class MakrokosmosMainViewModel @Inject constructor(
     private fun handleStateReceived(state: PlayingState) {
         when (state) {
             PlayingState.Playing -> {
-                isVisible.value = true
+                isStopped.value = false
                 isPlaying.value = true
             }
             PlayingState.Paused -> {
-                isVisible.value = true
+                isStopped.value = false
                 isPlaying.value = false
             }
             PlayingState.Stopped -> {
-                isVisible.value = false
+                isStopped.value = true
                 isPlaying.value = false
             }
         }

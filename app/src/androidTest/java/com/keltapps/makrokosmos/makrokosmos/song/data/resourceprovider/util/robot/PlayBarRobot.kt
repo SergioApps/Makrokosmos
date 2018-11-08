@@ -11,6 +11,10 @@ class PlayBarRobot : BaseTestRobot() {
     fun clickPlayOrPause() {
         clickButton(R.id.playBarPlayPauseContainer)
     }
+
+    fun clickBar() {
+        clickButton(R.id.playBarToolbar)
+    }
 }
 
 fun playBar(func: PlayBarRobot.() -> Unit) = PlayBarRobot()

@@ -3,6 +3,8 @@ package com.keltapps.makrokosmos.main.view
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleRegistryOwner
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.keltapps.makrokosmos.R
@@ -17,9 +19,6 @@ import javax.inject.Inject
 class MainActivity : DaggerAppCompatActivity() {
 
     @Inject
-    internal lateinit var audioRepository: AudioRepository
-
-    @Inject
     internal lateinit var viewModel: MainViewModel
     @Inject
     internal lateinit var navigator: Navigator
@@ -32,7 +31,8 @@ class MainActivity : DaggerAppCompatActivity() {
         )
         binding.viewModel = viewModel
         binding.setLifecycleOwner(this)
-        viewModel.initialize()
+        lifecycle.addObserver(viewModel)
+        binding.playBarTitle.isSelected = true
         handleOpenSongDetails()
         handleToolbarPlayVisibility()
     }
@@ -47,29 +47,10 @@ class MainActivity : DaggerAppCompatActivity() {
     }
 
     private fun handleToolbarPlayVisibility() {
-        viewModel.isPlaying.observe(this, Observer {
-            shouldShowPlayToolbar(it, navController().currentDestination?.id ?: 0)
-        })
         navController().addOnNavigatedListener { _, destination ->
-            shouldShowPlayToolbar(viewModel.isPlaying.value ?: false, destination.id)
+            viewModel.destination.value = destination.id
         }
     }
 
-    private fun shouldShowPlayToolbar(isPlaying: Boolean, currentDestination: Int) {
-        val isSongDetailFragment = currentDestination == R.id.songDetailFragment
-        playBarToolbar?.visibility = if (isPlaying && !isSongDetailFragment) View.VISIBLE else View.GONE
-    }
-
     private fun navController() = findNavController(R.id.my_nav_host_fragment)
-    //    window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-
-    override fun onStart() {
-        super.onStart()
-        audioRepository.start()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        audioRepository.stop()
-    }
 }

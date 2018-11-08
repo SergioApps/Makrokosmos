@@ -2,7 +2,10 @@ package com.keltapps.makrokosmos.dagger
 
 import android.app.Application
 import com.keltapps.makrokosmos.MakrokosmosApplication
+import com.keltapps.makrokosmos.audio.client.domain.repository.AudioRepository
 import com.keltapps.makrokosmos.dagger.module.AppModule
+import com.keltapps.makrokosmos.dagger.module.MainSingletonModule
+import com.keltapps.makrokosmos.dagger.module.audio.client.AudioClientModule
 import com.keltapps.makrokosmos.dagger.module.audio.service.data.AudioServiceDataModule
 import com.keltapps.makrokosmos.dagger.module.info.data.InfoDataModule
 import com.keltapps.makrokosmos.dagger.module.song.data.SongDataModule
@@ -18,7 +21,9 @@ import javax.inject.Singleton
     AppModule::class,
     SongDataModule::class,
     InfoDataModule::class,
-    AudioServiceDataModule::class
+    AudioServiceDataModule::class,
+    AudioClientModule::class,
+    MainSingletonModule::class
 ])
 interface AppComponent {
 
@@ -31,4 +36,6 @@ interface AppComponent {
     }
 
     fun inject(application: MakrokosmosApplication)
+
+    fun provideAudioRepository(): AudioRepository
 }

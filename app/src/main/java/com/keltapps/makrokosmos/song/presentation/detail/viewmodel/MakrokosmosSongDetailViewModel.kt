@@ -47,7 +47,6 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
     }
 
     private fun handleCDSubscription(song: Song) {
-        mediaSeekBarViewModel.initialize(song)
         setLiveData(song)
         getSongPlayingUseCase.execute()
                 .subscribeOn(Schedulers.computation())
