@@ -3,8 +3,6 @@ package com.keltapps.makrokosmos
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.keltapps.makrokosmos.main.view.MainActivity
-import com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.*
-import com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.robot.*
 import com.keltapps.makrokosmos.util.robot.*
 import com.keltapps.makrokosmos.util.setLandscape
 import com.keltapps.makrokosmos.util.setPortrait
