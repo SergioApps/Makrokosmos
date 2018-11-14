@@ -53,7 +53,7 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(::setLiveData)
                 .addDisposable()
-        audioRepository.play(song)
+        audioRepository.play(song.id)
     }
 
     private fun setLiveData(song: Song) {
@@ -83,5 +83,10 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
 
     private fun handlePlayingState(playingState: PlayingState) {
         isPlaying.value = playingState is PlayingState.Playing
+    }
+
+    override fun onCleared() {
+        audioViewModel.clean()
+        super.onCleared()
     }
 }

@@ -56,7 +56,7 @@ class MakrokosmosAudioRepositoryTest {
     fun play_should_callOnPlay() {
         `when`(mockSong.id).thenReturn("id")
 
-        sut.play(mockSong)
+        sut.play(mockSong.id)
 
         verify(mediaBrowserHelper).onPlay(mockSong.id)
     }

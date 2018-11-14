@@ -2,6 +2,7 @@ package com.keltapps.makrokosmos
 
 import android.app.*
 import com.keltapps.makrokosmos.dagger.*
+import com.squareup.leakcanary.LeakCanary
 import dagger.android.*
 import javax.inject.Inject
 
@@ -22,6 +23,8 @@ class MakrokosmosApplication : Application(), HasActivityInjector, HasServiceInj
 
     override fun onCreate() {
         super.onCreate()
+        if (LeakCanary.isInAnalyzerProcess(this)) return
+        LeakCanary.install(this)
         appComponent = createAppComponent()
         appComponent.inject(this)
     }

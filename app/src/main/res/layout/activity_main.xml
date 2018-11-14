@@ -65,7 +65,6 @@
             tools:layout_editor_absoluteX="0dp"
             tools:showIn="@layout/activity_main">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -131,6 +130,7 @@
                         android:maxLines="1"
                         android:text="@{viewModel.zodiacSignName}"
                         android:textAppearance="@style/AppTheme.TextAppearance.Body"
+                        android:textStyle="italic"
                         tools:text="Zodiac Sign" />
 
                 </LinearLayout>

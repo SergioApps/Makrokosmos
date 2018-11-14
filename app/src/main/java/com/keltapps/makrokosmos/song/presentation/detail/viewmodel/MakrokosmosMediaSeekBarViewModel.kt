@@ -63,7 +63,7 @@ class MakrokosmosMediaSeekBarViewModel @Inject constructor(
                 valueAnimator.start()
             }
         } else {
-            valueAnimator.cancel()
+            valueAnimator.pause()
         }
     }
 
@@ -82,7 +82,7 @@ class MakrokosmosMediaSeekBarViewModel @Inject constructor(
     }
 
     override fun startTracking() {
-        valueAnimator.cancel()
+        valueAnimator.pause()
     }
 
     override fun stopTracking() {

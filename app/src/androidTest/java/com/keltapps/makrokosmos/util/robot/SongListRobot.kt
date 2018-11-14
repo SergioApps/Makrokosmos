@@ -1,11 +1,11 @@
-package com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.robot
+package com.keltapps.makrokosmos.util.robot
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import com.keltapps.makrokosmos.R
-import com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.matcher.AtRecyclerViewPosition
+import com.keltapps.makrokosmos.util.matcher.AtRecyclerViewPosition
 import org.hamcrest.Matchers.allOf
 
 class SongListRobot : BaseTestRobot() {
@@ -286,11 +286,11 @@ class SongListRobot : BaseTestRobot() {
     }
 
     fun clickVolume1() {
-        clickButtonWithText(R.string.volumeITitle)
+        clickButtonWithText(R.string.tab_name_volume_1)
     }
 
     fun clickVolume2() {
-        clickButtonWithText(R.string.volumeIITitle)
+        clickButtonWithText(R.string.tab_name_volume_2)
     }
 
     fun clickSong(songNumber: Int) {

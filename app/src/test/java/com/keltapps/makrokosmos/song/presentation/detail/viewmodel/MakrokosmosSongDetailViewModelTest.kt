@@ -143,7 +143,7 @@ class MakrokosmosSongDetailViewModelTest {
     fun initialize_should_playSong() {
         sut.initialize(MEDIA_ID)
 
-        verify(audioRepository).play(mockSong)
+        verify(audioRepository).play(mockSong.id)
     }
 
     @Test

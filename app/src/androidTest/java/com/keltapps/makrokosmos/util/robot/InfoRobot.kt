@@ -1,4 +1,4 @@
-package com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.robot
+package com.keltapps.makrokosmos.util.robot
 
 import androidx.test.espresso.ViewInteraction
 import com.keltapps.makrokosmos.R

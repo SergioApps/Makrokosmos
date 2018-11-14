@@ -1,4 +1,4 @@
-package com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util
+package com.keltapps.makrokosmos.util
 
 import android.app.Activity
 import androidx.test.rule.ActivityTestRule

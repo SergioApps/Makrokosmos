@@ -1,8 +1,7 @@
-package com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.robot
+package com.keltapps.makrokosmos.util.robot
 
 import com.keltapps.makrokosmos.MakrokosmosApplication
 import com.keltapps.makrokosmos.audio.client.domain.entity.PlayingState
-import com.keltapps.makrokosmos.main.view.MainActivity
 import junit.framework.Assert.assertFalse
 
 class MainRobot {

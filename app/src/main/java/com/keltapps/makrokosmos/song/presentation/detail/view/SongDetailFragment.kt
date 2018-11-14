@@ -44,4 +44,10 @@ class SongDetailFragment : DaggerFragment() {
         }
         binding.toolbar.setNavigationOnClickListener { binding.root.findNavController().navigateUp() }
     }
+
+    override fun onDestroyView() {
+        binding.toolbar.setNavigationOnClickListener(null)
+        (activity as AppCompatActivity).setSupportActionBar(null)
+        super.onDestroyView()
+    }
 }

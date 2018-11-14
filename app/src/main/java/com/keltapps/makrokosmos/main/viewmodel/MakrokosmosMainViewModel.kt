@@ -89,4 +89,9 @@ class MakrokosmosMainViewModel @Inject constructor(
     override fun openSongDetail() {
         currentSongId?.let { openSongDetail.value = it }
     }
+
+    override fun onCleared() {
+        audioViewModel.clean()
+        super.onCleared()
+    }
 }

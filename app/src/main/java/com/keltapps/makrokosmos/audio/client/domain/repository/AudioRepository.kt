@@ -7,7 +7,7 @@ import io.reactivex.Observable
 interface AudioRepository {
     fun start()
     fun stop()
-    fun play(song: Song)
+    fun play(songId: String)
     fun continuePlaying()
     fun pause()
     fun skipToNext()

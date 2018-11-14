@@ -1,7 +1,6 @@
 package com.keltapps.makrokosmos.song.presentation.detail.viewmodel
 
 import android.animation.ValueAnimator
-import android.view.animation.LinearInterpolator
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import com.keltapps.makrokosmos.audio.client.domain.entity.PlayingState
@@ -65,7 +64,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
 
         assertThat(sut.progress.value).isEqualTo(CURRENT_POSITION * MILLISECOND_MULTIPLIER)
         assertThat(sut.maxValue.value).isEqualTo(DURATION * MILLISECOND_MULTIPLIER)
-        verify(mockValueAnimator).cancel()
+        verify(mockValueAnimator).pause()
     }
 
     @Test
@@ -94,7 +93,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
 
         sut.initialize()
 
-        verify(mockValueAnimator).cancel()
+        verify(mockValueAnimator).pause()
     }
 
     @Test
@@ -106,7 +105,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
 
         sut.initialize()
 
-        verify(mockValueAnimator).cancel()
+        verify(mockValueAnimator).pause()
     }
 
     @Test
@@ -117,7 +116,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
 
         sut.initialize()
 
-        verify(mockValueAnimator, never()).cancel()
+        verify(mockValueAnimator, never()).pause()
         verify(mockValueAnimator, never()).start()
     }
 
@@ -172,7 +171,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
     fun startTracking_should_cancelAnimation() {
         sut.startTracking()
 
-        verify(mockValueAnimator).cancel()
+        verify(mockValueAnimator).pause()
     }
 
     @Test
@@ -182,7 +181,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
         sut.stopTracking()
 
         verify(audioRepository).seekTo(0)
-        verify(mockValueAnimator).cancel()
+        verify(mockValueAnimator).pause()
     }
 
     @Test
@@ -193,7 +192,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
         sut.stopTracking()
 
         verify(audioRepository).seekTo(CURRENT_POSITION)
-        verify(mockValueAnimator).cancel()
+        verify(mockValueAnimator).pause()
     }
 
     @Test

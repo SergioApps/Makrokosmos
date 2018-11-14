@@ -1,4 +1,4 @@
-package com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.robot
+package com.keltapps.makrokosmos.util.robot
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
@@ -11,7 +11,11 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
-import com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.matcher.*
+import com.keltapps.makrokosmos.R
+import com.keltapps.makrokosmos.util.matcher.CollapsingToolbarTitleMatcher
+import com.keltapps.makrokosmos.util.matcher.DrawableMatcher
+import com.keltapps.makrokosmos.util.matcher.TabLayoutMatcher
+import com.keltapps.makrokosmos.util.matcher.ToolbarTitleMatcher
 import org.hamcrest.Matchers.allOf
 
 
@@ -73,7 +77,7 @@ open class BaseTestRobot {
     }
 
     fun pressUp(): ViewInteraction {
-        return onView(withContentDescription("Navigate up")).perform(click())
+        return onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click())
     }
 
     fun viewIsDisplayed(resId: Int): ViewInteraction {

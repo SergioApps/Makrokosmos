@@ -48,6 +48,7 @@ class MakrokosmosMediaBrowserHelper @Inject constructor(
     override fun onStop() {
         releaseMediaController()
         releaseMediaBrowser()
+        behaviorSubjectState.onNext(PlaybackStateCompat.STATE_STOPPED)
     }
 
     private fun releaseMediaBrowser() {

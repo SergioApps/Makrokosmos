@@ -7,14 +7,14 @@
     <string name="content_description_image_about">imagen acerca de</string>
     <string name="content_description_image_author">imagen autor</string>
     <string name="content_description_image_interpreter">imagen interprete</string>
-    <string name="main_makrokosmos">Makrokosmos</string>
+    <string name="main_makrokosmos">Musical Zodiac</string>
     <string name="main_about">Acerca de</string>
     <string name="main_author">George Crumb</string>
     <string name="main_interpreter">Fabio Álvarez</string>
     <string name="contentDescription_expand">expandir</string>
 
     <!-- Song List -->
-    <string name="title_songListActivity">Makrokosmos</string>
+    <string name="title_songListActivity">Musical Zodiac</string>
     <string name="tab_name_volume_1">Volumen uno</string>
     <string name="tab_name_volume_2">Volumen dos</string>
     <string name="content_description_cd_image">CD imagen</string>
@@ -22,8 +22,8 @@
     <!-- zodiac signs -->
     <string name="zodiacSign_aries">Aries</string>
     <string name="zodiacSign_taurus">Tauro</string>
-    <string name="zodiacSign_gemini">Geminis</string>
-    <string name="zodiacSign_cancer">Cancer</string>
+    <string name="zodiacSign_gemini">Géminis</string>
+    <string name="zodiacSign_cancer">Cáncer</string>
     <string name="zodiacSign_leo">Leo</string>
     <string name="zodiacSign_virgo">Virgo</string>
     <string name="zodiacSign_libra">Libra</string>
@@ -32,7 +32,7 @@
     <string name="zodiacSign_capricorn">Capricornio</string>
     <string name="zodiacSign_aquarius">Aquario</string>
     <string name="zodiacSign_pisces">Piscis</string>
-    <string name="contentDescription_zodiacSign">Simbolo zodiaco</string>
+    <string name="contentDescription_zodiacSign">Símbolo zodiaco</string>
 
     <!-- Info -->
     <string name="infoAbout_title">Acerca de</string>
@@ -54,7 +54,43 @@
 
     <string name="infoAuthor_title">George Crumb</string>
     <string name="infoAuthor_body">George Crumb (1929) es uno de los compositores contemporáneos más interpretados actualmente. Crumb es ganador de los premios Grammy y Pulitzer, y continúa componiendo nuevas piezas que enriquecen las vidas de todos los que tienen contacto con su profunda humanidad artística. La música de Crumb suele yuxtaponer estilos musicales contrastantes, que van desde la música de la tradición occidental de la música de arte, a los himnos y la música folclórica, hasta las músicas no occidentales. Muchas de las obras de Crumb incluyen elementos programáticos, simbólicos, místicos y teatrales, que a menudo se reflejan en sus puntajes hermosos y meticulosamente anotados.\n\n
-        Una personalidad tímida, pero cálidamente elocuente, Crumb se retiró de su puesto docente en la Universidad de Pensilvania después de más de 30 años de servicio. Honrado por numerosas instituciones con doctorados honorarios y ganador de docenas de premios, Crumb hace su hogar en Pennsylvania, en la misma casa donde él y su esposa criaron a sus tres hijos por más de 60 años. La música de George Crumb es publicada por C.F. Peters y una serie continua de grabaciones de "Complete Crumb", supervisadas por el compositor, se publicarán en Bridge Records.
+        Una personalidad tímida, pero cálidamente elocuente, Crumb se retiró de su puesto docente en la Universidad de Pensilvania después de más de 30 años de servicio. Honrado por numerosas instituciones con doctorados honorarios y ganador de docenas de premios, Crumb hace su hogar en Pennsylvania, en la misma casa donde él y su esposa criaron a sus tres hijos por más de 60 años. La música de George Crumb es publicada por C.F. Peters y una serie continua de grabaciones de "Complete Crumb", supervisadas por el compositor, se publicarán en Bridge Records.\n\n
+        Conversación entre\n
+        George Crumb, compositor\n
+        Fabio Álvarez, pianista\n
+        15 de diciembre, 2017\n
+        Media, Pennsylvania, USA\n\n
+        Fabio Álvarez (FA):  ¿Cuándo empezaste a componer?\n\n
+        George Crumb (GC): Creo que cuando tenía nueve o diez años.  No hace falta decir que estos primeros esfuerzos no tuvieron ninguna importancia en absoluto. Mi padre fue clarinetista, mi madre violonchelista y mi hermano flautista. Así que escribí pequeñas piezas para estos instrumentos (¡conmigo al piano!). La educación más valiosa de mis primeros años provino de la colección de partituras de Eulenburg en miniatura de mi padre (¡por lo menos 400 partituras!). Pude aprender mucho acerca de la notación mientras las leía cuando escuchaba grabaciones o conciertos en la radio. Stravinsky dijo una vez que "componer es notación" y aprendí mucho sobre la notación leyendo partituras.\n\n
+        FA: ¿Cuáles fueron tus primeras influencias?\n\n
+        GC: No recuerdo haber escuchado mucha música realmente contemporánea a una edad temprana. ¡Crecer en Virginia Occidental en la década de 1930 significó que incluso Debussy pasó a ser "contemporáneo"! Muy ocasionalmente se escuchaban transmisiones de radio de ciertos compositores estadounidenses como Copland o Barber, y durante los años de guerra obtuvimos algo de Shostakovich (como su 5ª Sinfonía).\n\n
+        FA: ¿Cuáles consideras personalmente como momentos importantes en tu carrera estudiantil?\n\n
+        GC: Cuando era adolescente, conocí a Bela Bartók (piezas como el Concierto para orquesta, los cuartetos de cuerdas, Mikrokosmos VI). Bartók fue una de mis influencias más importantes como compositor. También conocí a Hindemith y Alban Berg durante esos años.\n\n
+        FA: ¿Cómo ves la importancia del timbre en la composición contemporánea?\n\n
+        GC: ¡Siento que es muy importante! La expansión del timbre de Bartók en sus cuartetos, la explosión del timbre en el área de percusión y, por supuesto, el uso de nuevos timbres para piano en Cage y Cowell.\n\n
+        FA: ¿Crees que es importante que la audiencia sea capaz de deducir los procesos y las ideas detrás de un trabajo únicamente sobre la base de escuchar la música?\n\n
+        GC: Con suerte, sí. Y si eso no sucede, ¿cuál es el punto, verdad?\n\n
+        FA: ¿Qué tan importante es para usted trabajar estrechamente con los artistas que realizan sus obras?\n\n
+        GC: Es muy importante conocer el estilo, los puntos fuertes y la personalidad técnica de un artista. Todas estas cosas podrían afectar el enfoque de la composición real. Pero después del estreno de una composición escrita para un determinado intérprete, uno espera que el trabajo sea asumido por otros intérpretes.\n\n
+        FA: Por supuesto, el efecto de una pieza no depende solo de la interpretación de los músicos, sino también de la acústica de la sala. ¿Teme que algunas salas no sean muy apropiadas para la interpretación de algunas de sus piezas?\n\n
+        GC: ¡Siento que mi música (y toda la música, para el caso) funciona mejor en salas que no son demasiado secas! Pero he descubierto que mi preferencia por el piano amplificado a menudo puede ser útil para corregir una mala acústica en cierta medida.\n\n
+        FA: ¿Sientes que las composiciones contemporáneas deberían llamar la atención de un público más amplio?\n\n
+        GC: Para mí es un gran misterio por qué algunas composiciones pueden captar los oídos de una audiencia y otras no. Quizás tenga poco que ver con el estilo o la técnica compositiva, sino que se encuentra en algo imposible de definir. Algunas obras musicales estimulan la imaginación al atraer al oyente hacia un nuevo mundo de sonidos e ideas. Otras obras parecen vacías y pretenciosas y carecen de originalidad. Incluso el mejor compositor a veces puede producir música por debajo de su excelencia normal. Quizás la respuesta simple sea decir que si el compositor está inspirado, ¡el oyente también estará inspirado!\n\n
+        FA: ¿Debería un compositor escribir para los músicos que tocarán una pieza o escribirla para la audiencia que lo escuchará?\n\n
+        CC: ¡Para ambos!\n\n
+        FA: Compusiste el primer volumen de Makrokosmos en 1972. Este trabajo sigue siendo la exploración más completa e influyente de los nuevos recursos técnicos para el piano de nuestro tiempo. ¿Quiénes fueron tus influencias?\n\n
+        GC: En el momento en que escribí Makrokomos no había escuchado una sola nota de John Cage o Henry Cowell. Y, por supuesto, mi acercamiento al piano no tiene nada que ver con el "piano preparado" de Cage. ¡Pero Cowell produjo algunos sonidos en contacto directo con las cuerdas y podría ser descrito como su descendiente directo!\n\n
+        FA: Al igual que los Preludios de Debussy, cada una de tus piezas de Makrokosmos tiene un título evocador y un signo del zodíaco, con las iniciales de una persona nacida bajo ese signo. ¿Por qué usaste los símbolos zodiacales?\n\n
+        GC: Era simplemente otro elemento para unificar el trabajo. Utilizo muchos signos zodiacales de compositores favoritos como Gustav Mahler y Bela Bartók, pero también signos de amigos e incluso familiares.\n\n
+        FA: Eres Escorpio y yo también soy Escoprio. ¿La personalidad de cada signo está relacionada con el carácter de cada pieza?\n\n
+        GC: Leí sobre el zodiaco para conocer detalles sobre cada signo. Eso me influenció, pero no profundamente.\n\n
+        FA: En Makrokosmos II, usas vasos de vidrio en las cuerdas para producir un efecto inquietante.\n\n
+        GC: Me encanta el efecto misterioso de un glissando sobre las cuerdas del piano. Las audiencias apenas pueden creer que tales sonidos puedan producirse en un piano de cola.\n\n
+        FA: ¿Cuáles son tus principales retos compositivos?\n\n
+        GC: Construir una pieza que creas tiene una forma que funciona y que proyecta exactamente lo que quieres proyectar espiritualmente (¡con el menor número posible de notas!).\n\n
+        FA: Como pianista de España, debo hacer esta pregunta. Una de las piezas de Makrokosmos I (Dream Images), está dedicada al poeta español Federico García Lorca. ¿Cómo ha influido Lorca en tu música?\n\n
+        GC: ¡Profundamente! Doce de mis obras vocales usan poemas de Lorca. Me encantan las imágenes evocadoras en su poesía.\n\n
+
     </string>
 
     <string name="infoInterpreter_title">Fabio Álvarez</string>

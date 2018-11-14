@@ -1,18 +1,18 @@
 <resources>
-    <string name="app_name">Makrokosmos</string>
+    <string name="app_name">Musical Zodiac</string>
 
     <!-- Main -->
     <string name="content_description_image_about">image about</string>
     <string name="content_description_image_author">image author</string>
     <string name="content_description_image_interpreter">image interpreter</string>
-    <string name="main_makrokosmos">Makrokosmos</string>
+    <string name="main_makrokosmos">Musical Zodiac</string>
     <string name="main_about">About</string>
     <string name="main_author">George Crumb</string>
     <string name="main_interpreter">Fabio Álvarez</string>
     <string name="contentDescription_expand">expand</string>
 
     <!-- Song List -->
-    <string name="title_songListActivity">Makrokosmos</string>
+    <string name="title_songListActivity">Musical Zodiac</string>
     <string name="tab_name_volume_1">Volume one</string>
     <string name="tab_name_volume_2">Volume two</string>
     <string name="content_description_cd_image">CD image</string>
@@ -20,7 +20,7 @@
     <string name="time_format" translatable="false">%d:%02d</string>
 
     <!-- CD songs -->
-    <string name="title_cd_title" translatable="false">Makrokosmos</string>
+    <string name="title_cd_title" translatable="false">Musical Zodiac</string>
     <string name="volumeITitle" translatable="false">Volume one</string>
     <string name="volumeIFirstSongTitle" translatable="false">1.- Primeval Sounds</string>
     <string name="volumeIFirstSongSubTitle" translatable="false">Genesis I</string>
@@ -96,12 +96,47 @@
         Each of the twelve “fantasy-pieces” is associated with a different sign of the zodiac and with the initials of a person born under that sign. I had whimsically wanted to pose an “enigma” with these subscript initials; however, my perspicacious friends quickly identified the Aries of Spring-Fire as David Burge, and the Scorpio of The Phantom Gondolier as myself.\n\n
         Makrokosmos, Volume I was premiered at Colorado College (in Colorado Springs) on February 8, 1973.\n
         Makrokosmos, Volume II was premiered by Robert Miller in New York City (Alice Tully Hall) on November 12, 1974.\n\n
-        *Excerpted from notes written for the Nonesuch recording of Makrokosmos Volume I (recorded performance by David Burge, Nonesuch H-71293).
+        *Excerpted from notes written for the Nonesuch recording of Makrokosmos Volume I (recorded performance by David Burge, Nonesuch H-71293).\n\n
     </string>
 
     <string name="infoAuthor_title">George Crumb</string>
     <string name="infoAuthor_body">George Crumb (b. 1929) is one of the most frequently performed composers in today\'s musical world. Crumb is the winner of Grammy and Pulitzer Prizes, and continues to compose new scores that enrich the lives of all who come in contact with his profoundly humanistic art. Crumb\'s music often juxtaposes contrasting musical styles, ranging from music of the western art-music tradition, to hymns and folk music, to non-Western musics. Many of Crumb\'s works include programmatic, symbolic, mystical and theatrical elements, which are often reflected in his beautiful and meticulously notated scores.\n\n
-        A shy, yet warmly eloquent personality, Crumb retired from his teaching position at the University of Pennsylvania after more than 30 years of service. Honored by numerous institutions with honorary Doctorates, and the recipient of dozens of awards and prizes, Crumb makes his home in Pennsylvania, in the same house where he and his wife of more than 60 years raised their three children. George Crumb\'s music is published by C.F. Peters and an ongoing series of "Complete Crumb" recordings, supervised by the composer, is being issued on Bridge Records.
+        A shy, yet warmly eloquent personality, Crumb retired from his teaching position at the University of Pennsylvania after more than 30 years of service. Honored by numerous institutions with honorary Doctorates, and the recipient of dozens of awards and prizes, Crumb makes his home in Pennsylvania, in the same house where he and his wife of more than 60 years raised their three children. George Crumb\'s music is published by C.F. Peters and an ongoing series of "Complete Crumb" recordings, supervised by the composer, is being issued on Bridge Records.\n\n
+        Conversation between\n
+        George Crumb, composer\n
+        Fabio Álvarez, pianist\n
+        December 15th, 2017\n
+        Media, Pennsylvania, USA\n\n
+        Fabio Álvarez (FA): When did you start composing?\n\n
+        George Crumb (GC): I think I was about nine or ten years old. Needless to say, these early efforts were of no consequence whatsoever! My father was a clarinetist, my mother a cellist, and my brother a flutist. So I wrote little pieces for these instruments (with myself at the piano!). My most valuable education from my early years came from my father´s collection of miniature Eulenburg scores (at least 400 in number!). I was able to learn much about notation while reading these when listening to recordings or concerts on the radio. Stravinsky once said that “composing is notation” and I learned a lot about notation by reading scores.\n\n
+        FA: Which were your earlier influences?\n\n
+        GC: I don´t remember hearing much really contemporary music at a young age. Growing up in West Virginia in the 1930s meant have that even Debussy passed for “contemporary”! Very occasionally one hear radio broadcasts of certain American composers like Copland or barber, and during the war years we got some Shostakovich (like his 5th Symhony).\n\n
+        FA: What do you personally consider to be incisive moments in your student career?\n\n
+        GC: As a teenager, I got to know Bela Bartók (works like Concerto for Orchestra, the string quartets, Makrokosmos VI. I count Bartók as one of my most important influences as a composer! I also got to know some Hindemith and Alban Berg during those years.\n\n
+        FA: How do you see the importance of timbre in contemporary composition?\n\n
+        GC: I feel it is hugely important! Bartók´s expansion of timbre in his quartets, the timbral explosion in the percussion area, and of course the use of new piano timbres in Cage and Cowell.\n\n
+        FA: Do you feel it is important that audience is able to deduce the processes and ideas behind a work purely on the basis of hearing the music?\n\n
+        GC: Hopefully, yes. And if that doesn´t happen, what´s the point, right?\n\n
+        FA: How important is it for you to work closely with the artists performing your works?\n\n
+        GC: It is very important to know a performer´s style, technical strong points and personality. All of these things could certainly affect one´s approach to actual composition. But after the premiere of a composition written for a certain performer, one hopes that the work will be taken over by other performers.\n\n
+        FA: Of course the effect of a piece doesn´t depend merely on the performance of the musicians, but also on the acoustic of the hall it is performed in. Do you fear that some halls are not very appropriate for the performance of some of your music?\n\n
+        GC: I feel that my music (and all music, for that matter) works best in halls that are not too dry! But I have found that my preference for the amplified piano can often be useful in correcting a bad acoustic to some extend.\n\n
+        FA: Do you feel that contemporary compositions should reach the attention of a wider audience?\n\n
+        GC: It´s a great mystery to me why some compositions can capture the ears of an audience while others cannot. Perhaps it has little to do with compositional style or technique but rather lies in something impossible to define. Some musical works excite the imagination by drawing the listener into a new world of sound and ideas. Other works seem empty and pretentious and lacking in originality. Even the greatest composer can sometimes produce music below their normal excellence. Perhaps the simple answer is to say that if the composer is inspired, the listener will also be inspired!\n\n
+        FA: Should a composer write for the musicians who will play a piece or write for the audience who will hear it?\n\n
+        GC: For both!\n\n
+        FA: You composed the first volume of your Makrokosmos in 1972. This work remains the most comprehensive and influential exploration of new technical resources for the piano of our time. Who were your influences?\n\n
+        GC: At the time I wrote Makrokomos I had not heard a single note of John Cage or Henry Cowell. And of course my approach to the piano has nothing to do with Cage´s “prepared piano”. But Cowell produced some sounds in direct contact with the strings and I could be described as his direct descendant!\n\n
+        FA: Like the Debussy Preludes, each of your Makrokosmos pieces has an evocative title and a sign of the zodiac, with the initials of a person born under that sign. Why did you use the zodiacal symbols?\n\n
+        GC: It was simply another device to unify the work. I use many zodiacal signs of favourite composers like Gutav Mahler and Bela Bartók, but also signs of friends and even family!\n\n
+        FA: You are a scorpio and I am a scorpio. Is the personality of each sign related to the character of each piece?\n\n
+        GC: I read about the zodiac to learn particulars about each sign. That influenced me, but not profoundly.\n\n
+        FA: In Makrokosmos II, you use glass tumblers on the strings to produce a haunting effect.\n\n
+        GC: I love the mysterious effect of a glissando over the strings of the piano. Audiences can hardly believe that such sounds can be produce on a grand piano.\n\n
+        FA: What are your principal compositional challenges?\n\n
+        GC: Constructing a piece that you feel has a form that works and which projects exactly what you want to project spiritually (with the least possible number of notes!).\n\n
+        FA: As a pianist from Spain, I must ask this question. One of the pieces of Makrokosmos I (Dream Images), is dedicated to the Spanish poet Federico García Lorca. How has Lorca influenced your music?\n\n
+        GC: Profoundly! Twelve or so of my vocal works use poems of Lorca. I love the evocative images in his poetry
     </string>
 
     <string name="infoInterpreter_title">Fabio Álvarez</string>

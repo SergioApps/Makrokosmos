@@ -1,4 +1,4 @@
-package com.keltapps.makrokosmos.makrokosmos.song.data.resourceprovider.util.matcher
+package com.keltapps.makrokosmos.util.matcher
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

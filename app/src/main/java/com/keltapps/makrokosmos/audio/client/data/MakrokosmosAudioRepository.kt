@@ -15,8 +15,8 @@ class MakrokosmosAudioRepository @Inject constructor(
         mediaBrowserHelper.onStart()
     }
 
-    override fun play(song: Song) {
-        mediaBrowserHelper.onPlay(song.id)
+    override fun play(songId: String) {
+        mediaBrowserHelper.onPlay(songId)
     }
 
     override fun continuePlaying() {

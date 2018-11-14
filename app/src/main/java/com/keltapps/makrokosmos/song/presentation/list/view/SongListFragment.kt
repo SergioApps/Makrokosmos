@@ -77,4 +77,9 @@ class SongListFragment : DaggerFragment() {
         super.onSaveInstanceState(outState)
         recyclerView?.let { outState.putInt(STATE_SCROLL, it.scrollY) }
     }
+
+    override fun onDestroyView() {
+        recyclerView?.adapter = null
+        super.onDestroyView()
+    }
 }
