@@ -61,14 +61,13 @@ class MakrokosmosMainViewModelTest {
     }
 
     @Test
-    fun initialize_should_initializeMediaSeekBarViewModelAndSetTitleAndZodiacSignName_when_receiveSong() {
+    fun initialize_should_setTitleAndZodiacSignName_when_receiveSong() {
         mockGetSongPlayingUseCase()
 
         init()
 
         assertThat(sut.title.value).isEqualTo(TITLE)
         assertThat(sut.zodiacSignName.value).isEqualTo(ZODIAC_NAME)
-        verify(mediaSeekBarViewModel).initialize()
     }
 
     private fun mockGetSongPlayingUseCase() {

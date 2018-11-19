@@ -5,7 +5,11 @@ import androidx.lifecycle.ViewModelProviders
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.base.presentation.view.createFactory
 import com.keltapps.makrokosmos.dagger.scope.FragmentScope
+import com.keltapps.makrokosmos.info.presentation.annotation.ProvideInfoScreen
+import com.keltapps.makrokosmos.info.presentation.model.InfoScreen
+import com.keltapps.makrokosmos.info.presentation.view.InfoFragment
 import com.keltapps.makrokosmos.song.presentation.ZodiacSignViewModel
+import com.keltapps.makrokosmos.song.presentation.detail.annotation.ProvideSongId
 import com.keltapps.makrokosmos.song.presentation.detail.view.SongDetailFragment
 import com.keltapps.makrokosmos.song.presentation.detail.viewmodel.*
 import com.keltapps.makrokosmos.song.presentation.list.MakrokosmosZodiacSignViewModel
@@ -58,4 +62,8 @@ class SongDetailModule {
     fun provideWaterColor(fragment: SongDetailFragment): Int {
         return ContextCompat.getColor(fragment.requireContext(), R.color.water_light)
     }
+
+    @Provides
+    @ProvideSongId
+    fun provideSongId(fragment: SongDetailFragment): String = fragment.getSongId()
 }

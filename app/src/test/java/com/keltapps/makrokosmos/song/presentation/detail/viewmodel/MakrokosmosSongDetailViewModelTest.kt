@@ -57,18 +57,7 @@ class MakrokosmosSongDetailViewModelTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        sut = MakrokosmosSongDetailViewModel(
-                zodiacSignViewModel,
-                mediaSeekBarViewModel,
-                getSongPlayingUseCase,
-                audioRepository,
-                cdRepository,
-                AIR_COLOR,
-                FIRE_COLOR,
-                EARTH_COLOR,
-                WATER_COLOR,
-                audioViewModel
-        )
+
         with(mockSong) {
             `when`(title).thenReturn(TITLE)
             `when`(subTitle).thenReturn(SUBTITLE)
@@ -81,16 +70,32 @@ class MakrokosmosSongDetailViewModelTest {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.create {})
     }
 
+    private fun initViewModel() {
+        sut = MakrokosmosSongDetailViewModel(
+                zodiacSignViewModel,
+                mediaSeekBarViewModel,
+                getSongPlayingUseCase,
+                audioRepository,
+                cdRepository,
+                AIR_COLOR,
+                FIRE_COLOR,
+                EARTH_COLOR,
+                WATER_COLOR,
+                audioViewModel,
+                MEDIA_ID
+        )
+    }
+
     @Test
     fun initialize_should_initializeViewModels() {
-        sut.initialize(MEDIA_ID)
+        initViewModel()
 
         verify(zodiacSignViewModel).initialize(mockZodiacSign)
     }
 
     @Test
     fun initialize_should_setTitleAndSubTitleObservables() {
-        sut.initialize(MEDIA_ID)
+        initViewModel()
 
         assertThat(sut.title.value).isEqualTo(TITLE)
         assertThat(sut.subTitle.value).isEqualTo(SUBTITLE)
@@ -98,7 +103,7 @@ class MakrokosmosSongDetailViewModelTest {
 
     @Test
     fun initialize_should_setZodiacSignName() {
-        sut.initialize(MEDIA_ID)
+        initViewModel()
 
         assertThat(sut.zodiacSignName.value).isEqualTo(ZODIAC_NAME)
     }
@@ -107,7 +112,7 @@ class MakrokosmosSongDetailViewModelTest {
     fun initialize_should_setZodiacSignColorToAirColor_when_elementIsAir() {
         `when`(mockZodiacSign.element).thenReturn(Element.Air)
 
-        sut.initialize(MEDIA_ID)
+        initViewModel()
 
         assertThat(sut.zodiacSignColor.value).isEqualTo(AIR_COLOR)
     }
@@ -116,7 +121,7 @@ class MakrokosmosSongDetailViewModelTest {
     fun initialize_should_setZodiacSignColorToEarthColor_when_elementIsEarth() {
         `when`(mockZodiacSign.element).thenReturn(Element.Earth)
 
-        sut.initialize(MEDIA_ID)
+        initViewModel()
 
         assertThat(sut.zodiacSignColor.value).isEqualTo(EARTH_COLOR)
     }
@@ -125,7 +130,7 @@ class MakrokosmosSongDetailViewModelTest {
     fun initialize_should_setZodiacSignColorToFireColor_when_elementIsFire() {
         `when`(mockZodiacSign.element).thenReturn(Element.Fire)
 
-        sut.initialize(MEDIA_ID)
+        initViewModel()
 
         assertThat(sut.zodiacSignColor.value).isEqualTo(FIRE_COLOR)
     }
@@ -134,14 +139,14 @@ class MakrokosmosSongDetailViewModelTest {
     fun initialize_should_setZodiacSignColorToWaterColor_when_elementIsWater() {
         `when`(mockZodiacSign.element).thenReturn(Element.Water)
 
-        sut.initialize(MEDIA_ID)
+        initViewModel()
 
         assertThat(sut.zodiacSignColor.value).isEqualTo(WATER_COLOR)
     }
 
     @Test
     fun initialize_should_playSong() {
-        sut.initialize(MEDIA_ID)
+        initViewModel()
 
         verify(audioRepository).play(mockSong.id)
     }
@@ -160,7 +165,7 @@ class MakrokosmosSongDetailViewModelTest {
         }
         `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong2))
 
-        sut.initialize(MEDIA_ID)
+        initViewModel()
 
         assertThat(sut.title.value).isEqualTo(mockSong2.title)
         assertThat(sut.subTitle.value).isEqualTo(mockSong2.subTitle)
@@ -172,7 +177,7 @@ class MakrokosmosSongDetailViewModelTest {
     fun initialize_should_updateIsPlayingToFalse_when_getPlayingStateSentPause() {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Paused))
 
-        sut.initialize(MEDIA_ID)
+        initViewModel()
 
         assertThat(sut.isPlaying.value).isFalse()
     }
@@ -181,7 +186,7 @@ class MakrokosmosSongDetailViewModelTest {
     fun initialize_should_updateIsPlayingToFalse_when_getPlayingStateSentStopped() {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Stopped))
 
-        sut.initialize(MEDIA_ID)
+        initViewModel()
 
         assertThat(sut.isPlaying.value).isFalse()
     }
@@ -190,7 +195,7 @@ class MakrokosmosSongDetailViewModelTest {
     fun initialize_should_updateIsPlayingToTrue_when_getPlayingStateSentPlaying() {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Playing))
 
-        sut.initialize(MEDIA_ID)
+        initViewModel()
 
         assertThat(sut.isPlaying.value).isTrue()
     }

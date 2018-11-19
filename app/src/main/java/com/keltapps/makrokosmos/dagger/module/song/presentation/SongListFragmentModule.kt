@@ -5,8 +5,12 @@ import androidx.recyclerview.widget.ListAdapter
 import com.keltapps.makrokosmos.base.presentation.SingleLiveEvent
 import com.keltapps.makrokosmos.base.presentation.view.createFactory
 import com.keltapps.makrokosmos.dagger.scope.SubFragmentScope
+import com.keltapps.makrokosmos.info.presentation.annotation.ProvideInfoScreen
+import com.keltapps.makrokosmos.info.presentation.model.InfoScreen
+import com.keltapps.makrokosmos.info.presentation.view.InfoFragment
 import com.keltapps.makrokosmos.song.domain.entity.Song
 import com.keltapps.makrokosmos.song.presentation.list.adapter.BlockSongListAdapter
+import com.keltapps.makrokosmos.song.presentation.list.annotation.ProvideVolumeIndex
 import com.keltapps.makrokosmos.song.presentation.list.factory.MakrokosmosSongItemViewModelFactory
 import com.keltapps.makrokosmos.song.presentation.list.factory.MakrokosmosZodiacSignViewModelFactory
 import com.keltapps.makrokosmos.song.presentation.list.factory.SongItemViewModelFactory
@@ -52,4 +56,8 @@ class SongListFragmentModule {
     @Provides
     @SubFragmentScope
     fun provideOpenSongDetailSingleLiveEvent() = SingleLiveEvent<String>()
+
+    @Provides
+    @ProvideVolumeIndex
+    fun provideVolumeIndex(fragment: SongListFragment): Int = fragment.getVolumeIndex()
 }

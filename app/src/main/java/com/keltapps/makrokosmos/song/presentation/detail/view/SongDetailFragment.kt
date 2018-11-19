@@ -7,6 +7,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.databinding.FragmentSongDetailBinding
+import com.keltapps.makrokosmos.info.presentation.annotation.ProvideInfoScreen
+import com.keltapps.makrokosmos.info.presentation.model.InfoScreen
+import com.keltapps.makrokosmos.info.presentation.view.InfoFragmentArgs
+import com.keltapps.makrokosmos.song.presentation.detail.annotation.ProvideSongId
 import com.keltapps.makrokosmos.song.presentation.detail.viewmodel.SongDetailViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -17,6 +21,9 @@ class SongDetailFragment : DaggerFragment() {
     internal lateinit var viewModel: SongDetailViewModel
 
     private lateinit var binding: FragmentSongDetailBinding
+
+    @ProvideSongId
+    fun getSongId(): String = SongDetailFragmentArgs.fromBundle(arguments).songId
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -31,7 +38,6 @@ class SongDetailFragment : DaggerFragment() {
         )
         binding.viewModel = viewModel
         binding.setLifecycleOwner(this)
-        viewModel.initialize(SongDetailFragmentArgs.fromBundle(arguments).songId)
         setupActionBar()
         return binding.root
     }

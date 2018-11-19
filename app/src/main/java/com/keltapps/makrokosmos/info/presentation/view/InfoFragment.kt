@@ -10,8 +10,10 @@ import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.databinding.FragmentInfoBinding
 import com.keltapps.makrokosmos.info.presentation.viewmodel.InfoViewModel
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_info.*
 import javax.inject.Inject
+import com.keltapps.makrokosmos.info.presentation.annotation.ProvideInfoScreen
+import com.keltapps.makrokosmos.info.presentation.model.InfoScreen
+
 
 class InfoFragment : DaggerFragment() {
 
@@ -23,6 +25,9 @@ class InfoFragment : DaggerFragment() {
     internal lateinit var viewModel: InfoViewModel
 
     private lateinit var binding: FragmentInfoBinding
+
+    @ProvideInfoScreen
+    fun getInfoScreen(): InfoScreen = InfoFragmentArgs.fromBundle(arguments).infoScreen
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -37,19 +42,16 @@ class InfoFragment : DaggerFragment() {
         )
         binding.viewModel = viewModel
         binding.setLifecycleOwner(this)
-        viewModel.initialize(
-                InfoFragmentArgs.fromBundle(arguments).infoScreen
-        )
-        setupActionBar()
+        setupActionBar(binding.root)
         return binding.root
     }
 
-    private fun setupActionBar() {
+    private fun setupActionBar(root: View) {
         with(activity as AppCompatActivity) {
             setSupportActionBar(binding.toolbar)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
-        binding.toolbar.setNavigationOnClickListener { binding.root.findNavController().navigateUp() }
+        binding.toolbar.setNavigationOnClickListener { root.findNavController().navigateUp() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

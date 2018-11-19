@@ -128,7 +128,7 @@ class MakrokosmosMediaNotificationManager @Inject constructor(
                                 )
                 )
                 .setColor(ContextCompat.getColor(service, R.color.blueGray800))
-                .setSmallIcon(R.drawable.leo)
+                .setSmallIcon(R.drawable.ic_notification)
                 .setContentIntent(createContentIntent())
                 .setContentTitle(description.title)
                 .setContentText(description.subtitle)

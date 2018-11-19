@@ -9,6 +9,7 @@ import com.keltapps.makrokosmos.song.domain.entity.*
 import com.keltapps.makrokosmos.song.domain.iteractor.GetSongPlayingUseCase
 import com.keltapps.makrokosmos.song.domain.repository.CDRepository
 import com.keltapps.makrokosmos.song.presentation.ZodiacSignViewModel
+import com.keltapps.makrokosmos.song.presentation.detail.annotation.ProvideSongId
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.*
@@ -23,7 +24,8 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
         @Named("fireColor") private val fireColor: Int,
         @Named("earthColor") private val earthColor: Int,
         @Named("waterColor") private val waterColor: Int,
-        override val audioViewModel: AudioViewModel
+        override val audioViewModel: AudioViewModel,
+        @ProvideSongId songId: String
 ) : MakrokosmosBaseViewModel(), SongDetailViewModel {
 
     override val title = MutableLiveData<String>()
@@ -32,7 +34,7 @@ class MakrokosmosSongDetailViewModel @Inject constructor(
     override val zodiacSignName = MutableLiveData<String>()
     override val isPlaying = MutableLiveData<Boolean>()
 
-    override fun initialize(songId: String) {
+    init {
         zodiacSignColor.value = airColor
         getSongPlaying(songId)
         subscribeToPlayingState()

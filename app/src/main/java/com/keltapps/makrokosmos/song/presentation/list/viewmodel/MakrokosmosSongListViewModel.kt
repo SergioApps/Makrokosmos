@@ -4,17 +4,19 @@ import androidx.lifecycle.MutableLiveData
 import com.keltapps.makrokosmos.song.domain.entity.*
 import com.keltapps.makrokosmos.song.domain.iteractor.GetCDUseCase
 import com.keltapps.makrokosmos.base.presentation.viewmodel.MakrokosmosBaseViewModel
+import com.keltapps.makrokosmos.song.presentation.list.annotation.ProvideVolumeIndex
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class MakrokosmosSongListViewModel @Inject constructor(
-        private val cdUseCase: GetCDUseCase
+        cdUseCase: GetCDUseCase,
+        @ProvideVolumeIndex volumeIndex: Int
 ) : MakrokosmosBaseViewModel(), SongListViewModel {
 
     override val cdListItems = MutableLiveData<List<Song>>()
 
-    override fun initialize(volumeIndex: Int) {
+    init {
         cdUseCase.execute()
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())

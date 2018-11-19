@@ -9,9 +9,13 @@ import androidx.recyclerview.widget.*
 import com.keltapps.makrokosmos.R
 import com.keltapps.makrokosmos.base.presentation.SingleLiveEvent
 import com.keltapps.makrokosmos.databinding.FragmentSongListBinding
+import com.keltapps.makrokosmos.info.presentation.annotation.ProvideInfoScreen
+import com.keltapps.makrokosmos.info.presentation.model.InfoScreen
+import com.keltapps.makrokosmos.info.presentation.view.InfoFragmentArgs
 import com.keltapps.makrokosmos.navigation.Navigator
 import com.keltapps.makrokosmos.song.domain.entity.Song
 import com.keltapps.makrokosmos.song.presentation.list.adapter.BlockSongListAdapter
+import com.keltapps.makrokosmos.song.presentation.list.annotation.ProvideVolumeIndex
 import com.keltapps.makrokosmos.song.presentation.list.viewmodel.SongListViewModel
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_song_list.*
@@ -33,6 +37,9 @@ class SongListFragment : DaggerFragment() {
     @Inject
     internal lateinit var openSongDetail: SingleLiveEvent<String>
 
+    @ProvideVolumeIndex
+    fun getVolumeIndex(): Int = arguments!!.getInt(ARG_INDEX)
+
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -43,10 +50,6 @@ class SongListFragment : DaggerFragment() {
                 false
         )
         binding.viewModel = viewModel
-
-        arguments?.takeIf { it.containsKey(ARG_INDEX) }?.apply {
-            viewModel.initialize(getInt(ARG_INDEX))
-        }
         setUpRecyclerView(binding)
         openSongDetail.observe(this, Observer {
             navigator.openSongDetail(findNavController(), it)

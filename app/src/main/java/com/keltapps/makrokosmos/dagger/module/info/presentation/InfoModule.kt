@@ -3,7 +3,9 @@ package com.keltapps.makrokosmos.dagger.module.info.presentation
 import androidx.lifecycle.ViewModelProviders
 import com.keltapps.makrokosmos.base.presentation.view.createFactory
 import com.keltapps.makrokosmos.dagger.scope.FragmentScope
+import com.keltapps.makrokosmos.info.presentation.model.InfoScreen
 import com.keltapps.makrokosmos.info.presentation.view.InfoFragment
+import com.keltapps.makrokosmos.info.presentation.annotation.ProvideInfoScreen
 import com.keltapps.makrokosmos.info.presentation.viewmodel.InfoViewModel
 import com.keltapps.makrokosmos.info.presentation.viewmodel.MakrokosmosInfoViewModel
 import dagger.Module
@@ -21,4 +23,8 @@ class InfoModule {
         val viewModelFactory = viewModel.createFactory()
         return ViewModelProviders.of(fragment, viewModelFactory).get(viewModel.javaClass)
     }
+
+    @Provides
+    @ProvideInfoScreen
+    fun provideInfoScreen(fragment: InfoFragment): InfoScreen = fragment.getInfoScreen()
 }

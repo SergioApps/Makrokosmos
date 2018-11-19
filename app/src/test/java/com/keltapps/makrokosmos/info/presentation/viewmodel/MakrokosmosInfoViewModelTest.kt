@@ -45,11 +45,6 @@ class MakrokosmosInfoViewModelTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        sut = MakrokosmosInfoViewModel(
-                getAboutInfoUseCase,
-                getAuthorInfoUseCase,
-                getInterpreterInfoUseCase
-        )
         mockInfo()
     }
 
@@ -65,7 +60,7 @@ class MakrokosmosInfoViewModelTest {
     fun initialize_should_setAboutInfo_when_screenIsAbout() {
         `when`(getAboutInfoUseCase.execute()).thenReturn(Observable.just(mockInfo))
 
-        sut.initialize(InfoScreen.AboutScreen)
+        initViewModel(InfoScreen.AboutScreen)
 
         assertValues()
     }
@@ -74,7 +69,7 @@ class MakrokosmosInfoViewModelTest {
     fun initialize_should_setAuthorInfo_when_screenIsAuthor() {
         `when`(getAuthorInfoUseCase.execute()).thenReturn(Observable.just(mockInfo))
 
-        sut.initialize(InfoScreen.AuthorScreen)
+        initViewModel(InfoScreen.AuthorScreen)
 
         assertValues()
     }
@@ -83,9 +78,18 @@ class MakrokosmosInfoViewModelTest {
     fun initialize_should_setInterpreterInfo_when_screenIsInterpreter() {
         `when`(getInterpreterInfoUseCase.execute()).thenReturn(Observable.just(mockInfo))
 
-        sut.initialize(InfoScreen.InterpreterScreen)
+        initViewModel(InfoScreen.InterpreterScreen)
 
         assertValues()
+    }
+
+    private fun initViewModel(infoScreen: InfoScreen) {
+        sut = MakrokosmosInfoViewModel(
+                getAboutInfoUseCase,
+                getAuthorInfoUseCase,
+                getInterpreterInfoUseCase,
+                infoScreen
+        )
     }
 
     private fun assertValues() {

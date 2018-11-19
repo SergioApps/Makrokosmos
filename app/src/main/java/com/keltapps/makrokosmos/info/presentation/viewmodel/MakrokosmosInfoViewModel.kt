@@ -7,6 +7,7 @@ import com.keltapps.makrokosmos.info.domain.iteractor.GetAboutInfoUseCase
 import com.keltapps.makrokosmos.info.domain.iteractor.GetAuthorInfoUseCase
 import com.keltapps.makrokosmos.info.domain.iteractor.GetInterpreterInfoUseCase
 import com.keltapps.makrokosmos.info.presentation.model.InfoScreen
+import com.keltapps.makrokosmos.info.presentation.annotation.ProvideInfoScreen
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -15,14 +16,15 @@ import javax.inject.Inject
 class MakrokosmosInfoViewModel @Inject constructor(
         private val aboutInfoUseCase: GetAboutInfoUseCase,
         private val authorInfoUseCase: GetAuthorInfoUseCase,
-        private val interpreterInfoUseCase: GetInterpreterInfoUseCase
+        private val interpreterInfoUseCase: GetInterpreterInfoUseCase,
+        @ProvideInfoScreen infoScreen: InfoScreen
 ) : MakrokosmosBaseViewModel(), InfoViewModel {
 
     override val image = MutableLiveData<Int>()
     override val title = MutableLiveData<String>()
     override val body = MutableLiveData<String>()
 
-    override fun initialize(infoScreen: InfoScreen) {
+    init {
         getInfo(infoScreen)
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())

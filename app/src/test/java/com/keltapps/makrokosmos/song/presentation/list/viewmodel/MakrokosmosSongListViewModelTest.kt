@@ -27,7 +27,6 @@ class MakrokosmosSongListViewModelTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        sut = MakrokosmosSongListViewModel(getCDUseCase)
     }
 
     @Test
@@ -35,7 +34,8 @@ class MakrokosmosSongListViewModelTest {
         val cd = getCD()
         `when`(getCDUseCase.execute()).thenReturn(Observable.just(cd))
         val volumeIndex = 0
-        sut.initialize(volumeIndex)
+
+        sut = MakrokosmosSongListViewModel(getCDUseCase, volumeIndex)
 
         val songListItems = sut.cdListItems.value
 

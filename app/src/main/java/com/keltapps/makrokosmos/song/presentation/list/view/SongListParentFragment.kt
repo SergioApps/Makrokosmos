@@ -35,17 +35,17 @@ class SongListParentFragment : DaggerFragment() {
             pager.adapter = pageAdapter
             tabLayout.setupWithViewPager(pager)
         }
-        setupActionBar()
+        setupActionBar(binding.root)
         return binding.root
     }
 
-    private fun setupActionBar() {
+    private fun setupActionBar(root: View) {
         with(activity as AppCompatActivity) {
             setSupportActionBar(binding.toolbar)
             supportActionBar?.title = getString(R.string.title_songListActivity)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
-        binding.toolbar.setNavigationOnClickListener { binding.root.findNavController().navigateUp() }
+        binding.toolbar.setNavigationOnClickListener { root.findNavController().navigateUp() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,8 +56,8 @@ class SongListParentFragment : DaggerFragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        binding.tabLayout.let { outState.putInt(SELECTED_TAB, it.selectedTabPosition) }
-        binding.coordinatorLayout.let { outState.putInt(STATE_SCROLL, it.scrollY) }
+        outState.putInt(SELECTED_TAB, binding.tabLayout.selectedTabPosition)
+        outState.putInt(STATE_SCROLL, binding.coordinatorLayout.scrollY)
     }
 
     override fun onDestroyView() {

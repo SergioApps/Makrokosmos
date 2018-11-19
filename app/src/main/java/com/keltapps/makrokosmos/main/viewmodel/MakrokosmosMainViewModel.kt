@@ -44,7 +44,6 @@ class MakrokosmosMainViewModel @Inject constructor(
     init {
         subscribeToSongPlaying()
         subscribeToPlayingState()
-        mediaSeekBarViewModel.initialize()
     }
 
     private fun subscribeToSongPlaying() {

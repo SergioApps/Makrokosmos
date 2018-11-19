@@ -9,6 +9,7 @@ import com.keltapps.makrokosmos.song.data.repository.RxSchedulersOverrideRule
 import com.keltapps.makrokosmos.song.domain.entity.Song
 import com.keltapps.makrokosmos.song.domain.iteractor.GetSongPlayingUseCase
 import io.reactivex.Observable
+import io.reactivex.subjects.PublishSubject
 import org.junit.*
 import org.junit.rules.TestRule
 import org.mockito.*
@@ -43,24 +44,27 @@ class MakrokosmosMediaSeekBarViewModelTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
+        `when`(audioRepository.getPlayingState()).thenReturn(Observable.create {})
+        `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.create {})
+    }
+
+    private fun initViewModel() {
         sut = MakrokosmosMediaSeekBarViewModel(
                 audioRepository,
                 mockValueAnimator,
                 getSongPlayingUseCase,
                 TIME_FORMAT
         )
-        `when`(audioRepository.getPlayingState()).thenReturn(Observable.create {})
-        `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.create {})
     }
 
     @Test
-    fun initialize_should_setProgressToCurrentPositionAndMaxToSongDuration_when_songChangeReceived() {
+    fun init_should_setProgressToCurrentPositionAndMaxToSongDuration_when_songChangeReceived() {
         `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
         `when`(audioRepository.getCurrentPlayingState()).thenReturn(PlayingState.Paused)
         `when`(audioRepository.getCurrentPositionInSeconds()).thenReturn(CURRENT_POSITION)
 
-        sut.initialize()
+        initViewModel()
 
         assertThat(sut.progress.value).isEqualTo(CURRENT_POSITION * MILLISECOND_MULTIPLIER)
         assertThat(sut.maxValue.value).isEqualTo(DURATION * MILLISECOND_MULTIPLIER)
@@ -68,14 +72,16 @@ class MakrokosmosMediaSeekBarViewModelTest {
     }
 
     @Test
-    fun initialize_should_cancelAnimation_when_songChangeReceivedMaxValueIsSetAndPlayingStateIsPlaying() {
+    fun init_should_cancelAnimation_when_songChangeReceivedMaxValueIsSetAndPlayingStateIsPlaying() {
+        `when`(audioRepository.getCurrentPlayingState()).thenReturn(PlayingState.Playing)
+        val publishSubject = PublishSubject.create<Song>()
+        `when`(getSongPlayingUseCase.execute()).thenReturn(publishSubject)
+        `when`(mockSong.durationInSeconds).thenReturn(DURATION)
+        initViewModel()
         sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
         sut.maxValue.value = DURATION * MILLISECOND_MULTIPLIER
-        `when`(audioRepository.getCurrentPlayingState()).thenReturn(PlayingState.Playing)
-        `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
-        `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
-        sut.initialize()
+        publishSubject.onNext(mockSong)
 
         assertThat(sut.progress.value).isEqualTo(0)
         assertThat(sut.maxValue.value).isEqualTo(DURATION * MILLISECOND_MULTIPLIER)
@@ -85,49 +91,51 @@ class MakrokosmosMediaSeekBarViewModelTest {
     }
 
     @Test
-    fun initialize_should_cancelAnimation_when_stateChangeReceivedMaxValueIsSetAndPlayingStateIsPaused() {
-        sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
-        sut.maxValue.value = DURATION * MILLISECOND_MULTIPLIER
+    fun init_should_cancelAnimation_when_stateChangeReceivedMaxValueIsSetAndPlayingStateIsPaused() {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Paused))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
-        sut.initialize()
+        initViewModel()
+        sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
+        sut.maxValue.value = DURATION * MILLISECOND_MULTIPLIER
 
         verify(mockValueAnimator).pause()
     }
 
     @Test
-    fun initialize_should_cancelAnimation_when_stateChangeReceivedMaxValueIsSetAndPlayingStateIsStopped() {
-        sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
-        sut.maxValue.value = DURATION * MILLISECOND_MULTIPLIER
+    fun init_should_cancelAnimation_when_stateChangeReceivedMaxValueIsSetAndPlayingStateIsStopped() {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Stopped))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
-        sut.initialize()
+        initViewModel()
+        sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
+        sut.maxValue.value = DURATION * MILLISECOND_MULTIPLIER
 
         verify(mockValueAnimator).pause()
     }
 
     @Test
-    fun initialize_should_doNothing_when_stateChangeReceivedMaxValueIsNotSetAndPlayingStateIsPlaying() {
-        sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
+    fun init_should_doNothing_when_stateChangeReceivedMaxValueIsNotSetAndPlayingStateIsPlaying() {
         `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Playing))
         `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
-        sut.initialize()
+        initViewModel()
+        sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
 
         verify(mockValueAnimator, never()).pause()
         verify(mockValueAnimator, never()).start()
     }
 
     @Test
-    fun initialize_should_handleAnimation_when_stateChangeReceivedMaxValueIsSetAndPlayingStateIsPlaying() {
+    fun init_should_handleAnimation_when_stateChangeReceivedMaxValueIsSetAndPlayingStateIsPlaying() {
+        val publishSubject = PublishSubject.create<PlayingState>()
+        `when`(audioRepository.getPlayingState()).thenReturn(publishSubject)
+        `when`(mockSong.durationInSeconds).thenReturn(DURATION)
+        initViewModel()
         sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
         sut.maxValue.value = DURATION * MILLISECOND_MULTIPLIER
-        `when`(audioRepository.getPlayingState()).thenReturn(Observable.just(PlayingState.Playing))
-        `when`(mockSong.durationInSeconds).thenReturn(DURATION)
 
-        sut.initialize()
+        publishSubject.onNext(PlayingState.Playing)
 
         verify(mockValueAnimator).setIntValues(
                 (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt(),
@@ -138,37 +146,39 @@ class MakrokosmosMediaSeekBarViewModelTest {
     }
 
     @Test
-    fun initialize_should_setDurationWith3Digits_when_secondsAreLessThan10() {
+    fun init_should_setDurationWith3Digits_when_secondsAreLessThan10() {
         `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
         `when`(mockSong.durationInSeconds).thenReturn(189)
 
-        sut.initialize()
+        initViewModel()
 
         assertThat(sut.duration.value).isEqualTo("3:09")
     }
 
     @Test
-    fun initialize_should_setDurationWith4Digits_when_minutesAreMoreThan10() {
+    fun init_should_setDurationWith4Digits_when_minutesAreMoreThan10() {
         `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
         `when`(mockSong.durationInSeconds).thenReturn(600)
 
-        sut.initialize()
+        initViewModel()
 
         assertThat(sut.duration.value).isEqualTo("10:00")
     }
 
     @Test
-    fun initialize_should_setDuration() {
+    fun init_should_setDuration() {
         `when`(getSongPlayingUseCase.execute()).thenReturn(Observable.just(mockSong))
         `when`(mockSong.durationInSeconds).thenReturn(200)
 
-        sut.initialize()
+        initViewModel()
 
         assertThat(sut.duration.value).isEqualTo("3:20")
     }
 
     @Test
     fun startTracking_should_cancelAnimation() {
+        initViewModel()
+
         sut.startTracking()
 
         verify(mockValueAnimator).pause()
@@ -176,6 +186,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
 
     @Test
     fun stopTracking_should_callSeekToWith0_when_progressIsNull() {
+        initViewModel()
         `when`(audioRepository.getCurrentPlayingState()).thenReturn(PlayingState.Paused)
 
         sut.stopTracking()
@@ -186,6 +197,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
 
     @Test
     fun stopTracking_should_callSeekToWithProgressValue_when_progressIsNotNull() {
+        initViewModel()
         sut.progress.value = CURRENT_POSITION.toInt()
         `when`(audioRepository.getCurrentPlayingState()).thenReturn(PlayingState.Stopped)
 
@@ -197,6 +209,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
 
     @Test
     fun stopTracking_should_handleAnimation_when_maxValueIsSetAndPlayingStateIsPlaying() {
+        initViewModel()
         sut.progress.value = (CURRENT_POSITION * MILLISECOND_MULTIPLIER).toInt()
         sut.maxValue.value = DURATION * MILLISECOND_MULTIPLIER
         `when`(audioRepository.getCurrentPlayingState()).thenReturn(PlayingState.Playing)
@@ -211,6 +224,7 @@ class MakrokosmosMediaSeekBarViewModelTest {
 
     @Test
     fun onAnimationUpdate_should_callSeekToWith0_when_progressIsNull() {
+        initViewModel()
         `when`(mockValueAnimator.animatedValue).thenReturn(2)
 
         sut.onAnimationUpdate(mockValueAnimator)
