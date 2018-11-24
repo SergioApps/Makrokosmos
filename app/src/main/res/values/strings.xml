@@ -151,4 +151,7 @@
     <string name="label_pause">pause</string>
     <string name="label_next">next</string>
     <string name="label_previous">previous</string>
+    <string name="contentDescription_mediaSeekBar">media seek bar</string>
+    <string name="contentDescription_play_or_pause">play or pause</string>
+    <string name="contentDescription_play_bar_toolbar">play bar toolbar</string>
 </resources>

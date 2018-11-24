@@ -32,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="false"
+            android:contentDescription="@string/contentDescription_mediaSeekBar"
             android:max="@{viewModel.mediaSeekBarViewModel.maxValue}"
             android:paddingStart="0dp"
             android:paddingTop="0dp"
@@ -53,6 +54,7 @@
             android:layout_height="?android:attr/actionBarSize"
             android:background="@color/colorPrimary"
             android:clickable="true"
+            android:contentDescription="@string/contentDescription_play_bar_toolbar"
             android:focusable="true"
             android:onClick="@{()->viewModel.openSongDetail()}"
             android:visibility="gone"
@@ -152,6 +154,7 @@
                     android:layout_weight="0.25"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
+                    android:contentDescription="@string/contentDescription_play_or_pause"
                     android:focusable="true"
                     android:onClick="@{()->viewModel.audioViewModel.playOrPause()}">
 

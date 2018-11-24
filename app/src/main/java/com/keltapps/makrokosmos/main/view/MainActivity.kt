@@ -1,19 +1,14 @@
 package com.keltapps.makrokosmos.main.view
 
 import android.os.Bundle
-import android.view.View
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LifecycleRegistryOwner
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.keltapps.makrokosmos.R
-import com.keltapps.makrokosmos.audio.client.domain.repository.AudioRepository
 import com.keltapps.makrokosmos.databinding.ActivityMainBinding
 import com.keltapps.makrokosmos.main.viewmodel.MainViewModel
 import com.keltapps.makrokosmos.navigation.Navigator
 import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity() {

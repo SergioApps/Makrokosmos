@@ -28,25 +28,25 @@ class MakrokosmosMediaNotificationManager @Inject constructor(
     }
 
     private val playAction: NotificationCompat.Action = NotificationCompat.Action(
-            R.drawable.ic_play,
+            R.drawable.ic_notification_play,
             service.getString(R.string.label_play),
             MediaButtonReceiver.buildMediaButtonPendingIntent(
                     service,
                     PlaybackStateCompat.ACTION_PLAY))
     private val pauseAction: NotificationCompat.Action = NotificationCompat.Action(
-            R.drawable.ic_pause,
+            R.drawable.ic_notification_pause,
             service.getString(R.string.label_pause),
             MediaButtonReceiver.buildMediaButtonPendingIntent(
                     service,
                     PlaybackStateCompat.ACTION_PAUSE))
     private val nextAction: NotificationCompat.Action = NotificationCompat.Action(
-            R.drawable.ic_skip_next,
+            R.drawable.ic_notification_next,
             service.getString(R.string.label_next),
             MediaButtonReceiver.buildMediaButtonPendingIntent(
                     service,
                     PlaybackStateCompat.ACTION_SKIP_TO_NEXT))
     private val previousAction: NotificationCompat.Action = NotificationCompat.Action(
-            R.drawable.ic_skip_previous,
+            R.drawable.ic_notification_previous,
             service.getString(R.string.label_previous),
             MediaButtonReceiver.buildMediaButtonPendingIntent(
                     service,

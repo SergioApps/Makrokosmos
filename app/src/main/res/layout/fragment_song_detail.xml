@@ -63,6 +63,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
+            android:contentDescription="@string/contentDescription_mediaSeekBar"
             android:max="@{viewModel.mediaSeekBarViewModel.maxValue}"
             android:onStopTrackingTouch="@{() -> viewModel.mediaSeekBarViewModel.stopTracking()}"
             android:onStartTrackingTouch="@{() -> viewModel.mediaSeekBarViewModel.startTracking()}"
@@ -170,13 +171,14 @@
 
             <ImageView
                 android:id="@+id/skipPrevious"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:contentDescription="@string/label_previous"
                 android:focusable="true"
                 android:onClick="@{()->viewModel.audioViewModel.skipToPrevious()}"
+                android:padding="6dp"
                 android:src="@drawable/ic_skip_previous"
                 android:tint="@android:color/white" />
 
@@ -187,6 +189,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
+                android:contentDescription="@string/contentDescription_play_or_pause"
                 android:focusable="true"
                 android:onClick="@{()->viewModel.audioViewModel.playOrPause()}">
 
@@ -201,13 +204,14 @@
 
             <ImageView
                 android:id="@+id/skipNext"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:contentDescription="@string/label_next"
                 android:focusable="true"
                 android:onClick="@{()->viewModel.audioViewModel.skipToNext()}"
+                android:padding="6dp"
                 android:src="@drawable/ic_skip_next"
                 android:tint="@android:color/white" />
 
