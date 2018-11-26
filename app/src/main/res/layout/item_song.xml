@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.keltapps.makrokosmos.song.presentation.list.viewmodel.SongItemViewModel" />
+            type="com.keltapps.musicalzodiacpiano.song.presentation.list.viewmodel.SongItemViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView

@@ -9,7 +9,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.keltapps.makrokosmos"
+        applicationId "com.keltapps.musicalzodiacpiano"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 7

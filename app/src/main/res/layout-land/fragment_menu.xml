@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.keltapps.makrokosmos.menu.presentation.viewmodel.MenuViewModel" />
+            type="com.keltapps.musicalzodiacpiano.menu.presentation.viewmodel.MenuViewModel" />
     </data>
 
 

@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.keltapps.makrokosmos.info.presentation.viewmodel.InfoViewModel" />
+            type="com.keltapps.musicalzodiacpiano.info.presentation.viewmodel.InfoViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

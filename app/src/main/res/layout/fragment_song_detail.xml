@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.keltapps.makrokosmos.song.presentation.detail.viewmodel.SongDetailViewModel" />
+            type="com.keltapps.musicalzodiacpiano.song.presentation.detail.viewmodel.SongDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
