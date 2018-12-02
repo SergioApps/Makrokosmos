@@ -1,5 +1,6 @@
 # Makrokosmos
 Musical Zodiac is the new music project of the pianist Fabio Álvarez with the recording label Orpheus Classical.
+https://play.google.com/store/apps/details?id=com.keltapps.musicalzodiacpiano
 
 <p align="center">
 <img src="https://github.com/SergioApps/Makrokosmos/blob/master/app_gif.gif"/>
